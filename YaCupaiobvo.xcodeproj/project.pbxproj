@@ -148,6 +148,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YaCupaiobvo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Yabvo;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Yabvo uses your camera to capture your signature sunglasses look, allowing our AI to analyze your aesthetic and recommend perfectly matched outfits.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to share your styling tips and engage in real-time fashion conversations with fellow trendsetters in our community rooms.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access to your photos allows you to upload your favorite eyewear moments and save curated looks from the inspiration library to your personal collection.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -180,6 +183,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YaCupaiobvo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Yabvo;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Yabvo uses your camera to capture your signature sunglasses look, allowing our AI to analyze your aesthetic and recommend perfectly matched outfits.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to share your styling tips and engage in real-time fashion conversations with fellow trendsetters in our community rooms.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access to your photos allows you to upload your favorite eyewear moments and save curated looks from the inspiration library to your personal collection.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
