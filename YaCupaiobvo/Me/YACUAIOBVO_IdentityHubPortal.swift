@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 struct YACUAIOBVO_UserMetric {
     let YACUAIOBVO_DISPLAY_NAME: String
     let YACUAIOBVO_SIGNATURE_TEXT: String

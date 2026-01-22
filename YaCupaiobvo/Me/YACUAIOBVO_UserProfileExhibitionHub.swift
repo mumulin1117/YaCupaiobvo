@@ -24,12 +24,24 @@ struct YACUAIOBVO_StoryFragment {
 }
 //他人中心
 class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-
+    @objc private func YACUAIOBVO_TOGGLE_SUBSCRIPTION(biu:UIButton) {
+       
+        biu.isSelected = biu.isSelected
+        let YACUAIOBVO_MSG = biu.isSelected ? "Subscription Active" : "Subscription Removed"
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+    }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionView.elementKindSectionHeader &&  indexPath.section == 0{
-            let headert = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "YACUAIOBVO_ProfileStructuralHeader", for: indexPath)
+            let headert = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "YACUAIOBVO_ProfileStructuralHeader", for: indexPath) as! YACUAIOBVO_ProfileStructuralHeader
+            
+            headert.YACUAIOBVO_VIDEO_MODALITY.addTarget(self, action: #selector(YACUAIOBVO_CALL), for: .touchUpInside)
+            
+            headert.YACUAIOBVO_ACTION_MESSAGE.addTarget(self, action: #selector(YACUAIOBVO_ACTION_MESSAGE), for: .touchUpInside)
+            
+           
+            headert.YACUAIOBVO_ACTION_FOLLOW.addTarget(self, action: #selector(YACUAIOBVO_TOGGLE_SUBSCRIPTION(biu:)), for: .touchUpInside)
             return headert
         }
         return UICollectionReusableView()
@@ -150,20 +162,34 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     @objc private func YACUAIOBVO_POP_SCENE() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func YACUAIOBVO_CALL() {
+        let YACUAIOBVOvc = YACUAIOBVO_VocalStreamInterface()
+        YACUAIOBVOvc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
+     }
+    @objc func YACUAIOBVO_ACTION_MESSAGE() {
+        let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom()
+        YACUAIOBVOvc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
+     }
+    
+    
+     
 }
 
 
 class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     private let YACUAIOBVO_PORTRAIT_WELL = UIImageView()
     private let YACUAIOBVO_ALIAS_LABEL = UILabel()
-    private let YACUAIOBVO_VIDEO_MODALITY = UIButton()
+     let YACUAIOBVO_VIDEO_MODALITY = UIButton()
     private let YACUAIOBVO_BIO_LABEL = UILabel()
     
     private let YACUAIOBVO_FOLLOW_COUNT_LABEL = UILabel()
     private let YACUAIOBVO_FAN_COUNT_LABEL = UILabel()
     
-    private let YACUAIOBVO_ACTION_FOLLOW = UIButton()
-    private let YACUAIOBVO_ACTION_MESSAGE = UIButton()
+     let YACUAIOBVO_ACTION_FOLLOW = UIButton()
+     let YACUAIOBVO_ACTION_MESSAGE = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -233,6 +259,8 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         ])
     }
     
+    
+  
     func YACUAIOBVO_HYDRATE_DATA(_ YACUAIOBVO_MODEL: YACUAIOBVO_VisitorContextModel?) {
         YACUAIOBVO_ALIAS_LABEL.text = YACUAIOBVO_MODEL?.YACUAIOBVO_PARTNER_NAME
         YACUAIOBVO_BIO_LABEL.text = YACUAIOBVO_MODEL?.YACUAIOBVO_PARTNER_BIO ?? "Say something to introduce yourself."

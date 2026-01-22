@@ -21,7 +21,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     private let YACUAIOBVO_TOP_SEGMENT = UIView()
     private let YACUAIOBVO_DISCOVER_LBL = UIButton()
     private let YACUAIOBVO_FOLLOW_LBL = UIButton()
-    
+    private let YACUAIOBVO_Publish_LBL = UIButton()
     
     private let YACUAIOBVO_INDICATOR_DOT: UICollectionView = {
         let YACUAIOBVO_LAYOUT = UICollectionViewFlowLayout()
@@ -40,7 +40,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         YACUAIOBVO_DISCOVER_LBL.isSelected = true
         YACUAIOBVO_FOLLOW_LBL.addTarget(self, action: #selector(YACUAIOBVO_SETUPPink(YACUAIOBVO_SETUPBU:)), for: .touchUpInside)
         YACUAIOBVO_DISCOVER_LBL.addTarget(self, action: #selector(YACUAIOBVO_SETUPPink(YACUAIOBVO_SETUPBU:)), for: .touchUpInside)
-        
+        YACUAIOBVO_Publish_LBL.addTarget(self, action: #selector(YACUAIOBVO_publihder), for: .touchUpInside)
         
         YACUAIOBVO_INDICATOR_DOT.backgroundColor = .clear
         YACUAIOBVO_INDICATOR_DOT.delegate = self
@@ -51,8 +51,20 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         YACUAIOBVO_INDICATOR_DOT.isUserInteractionEnabled = true
         YACUAIOBVO_SETUP_TOP_NAV()
     }
+    
+    
+    @objc func YACUAIOBVO_publihder(){
+        let YACUAIOBVO_DET_VC =  YACUAIOBVO_VantagePostCenter()
+        YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_InsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: [:])
+        YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
+        
     }
     
     @objc func YACUAIOBVO_SETUPPink(YACUAIOBVO_SETUPBU:UIButton){
@@ -63,6 +75,11 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     private func YACUAIOBVO_SETUP_TOP_NAV() {
         YACUAIOBVO_TOP_SEGMENT.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_TOP_SEGMENT)
+        
+           
+        YACUAIOBVO_Publish_LBL.setImage(UIImage(named: "fleversenghow"), for: .normal)
+        YACUAIOBVO_Publish_LBL.translatesAutoresizingMaskIntoConstraints = false
+        YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_Publish_LBL)
         
         YACUAIOBVO_DISCOVER_LBL.setImage(UIImage(named: "YACUAIOBVODiscover"), for: .normal)
         YACUAIOBVO_DISCOVER_LBL.setImage(UIImage(named: "YACUAIOBVOdisc"), for: .selected)
@@ -86,6 +103,12 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
             
             YACUAIOBVO_DISCOVER_LBL.leadingAnchor.constraint(equalTo: YACUAIOBVO_TOP_SEGMENT.leadingAnchor),
             YACUAIOBVO_DISCOVER_LBL.centerYAnchor.constraint(equalTo: YACUAIOBVO_TOP_SEGMENT.centerYAnchor),
+            
+            YACUAIOBVO_Publish_LBL.trailingAnchor.constraint(equalTo: YACUAIOBVO_TOP_SEGMENT.trailingAnchor,constant: -16),
+            YACUAIOBVO_Publish_LBL.centerYAnchor.constraint(equalTo: YACUAIOBVO_TOP_SEGMENT.centerYAnchor),
+            YACUAIOBVO_Publish_LBL.widthAnchor.constraint(equalToConstant: 24),
+            YACUAIOBVO_Publish_LBL.heightAnchor.constraint(equalToConstant: 24),
+            
             
             YACUAIOBVO_FOLLOW_LBL.leadingAnchor.constraint(equalTo: YACUAIOBVO_DISCOVER_LBL.trailingAnchor, constant: 20),
             YACUAIOBVO_FOLLOW_LBL.bottomAnchor.constraint(equalTo: YACUAIOBVO_DISCOVER_LBL.bottomAnchor, constant: -2),

@@ -102,8 +102,8 @@ class YACUAIOBVO_HomeStylePortal: UIViewController {
     }
 
     @objc private func YACUAIOBVO_LAUNCH_AI_ENGINE() {
-        let YACUAIOBVO_GEN_VC = UIViewController()
-        YACUAIOBVO_GEN_VC.view.backgroundColor = .white
+        let YACUAIOBVO_GEN_VC = YACUAIOBVOGlassVisionController()
+        YACUAIOBVO_GEN_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_GEN_VC, animated: true)
     }
 
@@ -127,8 +127,18 @@ extension YACUAIOBVO_HomeStylePortal: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_UserProfileExhibitionHub()
-        YACUAIOBVO_DET_VC.view.backgroundColor = .systemBackground
+        var ifNeedCoin:Bool = false
+        
+        if ifNeedCoin {
+            let YACUAIOBVOAlert = YACUAIOBVOBNotEnoughController(checkingType: .unknockPost)
+            YACUAIOBVOAlert.modalPresentationStyle = .overCurrentContext
+            self.present(YACUAIOBVOAlert, animated: true)
+            return
+        }
+       
+        
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: [:])
+        YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }
 }
