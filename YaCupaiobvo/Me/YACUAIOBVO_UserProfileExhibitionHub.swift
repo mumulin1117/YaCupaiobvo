@@ -2,7 +2,7 @@
 //  YACUAIOBVO_UserProfileExhibitionHub.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/21.
+//  Created by YaCupaiobvo on 2026/1/21.
 //
 
 import UIKit
@@ -25,8 +25,11 @@ struct YACUAIOBVO_StoryFragment {
 //他人中心
 class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @objc private func YACUAIOBVO_TOGGLE_SUBSCRIPTION(biu:UIButton) {
-       
-        biu.isSelected = biu.isSelected
+        biu.isSelected = !biu.isSelected
+        let useif = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String
+        
+        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: useif ?? "")
+        
         let YACUAIOBVO_MSG = biu.isSelected ? "Subscription Active" : "Subscription Removed"
         YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
     }
@@ -35,7 +38,7 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
         
         if kind == UICollectionView.elementKindSectionHeader &&  indexPath.section == 0{
             let headert = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "YACUAIOBVO_ProfileStructuralHeader", for: indexPath) as! YACUAIOBVO_ProfileStructuralHeader
-            
+            headert.YACUAIOBVO_PROFILE_DATA = self.YACUAIOBVO_PROFILE_DATA
             headert.YACUAIOBVO_VIDEO_MODALITY.addTarget(self, action: #selector(YACUAIOBVO_CALL), for: .touchUpInside)
             
             headert.YACUAIOBVO_ACTION_MESSAGE.addTarget(self, action: #selector(YACUAIOBVO_ACTION_MESSAGE), for: .touchUpInside)
@@ -48,7 +51,7 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        (YACUAIOBVO_PROFILE_DATA?.YACUAIOBVO_STORY_FEED.count ?? 0) > 0 ? 1 : 0
+        1
     }
     
     
@@ -58,6 +61,8 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let YACUAIOBVOcell = collectionView.dequeueReusableCell(withReuseIdentifier: YACUAIOBVO_StyleDiscoveryCell.YACUAIOBVO_REUSE_ID, for: indexPath) as! YACUAIOBVO_StyleDiscoveryCell
+        YACUAIOBVOcell.YACUAIOBVO_REPORT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_APPLY_DARK_report_THEME), for: .touchUpInside)
+        YACUAIOBVOcell.YACUAIOBVO_REFRESH_CONTENT(YACUAIOBVO_NAME: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_discover_title"] as? String  ?? "", YACUAIOBVO_VAL: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_NICKNAME"] as? String  ?? "" , YACUAIOBVO_IMG: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_discover_pic"] as? String ?? "", YACUAIOBVO_avator: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         return YACUAIOBVOcell
     }
     
@@ -74,10 +79,19 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     private let YACUAIOBVO_TOP_BAR = UIView()
     private let YACUAIOBVO_BACK_TRIGGER = UIButton()
     private let YACUAIOBVO_REPORT_TRIGGER = UIButton()
-    private let YACUAIOBVO_FOLLOW_INDICATOR = UIButton()
     
-    var YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_VisitorContextModel?
-
+//    private let YACUAIOBVO_FOLLOW_INDICATOR = UIButton()
+    
+    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>
+    init(YACUAIOBVO_PROFILE_DATA: Dictionary<String, Any>) {
+        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVO_INDICATOR_DOT.backgroundColor = .clear
@@ -89,10 +103,27 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
         
         YACUAIOBVO_INDICATOR_DOT.isScrollEnabled = true
         YACUAIOBVO_INDICATOR_DOT.isUserInteractionEnabled = true
-        
+       
         YACUAIOBVO_CONFIGURE_ENVIRONMENT()
         YACUAIOBVO_LAYOUT_COMPONENT_TREE()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_POP_SCENE), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
+        YACUAIOBVO_REPORT_TRIGGER.addTarget(self, action: #selector(actionsheetForPick), for: .touchUpInside)
     }
+    
+  @objc  func actionsheetForPick()  {
+      let acteeet = YACUAIOBVO_SafetyActionSheet.init()
+      acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String ?? ""
+      acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
+          let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
+          self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
+      }
+      
+     
+       self.present(acteeet, animated: true)
+    }
+    
+    
 
     private func YACUAIOBVO_CONFIGURE_ENVIRONMENT() {
         view.backgroundColor = .white
@@ -106,23 +137,26 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
         YACUAIOBVO_REPORT_TRIGGER.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
         YACUAIOBVO_REPORT_TRIGGER.tintColor = UIColor(red: 0.2, green: 0.3, blue: 0.4, alpha: 1.0)
         
-        YACUAIOBVO_FOLLOW_INDICATOR.layer.cornerRadius = 22
-        YACUAIOBVO_FOLLOW_INDICATOR.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        YACUAIOBVO_UPDATE_INTERACTION_STATE()
+//        YACUAIOBVO_FOLLOW_INDICATOR.layer.cornerRadius = 22
+//        YACUAIOBVO_FOLLOW_INDICATOR.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        
     }
 
-    private func YACUAIOBVO_UPDATE_INTERACTION_STATE() {
-        guard let YACUAIOBVO_MODEL = YACUAIOBVO_PROFILE_DATA else { return }
-        if YACUAIOBVO_MODEL.YACUAIOBVO_IS_MUTUAL {
-            YACUAIOBVO_FOLLOW_INDICATOR.setTitle("Followed", for: .normal)
-            YACUAIOBVO_FOLLOW_INDICATOR.backgroundColor = UIColor.systemGray4
-            YACUAIOBVO_FOLLOW_INDICATOR.setTitleColor(.white, for: .normal)
-        } else {
-            YACUAIOBVO_FOLLOW_INDICATOR.setTitle("Follow", for: .normal)
-            YACUAIOBVO_FOLLOW_INDICATOR.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
-            YACUAIOBVO_FOLLOW_INDICATOR.setTitleColor(.white, for: .normal)
-        }
-    }
+//    private func YACUAIOBVO_UPDATE_INTERACTION_STATE(YACUAIOBVO_FOLLOW_INDICATOR:UIButton) {
+//        
+//
+//        
+//        
+////        if  YACUAIOBVO_FOLLOW_INDICATOR.isSelected  {
+////            YACUAIOBVO_FOLLOW_INDICATOR.setTitle("Followed", for: .normal)
+////            YACUAIOBVO_FOLLOW_INDICATOR.backgroundColor = UIColor.systemGray4
+////            YACUAIOBVO_FOLLOW_INDICATOR.setTitleColor(.white, for: .normal)
+////        } else {
+////            YACUAIOBVO_FOLLOW_INDICATOR.setTitle("Follow", for: .normal)
+////            YACUAIOBVO_FOLLOW_INDICATOR.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
+////            YACUAIOBVO_FOLLOW_INDICATOR.setTitleColor(.white, for: .normal)
+////        }
+//    }
 
     private func YACUAIOBVO_LAYOUT_COMPONENT_TREE() {
         [YACUAIOBVO_INDICATOR_DOT, YACUAIOBVO_TOP_BAR].forEach {
@@ -130,7 +164,7 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
             view.addSubview($0)
         }
         
-        [YACUAIOBVO_BACK_TRIGGER, YACUAIOBVO_FOLLOW_INDICATOR, YACUAIOBVO_REPORT_TRIGGER].forEach {
+        [YACUAIOBVO_BACK_TRIGGER, YACUAIOBVO_REPORT_TRIGGER].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             YACUAIOBVO_TOP_BAR.addSubview($0)
         }
@@ -144,10 +178,10 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
             YACUAIOBVO_BACK_TRIGGER.leadingAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.leadingAnchor, constant: 15),
             YACUAIOBVO_BACK_TRIGGER.centerYAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.centerYAnchor),
             
-            YACUAIOBVO_FOLLOW_INDICATOR.centerXAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.centerXAnchor),
-            YACUAIOBVO_FOLLOW_INDICATOR.centerYAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.centerYAnchor),
-            YACUAIOBVO_FOLLOW_INDICATOR.widthAnchor.constraint(equalToConstant: 160),
-            YACUAIOBVO_FOLLOW_INDICATOR.heightAnchor.constraint(equalToConstant: 44),
+//            YACUAIOBVO_FOLLOW_INDICATOR.centerXAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.centerXAnchor),
+//            YACUAIOBVO_FOLLOW_INDICATOR.centerYAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.centerYAnchor),
+//            YACUAIOBVO_FOLLOW_INDICATOR.widthAnchor.constraint(equalToConstant: 160),
+//            YACUAIOBVO_FOLLOW_INDICATOR.heightAnchor.constraint(equalToConstant: 44),
             
             YACUAIOBVO_REPORT_TRIGGER.trailingAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.trailingAnchor, constant: -15),
             YACUAIOBVO_REPORT_TRIGGER.centerYAnchor.constraint(equalTo: YACUAIOBVO_TOP_BAR.centerYAnchor),
@@ -164,12 +198,12 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     }
     
     @objc func YACUAIOBVO_CALL() {
-        let YACUAIOBVOvc = YACUAIOBVO_VocalStreamInterface()
+        let YACUAIOBVOvc = YACUAIOBVO_VocalStreamInterface(YACUAIOBVO_PROFILE_DATA: self.YACUAIOBVO_PROFILE_DATA)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
      }
     @objc func YACUAIOBVO_ACTION_MESSAGE() {
-        let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom()
+        let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: self.YACUAIOBVO_PROFILE_DATA)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
      }
@@ -190,13 +224,27 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     
      let YACUAIOBVO_ACTION_FOLLOW = UIButton()
      let YACUAIOBVO_ACTION_MESSAGE = UIButton()
-
+    
     override init(frame: CGRect) {
-        super.init(frame: frame)
+            super.init(frame: frame)
+            // 在这里调用你的 UI 初始化逻辑
         YACUAIOBVO_ASSEMBLE_HEAD()
+       
+    }
+
+       
+    // 2. 必须同时实现这个 init(coder:)，用于支持从 Xib/Storyboard 加载
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        // 如果使用纯代码，这里可以留空或调用初始化逻辑
+        // YACUAIOBVO_BUILD_INTERFACE()
     }
     
-    required init?(coder: NSCoder) { fatalError() }
+    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>?{
+        didSet{
+            YACUAIOBVO_HYDRATE_DATA()
+        }
+    }
 
     private func YACUAIOBVO_ASSEMBLE_HEAD() {
         YACUAIOBVO_PORTRAIT_WELL.layer.cornerRadius = 55
@@ -208,12 +256,15 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         YACUAIOBVO_VIDEO_MODALITY.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_VIDEO_MODALITY.layer.cornerRadius = 15
         YACUAIOBVO_VIDEO_MODALITY.tintColor = .white
-        
+        YACUAIOBVO_FOLLOW_COUNT_LABEL.numberOfLines = 0
+        YACUAIOBVO_FAN_COUNT_LABEL.numberOfLines = 0
+        YACUAIOBVO_FOLLOW_COUNT_LABEL.textAlignment = .center
+        YACUAIOBVO_FAN_COUNT_LABEL.textAlignment = .center
         YACUAIOBVO_BIO_LABEL.textColor = .gray
         YACUAIOBVO_BIO_LABEL.font = UIFont.systemFont(ofSize: 15)
         
-        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(UIImage.init(named: "YACUAIOBVO_ACTION_FOLLOW"), for: .normal)
-        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(UIImage.init(named: "YACUAIOBVO_ACTION_FOLLOWed"), for: .selected)
+        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(UIImage.init(named: "YACUAIOBVO_ACTION_FOLLOW"), for: .selected)
+        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(UIImage.init(named: "YACUAIOBVO_ACTION_FOLLOWed"), for: .normal)
         
         YACUAIOBVO_ACTION_MESSAGE.setBackgroundImage(UIImage.init(named: "badgeMeasgYACU"), for: .normal)
         
@@ -261,17 +312,42 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     
     
   
-    func YACUAIOBVO_HYDRATE_DATA(_ YACUAIOBVO_MODEL: YACUAIOBVO_VisitorContextModel?) {
-        YACUAIOBVO_ALIAS_LABEL.text = YACUAIOBVO_MODEL?.YACUAIOBVO_PARTNER_NAME
-        YACUAIOBVO_BIO_LABEL.text = YACUAIOBVO_MODEL?.YACUAIOBVO_PARTNER_BIO ?? "Say something to introduce yourself."
-        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT(YACUAIOBVO_MODEL?.YACUAIOBVO_FOLLOW_TALLY ?? "0", YACUAIOBVO_TAG: "Follow")
-        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT(YACUAIOBVO_MODEL?.YACUAIOBVO_FAN_TALLY ?? "0", YACUAIOBVO_TAG: "Fans")
+    func YACUAIOBVO_HYDRATE_DATA() {
+        YACUAIOBVO_PORTRAIT_WELL.image = UIImage(named:  self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_ALIAS_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_NICKNAME"] as? String
+        YACUAIOBVO_BIO_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_BIO_TEXT"] as? String  ?? "Say something to introduce yourself."
+        
+        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: "Follow")
+        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: "Fans")
     }
     
     private func YACUAIOBVO_FORMAT_STAT(_ YACUAIOBVO_VAL: String, YACUAIOBVO_TAG: String) -> NSAttributedString {
-        let YACUAIOBVO_STR = NSMutableAttributedString(string: "\(YACUAIOBVO_VAL)\n\(YACUAIOBVO_TAG)")
-        YACUAIOBVO_STR.addAttributes([.font: UIFont.systemFont(ofSize: 20, weight: .bold)], range: NSRange(location: 0, length: YACUAIOBVO_VAL.count))
-        YACUAIOBVO_STR.addAttributes([.font: UIFont.systemFont(ofSize: 13), .foregroundColor: UIColor.gray], range: NSRange(location: YACUAIOBVO_VAL.count, length: YACUAIOBVO_TAG.count + 1))
+        let YACUAIOBVO_FULL_TEXT = "\(YACUAIOBVO_VAL)\n\(YACUAIOBVO_TAG)"
+        let YACUAIOBVO_STR = NSMutableAttributedString(string: YACUAIOBVO_FULL_TEXT)
+        
+        // 找到数字的 Range
+        let YACUAIOBVO_VAL_RANGE = (YACUAIOBVO_FULL_TEXT as NSString).range(of: YACUAIOBVO_VAL)
+        // 找到标签的 Range
+        let YACUAIOBVO_TAG_RANGE = (YACUAIOBVO_FULL_TEXT as NSString).range(of: YACUAIOBVO_TAG)
+        
+        // 设置数字样式：加粗，大字号，黑色（确保可见）
+        YACUAIOBVO_STR.addAttributes([
+            .font: UIFont.systemFont(ofSize: 20, weight: .bold),
+            .foregroundColor: UIColor.black
+        ], range: YACUAIOBVO_VAL_RANGE)
+        
+        // 设置标签样式：小字号，灰色
+        YACUAIOBVO_STR.addAttributes([
+            .font: UIFont.systemFont(ofSize: 13),
+            .foregroundColor: UIColor.darkGray // 稍微加深颜色，防止看不见
+        ], range: YACUAIOBVO_TAG_RANGE)
+        
+        // 设置行间距（可选，优化视觉效果）
+        let YACUAIOBVO_STYLE = NSMutableParagraphStyle()
+        YACUAIOBVO_STYLE.lineSpacing = 4
+        YACUAIOBVO_STYLE.alignment = .center
+        YACUAIOBVO_STR.addAttribute(.paragraphStyle, value: YACUAIOBVO_STYLE, range: NSRange(location: 0, length: YACUAIOBVO_FULL_TEXT.count))
+        
         return YACUAIOBVO_STR
     }
 }

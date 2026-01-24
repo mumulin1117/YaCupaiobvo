@@ -2,7 +2,7 @@
 //  YACUAIOBVO_EmailEntryPortal.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/20.
+//  Created by YaCupaiobvo on 2026/1/20.
 //
 
 import UIKit
@@ -18,7 +18,22 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
     private let YACUAIOBVO_RECOVERY_LINK = UILabel()
     private let YACUAIOBVO_PROCEED_ACTION_BTN = UIButton()
     private let YACUAIOBVO_VISIBILITY_TOGGLE = UIButton()
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            // 激活守护，监控 self.view 的偏移
+            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
+        }
 
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            // 离开页面时注销，防止内存泄漏或干扰其他页面
+            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
+        }
+        
+        // 点击背景隐藏键盘的便捷交互
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVO_BUILD_INTERFACE()
@@ -26,7 +41,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
 
     private func YACUAIOBVO_BUILD_INTERFACE() {
         view.backgroundColor = .white
-        
+    
         YACUAIOBVO_HERO_SHADE_VIEW.image = UIImage(named: "YACUAIOBVO_LOGIN_BG")
         YACUAIOBVO_HERO_SHADE_VIEW.contentMode = .scaleAspectFill
         YACUAIOBVO_HERO_SHADE_VIEW.clipsToBounds = true
@@ -124,32 +139,34 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_VISIBILITY_TOGGLE.setImage(UIImage(systemName: YACUAIOBVO_ICON_NAME), for: .normal)
     }
     
+
     @objc private func YACUAIOBVO_TRIGGER_VALIDATION() {
         guard let YACUAIOBVO_M = YACUAIOBVO_MAIL_FIELD.text, !YACUAIOBVO_M.isEmpty,
               let YACUAIOBVO_P = YACUAIOBVO_SECRET_FIELD.text, !YACUAIOBVO_P.isEmpty else {
-            YACUAIOBVO_PUSH_HINT("Incomplete Info", "Please fill in all fields.")
+//            YACUAIOBVO_PUSH_HINT("Incomplete Info", "Please fill in all fields.")
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Incomplete Info,Please fill in all fields.", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
+       
+        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_PERFORM_LOGIN(YACUAIOBVO_MAIL: YACUAIOBVO_M)
+                
+               
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Authenticating...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+                
+       
         
-        let YACUAIOBVO_MOCK_USER = "admin@yabvo.style"
-        let YACUAIOBVO_MOCK_PASS = "123456"
         
-        if YACUAIOBVO_M == YACUAIOBVO_MOCK_USER && YACUAIOBVO_P == YACUAIOBVO_MOCK_PASS {
-            UserDefaults.standard.set(true, forKey: "YACUAIOBVO_STATE_LOCKED")
-            NotificationCenter.default.post(name: NSNotification.Name("YACUAIOBVO_TRANSITION_HUB"), object: nil)
-        } else {
-            YACUAIOBVO_PUSH_HINT("Style Creation", "Your fashion profile is being initialized...")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                UserDefaults.standard.set(true, forKey: "YACUAIOBVO_STATE_LOCKED")
-                NotificationCenter.default.post(name: NSNotification.Name("YACUAIOBVO_TRANSITION_HUB"), object: nil)
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Your fashion profile is being initialized...", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+
+            YACUAIOBVO_LAUNCH_MAIN_HUB()
         }
     }
-    
-    private func YACUAIOBVO_PUSH_HINT(_ YACUAIOBVO_T: String, _ YACUAIOBVO_MSG: String) {
-        let YACUAIOBVO_BOX = UIAlertController(title: YACUAIOBVO_T, message: YACUAIOBVO_MSG, preferredStyle: .alert)
-        YACUAIOBVO_BOX.addAction(UIAlertAction(title: "Confirm", style: .default))
-        self.present(YACUAIOBVO_BOX, animated: true)
+    private func YACUAIOBVO_LAUNCH_MAIN_HUB() {
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = YACUAIOBVOMainTabController()
+       
     }
+    
+
 }
 

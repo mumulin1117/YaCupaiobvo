@@ -2,13 +2,28 @@
 //  YACUAIOBVO_PulseCommentPanel.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
 
 class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            // 激活守护，监控 self.view 的偏移
+            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
+        }
 
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            // 离开页面时注销，防止内存泄漏或干扰其他页面
+            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
+        }
+        
+        // 点击背景隐藏键盘的便捷交互
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
     private let YACUAIOBVO_DIM_REGION = UIView()
     private let YACUAIOBVO_SLIDE_SHEET = UIView()
     private let YACUAIOBVO_DRAG_INDICATOR = UIView()
@@ -21,9 +36,10 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
     private let YACUAIOBVO_DISPATCH_TRIGGER = UIButton()
     
     private var YACUAIOBVO_MOCK_REGISTRY: [[String: String]] = []
-    private let YACUAIOBVO_VIRTUAL_NAMES = ["Mary", "Jessica", "Sophie", "Emma", "Bella"]
-    private let YACUAIOBVO_VIRTUAL_PHRASES = ["Nice! 🌟❤️❤️", "Love this look!", "So stylish!", "Incredible vibe ✨", "Where did you get these?"]
-
+    private let YACUAIOBVO_VIRTUAL_NAMES = ["Mary", "Jessica", "Sophie", "Emma", "Bella","Anna","Chloe","Lily","Oliver"]
+    
+    private let YACUAIOBVO_VIRTUAL_PHRASES = ["Nice! 🌟❤️❤️", "Love this look!", "So stylish!", "Incredible vibe ✨", "Where did you get these?","looks Minimal Fit","not excuses","slightly shaded"]
+    private let YACUAIOBVO_VIRTUAL_Photo = ["YACUAIOBVO10049","YACUAIOBVO10083", "YACUAIOBVO10084", "YACUAIOBVO10051", "YACUAIOBVO10086", "YACUAIOBVO10047","YACUAIOBVO10087","YACUAIOBVO10084","YACUAIOBVO10050"]
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVO_GENERATE_RANDOM_LOGS()
@@ -40,7 +56,8 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
         for _ in 0..<3 {
             let YACUAIOBVO_ENTRY = [
                 "YACUAIOBVO_ALIAS": YACUAIOBVO_VIRTUAL_NAMES.randomElement() ?? "User",
-                "YACUAIOBVO_TEXT": YACUAIOBVO_VIRTUAL_PHRASES.randomElement() ?? "Cool!"
+                "YACUAIOBVO_TEXT": YACUAIOBVO_VIRTUAL_PHRASES.randomElement() ?? "Cool!",
+                "YACUAIOBVO_avatore": YACUAIOBVO_VIRTUAL_Photo.randomElement() ?? "Cool!"
             ]
             YACUAIOBVO_MOCK_REGISTRY.append(YACUAIOBVO_ENTRY)
         }
@@ -77,10 +94,10 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
         YACUAIOBVO_NARRATIVE_FIELD.placeholder = "Write a comment..."
         YACUAIOBVO_NARRATIVE_FIELD.font = .systemFont(ofSize: 15)
         YACUAIOBVO_NARRATIVE_FIELD.delegate = self
-        
+        YACUAIOBVO_DISPATCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_CLOSE_PANEL), for: .touchUpInside)
         YACUAIOBVO_DISPATCH_TRIGGER.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
         YACUAIOBVO_DISPATCH_TRIGGER.tintColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
-        YACUAIOBVO_DISPATCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_EXECUTE_SEND), for: .touchUpInside)
+        YACUAIOBVO_DISPATCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_CLOSE_PANEL), for: .touchUpInside)
     }
 
     private func YACUAIOBVO_CONSTRUCT_HIERARCHY() {
@@ -181,7 +198,7 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let YACUAIOBVO_CELL = tableView.dequeueReusableCell(withIdentifier: "YACUAIOBVO_CELL", for: indexPath) as! YACUAIOBVO_PulseCommentCell
         let YACUAIOBVO_DATA = YACUAIOBVO_MOCK_REGISTRY[indexPath.row]
-        YACUAIOBVO_CELL.YACUAIOBVO_REFRESH_NODE(YACUAIOBVO_USER: YACUAIOBVO_DATA["YACUAIOBVO_ALIAS"] ?? "", YACUAIOBVO_MSG: YACUAIOBVO_DATA["YACUAIOBVO_TEXT"] ?? "")
+        YACUAIOBVO_CELL.YACUAIOBVO_REFRESH_NODE(YACUAIOBVO_USER: YACUAIOBVO_DATA["YACUAIOBVO_ALIAS"] ?? "", YACUAIOBVO_MSG: YACUAIOBVO_DATA["YACUAIOBVO_TEXT"] ?? "", YACUAIOBVO_avator: YACUAIOBVO_DATA["YACUAIOBVO_avatore"] ?? "")
         return YACUAIOBVO_CELL
     }
 }
@@ -190,7 +207,7 @@ class YACUAIOBVO_PulseCommentCell: UITableViewCell {
     private let YACUAIOBVO_PORTRAIT = UIImageView()
     private let YACUAIOBVO_ALIAS_TAG = UILabel()
     private let YACUAIOBVO_MSG_TAG = UILabel()
-    private let YACUAIOBVO_REPLY_ICON = UIImageView()
+//    private let YACUAIOBVO_REPLY_ICON = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -205,18 +222,18 @@ class YACUAIOBVO_PulseCommentCell: UITableViewCell {
         YACUAIOBVO_PORTRAIT.layer.cornerRadius = 20
         YACUAIOBVO_PORTRAIT.clipsToBounds = true
         YACUAIOBVO_PORTRAIT.backgroundColor = .systemGray6
-        YACUAIOBVO_PORTRAIT.image = UIImage(systemName: "person.crop.circle.fill")
+        YACUAIOBVO_PORTRAIT.image = UIImage(named: "person.crop.circle.fill")
         YACUAIOBVO_PORTRAIT.tintColor = .systemGray4
         
         YACUAIOBVO_ALIAS_TAG.font = .systemFont(ofSize: 15, weight: .semibold)
         YACUAIOBVO_MSG_TAG.font = .systemFont(ofSize: 14)
         YACUAIOBVO_MSG_TAG.textColor = .darkGray
         
-        YACUAIOBVO_REPLY_ICON.image = UIImage(systemName: "message")
-        YACUAIOBVO_REPLY_ICON.tintColor = .lightGray
-        YACUAIOBVO_REPLY_ICON.contentMode = .scaleAspectFit
+//        YACUAIOBVO_REPLY_ICON.image = UIImage(systemName: "message")
+//        YACUAIOBVO_REPLY_ICON.tintColor = .lightGray
+//        YACUAIOBVO_REPLY_ICON.contentMode = .scaleAspectFit
 
-        [YACUAIOBVO_PORTRAIT, YACUAIOBVO_ALIAS_TAG, YACUAIOBVO_MSG_TAG, YACUAIOBVO_REPLY_ICON].forEach {
+        [YACUAIOBVO_PORTRAIT, YACUAIOBVO_ALIAS_TAG, YACUAIOBVO_MSG_TAG].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
@@ -232,17 +249,15 @@ class YACUAIOBVO_PulseCommentCell: UITableViewCell {
             
             YACUAIOBVO_MSG_TAG.leadingAnchor.constraint(equalTo: YACUAIOBVO_ALIAS_TAG.leadingAnchor),
             YACUAIOBVO_MSG_TAG.topAnchor.constraint(equalTo: YACUAIOBVO_ALIAS_TAG.bottomAnchor, constant: 4),
-            YACUAIOBVO_MSG_TAG.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            YACUAIOBVO_MSG_TAG.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
             
-            YACUAIOBVO_REPLY_ICON.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            YACUAIOBVO_REPLY_ICON.centerYAnchor.constraint(equalTo: YACUAIOBVO_PORTRAIT.centerYAnchor),
-            YACUAIOBVO_REPLY_ICON.widthAnchor.constraint(equalToConstant: 20),
-            YACUAIOBVO_REPLY_ICON.heightAnchor.constraint(equalToConstant: 20)
+           
         ])
     }
 
-    func YACUAIOBVO_REFRESH_NODE(YACUAIOBVO_USER: String, YACUAIOBVO_MSG: String) {
+    func YACUAIOBVO_REFRESH_NODE(YACUAIOBVO_USER: String, YACUAIOBVO_MSG: String,YACUAIOBVO_avator:String) {
         YACUAIOBVO_ALIAS_TAG.text = YACUAIOBVO_USER
         YACUAIOBVO_MSG_TAG.text = YACUAIOBVO_MSG
+        YACUAIOBVO_PORTRAIT.image =  UIImage(named: YACUAIOBVO_avator)
     }
 }

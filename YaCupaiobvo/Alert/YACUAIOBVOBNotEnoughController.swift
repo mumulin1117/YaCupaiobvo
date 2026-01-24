@@ -2,11 +2,20 @@
 //  YACUAIOBVOBNotEnoughController.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 import UIKit
 //余额不足   需要解锁
+
+protocol YACUAIOBVOBNotEnoughControllerDelegate {
+    func unlockTag(page:Int)
+    func tpPurchase()
+}
 class YACUAIOBVOBNotEnoughController: UIViewController {
+    
+    var delegate: YACUAIOBVOBNotEnoughControllerDelegate?
+    
+    
     enum PresentTYPE {
     
         case unknockPost
@@ -14,8 +23,11 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     }
     
     var checkingType:PresentTYPE
-    init(checkingType: PresentTYPE) {
+    var pagedot:Int?
+    
+    init(checkingType: PresentTYPE,pagedot:Int = 0) {
         self.checkingType = checkingType
+        self.pagedot = pagedot
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -131,8 +143,26 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     }
     
     @objc private func YACUAIOBVOInvokeStore() {
+        
         self.dismiss(animated: true) {
-            // Future Store Logic
+            if self.checkingType == .unknockPost{
+               //判断金币余额
+                if YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_EXPEND_CREDITS(YACUAIOBVO_VAL: 50) {
+                    
+                    //解锁 详情页面
+                    if self.delegate != nil {
+                        self.delegate?.unlockTag(page: self.pagedot ?? 0)
+                    }
+                    return
+                }
+               
+            }
+            
+            if self.delegate != nil {
+                self.delegate?.tpPurchase()
+            }
+            
+            
         }
     }
 }

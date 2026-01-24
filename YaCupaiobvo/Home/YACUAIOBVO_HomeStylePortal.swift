@@ -2,12 +2,49 @@
 //  YACUAIOBVO_HomeStylePortal.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/20.
+//  Created by YaCupaiobvo on 2026/1/20.
 //
 import UIKit
 
-class YACUAIOBVO_HomeStylePortal: UIViewController {
+class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControllerDelegate {
+    func unlockTag(page:Int) {
 
+        YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas[page]["YACUAIOBVOIfNeedUnlock"] = false
+        self.YACUAIOBVO_HORIZONTAL_COLLECTION.reloadItems(at: [IndexPath(row: page, section: 0)])
+        let current = YACUAIOBVO_DISPLAY_POOL[page]
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: current)
+        YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
+    }
+    
+    func tpPurchase() {
+        let paugecon  = YACUAIOBVO_CurrencyTopUpPortal()
+        paugecon.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(paugecon, animated: true)
+    }
+    
+    enum YACUAIOBVO_FeedCategory: Int {
+        case YACUAIOBVO_LATEST = 0
+        case YACUAIOBVO_POPULAR = 1
+        case YACUAIOBVO_NO_COST = 2
+    }
+    var YACUAIOBVO_CURRENT_CAT: YACUAIOBVO_FeedCategory = .YACUAIOBVO_LATEST
+    private var YACUAIOBVO_DISPLAY_POOL: [[String: Any]] {
+        
+        let YACUAIOBVO_ALL_DATA = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas
+      
+        // 2. 根据当前类别进行切片或条件过滤
+        switch YACUAIOBVO_CURRENT_CAT {
+        case .YACUAIOBVO_LATEST:
+            return Array(YACUAIOBVO_ALL_DATA.prefix(4)) // 模拟最新数据
+        case .YACUAIOBVO_POPULAR:
+            return YACUAIOBVO_ALL_DATA.filter { ($0["YACUAIOBVOlikeCount"] as? Int ?? 0) > 100 } // 模拟热门
+        case .YACUAIOBVO_NO_COST:
+            return YACUAIOBVO_ALL_DATA.filter { ($0["YACUAIOBVOIfNeedUnlock"] as? Bool) == false } // 免费数据
+        }
+        
+    }
+    
     private let YACUAIOBVO_MAIN_SCROLLER = UIScrollView()
     private let YACUAIOBVO_CONTENT_STACK = UIStackView()
     
@@ -28,8 +65,14 @@ class YACUAIOBVO_HomeStylePortal: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         YACUAIOBVO_INIT_BASE_STYLE()
-        YACUAIOBVO_LAYOUT_COMPONENTS()
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+            YACUAIOBVO_LAYOUT_COMPONENTS()
+        }
     }
 
     private func YACUAIOBVO_INIT_BASE_STYLE() {
@@ -111,33 +154,55 @@ class YACUAIOBVO_HomeStylePortal: UIViewController {
         YACUAIOBVO_HOT_TAB.isSelected = (YACUAIOBVO_SENDER == YACUAIOBVO_HOT_TAB)
         YACUAIOBVO_FORYOU_TAB.isSelected = (YACUAIOBVO_SENDER == YACUAIOBVO_FORYOU_TAB)
         YACUAIOBVO_NEW_TAB.isSelected = (YACUAIOBVO_SENDER == YACUAIOBVO_NEW_TAB)
+        if (YACUAIOBVO_SENDER == YACUAIOBVO_HOT_TAB) {
+            YACUAIOBVO_CURRENT_CAT = .YACUAIOBVO_POPULAR
+        }
         
-        YACUAIOBVO_HORIZONTAL_COLLECTION.reloadData()
+        if (YACUAIOBVO_SENDER == YACUAIOBVO_FORYOU_TAB) {
+            YACUAIOBVO_CURRENT_CAT = .YACUAIOBVO_NO_COST
+        }
+        
+        if (YACUAIOBVO_SENDER == YACUAIOBVO_NEW_TAB) {
+            YACUAIOBVO_CURRENT_CAT = .YACUAIOBVO_LATEST
+        }
+       
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+            YACUAIOBVO_HORIZONTAL_COLLECTION.reloadData()
+        }
+        
     }
 }
 
 extension YACUAIOBVO_HomeStylePortal: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return YACUAIOBVO_DISPLAY_POOL.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let YACUAIOBVO_CELL = collectionView.dequeueReusableCell(withReuseIdentifier: "YACUAIOBVO_CELL", for: indexPath) as! YACUAIOBVO_SuggestionCell
+        let current = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
+        YACUAIOBVO_CELL.YACUAIOBVO_ACTION_HomeDataModel(YACUAIOBVOdic:current)
         return YACUAIOBVO_CELL
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var ifNeedCoin:Bool = false
+        let current = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
         
-        if ifNeedCoin {
-            let YACUAIOBVOAlert = YACUAIOBVOBNotEnoughController(checkingType: .unknockPost)
+        let ifNeedCoin:Bool = current["YACUAIOBVOIfNeedUnlock"] as? Bool ?? false
+        
+        if ifNeedCoin  == true {
+            let YACUAIOBVOAlert = YACUAIOBVOBNotEnoughController(checkingType: .unknockPost, pagedot: indexPath.row)
+            YACUAIOBVOAlert.delegate = self
             YACUAIOBVOAlert.modalPresentationStyle = .overCurrentContext
             self.present(YACUAIOBVOAlert, animated: true)
             return
         }
        
         
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: [:])
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: current)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }

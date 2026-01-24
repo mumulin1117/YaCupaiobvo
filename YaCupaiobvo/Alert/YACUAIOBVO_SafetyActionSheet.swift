@@ -2,7 +2,7 @@
 //  YACUAIOBVO_SafetyActionSheet.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
@@ -77,14 +77,19 @@ class YACUAIOBVO_SafetyActionSheet: UIViewController {
     
     @objc private func YACUAIOBVO_PROCESS_SELECTION(_ YACUAIOBVO_SENDER: UIButton) {
         if YACUAIOBVO_SENDER.tag == 101 {
-            let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
-            self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
+            self.dismiss(animated: true)
+            
+            YACUAIOBVO_COMPLETION_SIGNAL?()
+            
         } else if YACUAIOBVO_SENDER.tag == 102 {
             if let YACUAIOBVO_UID = YACUAIOBVO_TARGET_ID {
-                YACUAIOBVO_SafetyRegulatoryManager.YACUAIOBVO_INSTANCE.YACUAIOBVO_ENFORCE_RESTRICTION(for: YACUAIOBVO_UID)
+                YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_RESTRICTION(YACUAIOBVO_T_ID: YACUAIOBVO_UID)
                 YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("User Blocked", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
                 self.dismiss(animated: true)
             }
+            
+            
+            
         } else {
             self.dismiss(animated: true)
         }
@@ -92,18 +97,18 @@ class YACUAIOBVO_SafetyActionSheet: UIViewController {
 }
 
 // MARK: -  Block
-class YACUAIOBVO_SafetyRegulatoryManager {
-    static let YACUAIOBVO_INSTANCE = YACUAIOBVO_SafetyRegulatoryManager()
-    private var YACUAIOBVO_RESTRICTED_IDENTIFIERS: Set<String> = []
-    
-    private init() {}
-    
-    func YACUAIOBVO_ENFORCE_RESTRICTION(for YACUAIOBVO_UID: String) {
-        YACUAIOBVO_RESTRICTED_IDENTIFIERS.insert(YACUAIOBVO_UID)
-        NotificationCenter.default.post(name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
-    }
-    
-    func YACUAIOBVO_VERIFY_RESTRICTION(for YACUAIOBVO_UID: String) -> Bool {
-        return YACUAIOBVO_RESTRICTED_IDENTIFIERS.contains(YACUAIOBVO_UID)
-    }
-}
+//class YACUAIOBVO_SafetyRegulatoryManager {
+//    static let YACUAIOBVO_INSTANCE = YACUAIOBVO_SafetyRegulatoryManager()
+//    private var YACUAIOBVO_RESTRICTED_IDENTIFIERS: Set<String> = []
+//    
+//    private init() {}
+//    
+//    func YACUAIOBVO_ENFORCE_RESTRICTION(for YACUAIOBVO_UID: String) {
+//        YACUAIOBVO_RESTRICTED_IDENTIFIERS.insert(YACUAIOBVO_UID)
+//        NotificationCenter.default.post(name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
+//    }
+//    
+//    func YACUAIOBVO_VERIFY_RESTRICTION(for YACUAIOBVO_UID: String) -> Bool {
+//        return YACUAIOBVO_RESTRICTED_IDENTIFIERS.contains(YACUAIOBVO_UID)
+//    }
+//}

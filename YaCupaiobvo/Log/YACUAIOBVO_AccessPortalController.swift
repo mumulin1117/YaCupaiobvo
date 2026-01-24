@@ -2,7 +2,7 @@
 //  YACUAIOBVO_AccessPortalController.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/20.
+//  Created by YaCupaiobvo on 2026/1/20.
 
 import UIKit
 
@@ -99,9 +99,8 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
     
     @objc private func YACUAIOBVO_EXECUTE_MAIL_ENTRY() {
         if !YACUAIOBVO_CONSENT_GRANTED {
-            let YACUAIOBVO_ALERT = UIAlertController(title: "Notice", message: "Please accept the terms to continue.", preferredStyle: .alert)
-            YACUAIOBVO_ALERT.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(YACUAIOBVO_ALERT, animated: true)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Please accept the terms to continue.", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+           
             return
         }
         

@@ -2,7 +2,7 @@
 //  YACUAIOBVO_PulseChatRoom.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
@@ -15,7 +15,15 @@ struct YACUAIOBVO_NarrativeEntity: Codable {
 }
 
 class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-
+    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>
+    init(YACUAIOBVO_PROFILE_DATA: Dictionary<String, Any>) {
+        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     private let YACUAIOBVO_TOP_NAVIGATION = UIView()
     private let YACUAIOBVO_RETREAT_TRIGGER = UIButton()
     private let YACUAIOBVO_PEER_TITLE = UILabel()
@@ -38,6 +46,20 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
         
         NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_ADJUST_FOR_KEYBOARD), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_ADJUST_FOR_KEYBOARD), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_DISMISS_SCENE), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
+        YACUAIOBVO_CAUTION_TRIGGER.addTarget(self, action: #selector(actionsheetForPick), for: .touchUpInside)
+    }
+    
+  @objc  func actionsheetForPick()  {
+      let acteeet = YACUAIOBVO_SafetyActionSheet.init()
+      acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String ?? ""
+      acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
+          let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
+          self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
+      }
+      
+     
+       self.present(acteeet, animated: true)
     }
 
     private func YACUAIOBVO_LOAD_PERSISTED_LOGS() {

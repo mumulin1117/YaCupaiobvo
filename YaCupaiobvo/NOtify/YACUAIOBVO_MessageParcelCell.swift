@@ -2,7 +2,7 @@
 //  YACUAIOBVO_MessageParcelCell.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/21.
+//  Created by YaCupaiobvo on 2026/1/21.
 //
 
 import UIKit

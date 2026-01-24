@@ -2,14 +2,29 @@
 //  YACUAIOBVO_VantagePostCenter.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
 import PhotosUI
 
 class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPickerViewControllerDelegate {
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            // 激活守护，监控 self.view 的偏移
+            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
+        }
 
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            // 离开页面时注销，防止内存泄漏或干扰其他页面
+            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
+        }
+        
+        // 点击背景隐藏键盘的便捷交互
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
     private let YACUAIOBVO_TOP_BAR = UIView()
     private let YACUAIOBVO_EXIT_TRIGGER = UIButton()
     private let YACUAIOBVO_SCENE_TITLE = UILabel()
@@ -178,12 +193,12 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
 
     @objc private func YACUAIOBVO_FINALIZE_POST() {
         guard YACUAIOBVO_SELECTED_ASSET != nil else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Please select an image", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Please select an image", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
         
         YACUAIOBVO_LAUNCH_TRIGGER.isEnabled = false
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Publishing...", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Publishing...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Published successfully!", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)

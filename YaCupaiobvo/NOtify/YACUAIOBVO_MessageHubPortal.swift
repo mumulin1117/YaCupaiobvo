@@ -2,7 +2,7 @@
 //  YACUAIOBVO_MessageHubPortal.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/21.
+//  Created by YaCupaiobvo on 2026/1/21.
 //
 
 import UIKit
@@ -25,6 +25,14 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         YACUAIOBVO_INIT_ENVIRONMENT()
         YACUAIOBVO_TRIGGER_NETWORK_SYNC()
+        
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+
+           
+        }
     }
 
     private func YACUAIOBVO_INIT_ENVIRONMENT() {
@@ -92,7 +100,8 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      let chatringVc =  YACUAIOBVO_PulseChatRoom.init()
+        
+        let chatringVc =  YACUAIOBVO_PulseChatRoom.init(YACUAIOBVO_PROFILE_DATA: [:])
         chatringVc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(chatringVc, animated: true)
     }

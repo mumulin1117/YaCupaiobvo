@@ -2,18 +2,63 @@
 //  YACUAIOBVO_DiscoveryFeedPortal.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/20.
+//  Created by YaCupaiobvo on 2026/1/20.
 //
 
 import UIKit
 
 class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    enum YACUAIOBVO_DiscoverCategory: Int {
+        case YACUAIOBVO_Discover = 0
+        case YACUAIOBVO_Follow = 1
+       
+    }
+    
+    var YACUAIOBVO_CURRENT_CAT: YACUAIOBVO_DiscoverCategory = .YACUAIOBVO_Discover
+    private var YACUAIOBVO_DISPLAY_POOL: [[String: Any]] {
+        let YACUAIOBVO_BLOCK_LIST = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET ?? []
+        let YACUAIOBVO_ALL_DATA = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas
+        let YACUAIOBVO_NO_BLOCKS = YACUAIOBVO_ALL_DATA.filter {
+            !YACUAIOBVO_BLOCK_LIST.contains($0["YACUAIOBVO_ID"] as? String ?? "")
+            
+        }
+        // 2. 根据当前类别进行切片或条件过滤
+        switch YACUAIOBVO_CURRENT_CAT {
+        case .YACUAIOBVO_Discover:
+            return Array(YACUAIOBVO_NO_BLOCKS) // 模拟最新数据
+        case .YACUAIOBVO_Follow:
+           
+            // 2. 获取当前用户已关注的 ID 集合
+            guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
+                return [] // 如果未登录或没有关注，返回空数组
+            }
+
+            // 3. 执行筛选：只保留 ID 存在于关注集合中的用户
+            let YACUAIOBVO_MY_FOLLOWING_LIST = YACUAIOBVO_NO_BLOCKS.filter { YACUAIOBVO_USER_DICT in
+                if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as? String {
+                    return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)
+                }
+                return false
+            }
+
+            return YACUAIOBVO_MY_FOLLOWING_LIST
+       
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        YACUAIOBVO_DISPLAY_POOL.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cheia = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
         let YACUAIOBVOcell = collectionView.dequeueReusableCell(withReuseIdentifier: YACUAIOBVO_StyleDiscoveryCell.YACUAIOBVO_REUSE_ID, for: indexPath) as! YACUAIOBVO_StyleDiscoveryCell
+        
+        YACUAIOBVOcell.YACUAIOBVO_REPORT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_APPLY_DARK_report_THEME), for: .touchUpInside)
+       
+        YACUAIOBVOcell.YACUAIOBVO_REFRESH_CONTENT(YACUAIOBVO_NAME: cheia["YACUAIOBVO_discover_title"] as? String  ?? "", YACUAIOBVO_VAL: cheia["YACUAIOBVO_NICKNAME"] as? String  ?? "" , YACUAIOBVO_IMG: cheia["YACUAIOBVO_discover_pic"] as? String ?? "", YACUAIOBVO_avator: cheia["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         return YACUAIOBVOcell
     }
     
@@ -41,7 +86,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         YACUAIOBVO_FOLLOW_LBL.addTarget(self, action: #selector(YACUAIOBVO_SETUPPink(YACUAIOBVO_SETUPBU:)), for: .touchUpInside)
         YACUAIOBVO_DISCOVER_LBL.addTarget(self, action: #selector(YACUAIOBVO_SETUPPink(YACUAIOBVO_SETUPBU:)), for: .touchUpInside)
         YACUAIOBVO_Publish_LBL.addTarget(self, action: #selector(YACUAIOBVO_publihder), for: .touchUpInside)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(relaofindgUSunGlass), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
         YACUAIOBVO_INDICATOR_DOT.backgroundColor = .clear
         YACUAIOBVO_INDICATOR_DOT.delegate = self
         YACUAIOBVO_INDICATOR_DOT.dataSource = self
@@ -50,6 +95,15 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         YACUAIOBVO_INDICATOR_DOT.isScrollEnabled = true
         YACUAIOBVO_INDICATOR_DOT.isUserInteractionEnabled = true
         YACUAIOBVO_SETUP_TOP_NAV()
+        
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+
+           
+        }
+        
     }
     
     
@@ -60,8 +114,8 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_InsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: [:])
+        let cheia = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_InsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: cheia)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
         
@@ -71,6 +125,15 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         YACUAIOBVO_FOLLOW_LBL.isSelected = false
         YACUAIOBVO_DISCOVER_LBL.isSelected = false
         YACUAIOBVO_SETUPBU.isSelected = true
+        
+        self.YACUAIOBVO_CURRENT_CAT = YACUAIOBVO_FOLLOW_LBL.isSelected ? .YACUAIOBVO_Follow : .YACUAIOBVO_Discover
+        
+    
+        relaofindgUSunGlass()
+    }
+    
+   @objc func relaofindgUSunGlass()  {
+        YACUAIOBVO_INDICATOR_DOT.reloadData()
     }
     private func YACUAIOBVO_SETUP_TOP_NAV() {
         YACUAIOBVO_TOP_SEGMENT.translatesAutoresizingMaskIntoConstraints = false

@@ -2,7 +2,7 @@
 //  YACUAIOBVO_CuratedLookDetailHub.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
@@ -19,8 +19,8 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
     
     private let YACUAIOBVO_HEADER_LABEL = UILabel()
     private let YACUAIOBVO_NARRATIVE_LABEL = UILabel()
-    private let YACUAIOBVO_REACTION_WELL = UIView()
-    private let YACUAIOBVO_HEART_ICON = UIImageView()
+//    private let YACUAIOBVO_REACTION_WELL = UIView()
+    private let YACUAIOBVO_HEART_ICON = UIButton()
     private let YACUAIOBVO_TALLY_LABEL = UILabel()
     
     private var YACUAIOBVO_CONTEXT_SOURCE: [String: Any]?
@@ -62,15 +62,34 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
         YACUAIOBVO_NARRATIVE_LABEL.textColor = .gray
         YACUAIOBVO_NARRATIVE_LABEL.numberOfLines = 0
         
-        YACUAIOBVO_TALLY_LABEL.font = UIFont.italicSystemFont(ofSize: 20)
-        YACUAIOBVO_TALLY_LABEL.textColor = UIColor(red: 1.0, green: 0.45, blue: 0.5, alpha: 1.0)
+        YACUAIOBVO_TALLY_LABEL.font =  UIFont(name: "Roboto-Black Italic", size: 18)
+        YACUAIOBVO_TALLY_LABEL.textColor = UIColor(red: 1, green: 0.56, blue: 0.51, alpha: 1)
         
-        YACUAIOBVO_HEART_ICON.image = UIImage(named: "YACUAIOBVO_emoji_cool") ?? UIImage(systemName: "face.smiling.fill")
-        YACUAIOBVO_REACTION_WELL.isUserInteractionEnabled = true
-        let YACUAIOBVO_TAP = UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVO_TRIGGER_REACTION))
-        YACUAIOBVO_REACTION_WELL.addGestureRecognizer(YACUAIOBVO_TAP)
+        YACUAIOBVO_HEART_ICON.setImage(UIImage(named: "YACUAIOBVO_emoji_cool"), for: .normal)
+        YACUAIOBVO_HEART_ICON.setImage(UIImage(named: "YACUAIOBVO_emoji"), for: .selected)
+        YACUAIOBVO_HEART_ICON.addTarget(self, action: #selector(YACUAIOBVO_HEART_ICONTragger), for: .touchUpInside)
+//        YACUAIOBVO_REACTION_WELL.isUserInteractionEnabled = true
+//        let YACUAIOBVO_TAP = UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVO_TRIGGER_REACTION))
+//        YACUAIOBVO_REACTION_WELL.addGestureRecognizer(YACUAIOBVO_TAP)
     }
 
+    
+    @objc func YACUAIOBVO_HEART_ICONTragger(){
+        YACUAIOBVO_HEART_ICON.isSelected = !YACUAIOBVO_HEART_ICON.isSelected
+        
+        let reallacount   =  Int(YACUAIOBVO_TALLY_LABEL.text ?? "0") ?? 0
+        if YACUAIOBVO_HEART_ICON.isSelected {
+
+            
+            YACUAIOBVO_TALLY_LABEL.text = "\(reallacount + 1)"
+            
+           
+        }else{
+            YACUAIOBVO_TALLY_LABEL.text = "\(reallacount - 1)"
+            
+        }
+       
+    }
     private func YACUAIOBVO_CONSTRUCT_HIERARCHY() {
         [YACUAIOBVO_SCROLL_CONTAINER, YACUAIOBVO_NAVIGATION_LAYER].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -83,14 +102,14 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
         }
         
         [YACUAIOBVO_GALLERY_FLOW, YACUAIOBVO_INDEX_INDICATOR, YACUAIOBVO_HEADER_LABEL,
-         YACUAIOBVO_NARRATIVE_LABEL, YACUAIOBVO_REACTION_WELL].forEach {
+         YACUAIOBVO_NARRATIVE_LABEL].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             YACUAIOBVO_SCROLL_CONTAINER.addSubview($0)
         }
         
         [YACUAIOBVO_HEART_ICON, YACUAIOBVO_TALLY_LABEL].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            YACUAIOBVO_REACTION_WELL.addSubview($0)
+            YACUAIOBVO_SCROLL_CONTAINER.addSubview($0)
         }
         
         NSLayoutConstraint.activate([
@@ -125,37 +144,37 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
             YACUAIOBVO_NARRATIVE_LABEL.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             YACUAIOBVO_NARRATIVE_LABEL.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            YACUAIOBVO_REACTION_WELL.topAnchor.constraint(equalTo: YACUAIOBVO_NARRATIVE_LABEL.bottomAnchor, constant: 40),
-            YACUAIOBVO_REACTION_WELL.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            YACUAIOBVO_REACTION_WELL.bottomAnchor.constraint(equalTo: YACUAIOBVO_SCROLL_CONTAINER.bottomAnchor, constant: -50),
+//            YACUAIOBVO_REACTION_WELL.topAnchor.constraint(equalTo: YACUAIOBVO_NARRATIVE_LABEL.bottomAnchor, constant: 40),
+//            YACUAIOBVO_REACTION_WELL.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            YACUAIOBVO_REACTION_WELL.bottomAnchor.constraint(equalTo: YACUAIOBVO_SCROLL_CONTAINER.bottomAnchor, constant: -50),
             
-            YACUAIOBVO_HEART_ICON.leadingAnchor.constraint(equalTo: YACUAIOBVO_REACTION_WELL.leadingAnchor),
-            YACUAIOBVO_HEART_ICON.centerYAnchor.constraint(equalTo: YACUAIOBVO_REACTION_WELL.centerYAnchor),
-            YACUAIOBVO_HEART_ICON.widthAnchor.constraint(equalToConstant: 40),
+            YACUAIOBVO_HEART_ICON.leadingAnchor.constraint(equalTo: YACUAIOBVO_NARRATIVE_LABEL.leadingAnchor,constant: 50),
+            YACUAIOBVO_HEART_ICON.topAnchor.constraint(equalTo: YACUAIOBVO_NARRATIVE_LABEL.bottomAnchor,constant: 35),
+            YACUAIOBVO_HEART_ICON.widthAnchor.constraint(equalToConstant: 80),
             YACUAIOBVO_HEART_ICON.heightAnchor.constraint(equalToConstant: 40),
             
             YACUAIOBVO_TALLY_LABEL.leadingAnchor.constraint(equalTo: YACUAIOBVO_HEART_ICON.trailingAnchor, constant: 10),
-            YACUAIOBVO_TALLY_LABEL.trailingAnchor.constraint(equalTo: YACUAIOBVO_REACTION_WELL.trailingAnchor),
-            YACUAIOBVO_TALLY_LABEL.centerYAnchor.constraint(equalTo: YACUAIOBVO_REACTION_WELL.centerYAnchor)
+//            YACUAIOBVO_TALLY_LABEL.trailingAnchor.constraint(equalTo: YACUAIOBVO_HEART_ICON.trailingAnchor),
+            YACUAIOBVO_TALLY_LABEL.centerYAnchor.constraint(equalTo: YACUAIOBVO_HEART_ICON.centerYAnchor)
         ])
     }
 
     private func YACUAIOBVO_HYDRATE_INTERFACE() {
         guard let YACUAIOBVO_DATA = YACUAIOBVO_CONTEXT_SOURCE else { return }
         
-        YACUAIOBVO_HEADER_LABEL.text = YACUAIOBVO_DATA["title"] as? String ?? "Official Picks"
-        YACUAIOBVO_NARRATIVE_LABEL.text = YACUAIOBVO_DATA["desc"] as? String ?? "Curated sunglass looks selected by the community team."
-        YACUAIOBVO_TALLY_LABEL.text = "\(YACUAIOBVO_DATA["likes"] as? Int ?? 1234)"
+        YACUAIOBVO_HEADER_LABEL.text = YACUAIOBVO_DATA["YACUAIOBVOtitle"] as? String ?? "Official Picks"
+        YACUAIOBVO_NARRATIVE_LABEL.text = YACUAIOBVO_DATA["YACUAIOBVOconten"] as? String ?? "Curated sunglass looks selected by the community team."
+        YACUAIOBVO_TALLY_LABEL.text = "\(YACUAIOBVO_DATA["YACUAIOBVOlikeCount"] as? Int ?? 12)"
         
-        YACUAIOBVO_RESOURCE_POOL = YACUAIOBVO_DATA["images"] as? [String] ?? ["sample_look"]
+        YACUAIOBVO_RESOURCE_POOL = YACUAIOBVO_DATA["YACUAIOBVOimglist"] as? [String] ?? ["sample_look"]
         YACUAIOBVO_INDEX_INDICATOR.numberOfPages = YACUAIOBVO_RESOURCE_POOL.count
         
-        for (YACUAIOBVO_IDX, _) in YACUAIOBVO_RESOURCE_POOL.enumerated() {
+        for (YACUAIOBVO_IDX, imgstr) in YACUAIOBVO_RESOURCE_POOL.enumerated() {
             let YACUAIOBVO_VIEW = UIImageView()
             YACUAIOBVO_VIEW.backgroundColor = .systemGray6
             YACUAIOBVO_VIEW.contentMode = .scaleAspectFill
             YACUAIOBVO_VIEW.clipsToBounds = true
-            YACUAIOBVO_VIEW.image = UIImage(named: "YACUAIOBVO_sunglass_demo")
+            YACUAIOBVO_VIEW.image = UIImage(named: imgstr)
             
             YACUAIOBVO_VIEW.frame = CGRect(x: CGFloat(YACUAIOBVO_IDX) * view.frame.width, y: 0, width: view.frame.width, height: view.frame.width * 1.2)
             YACUAIOBVO_GALLERY_FLOW.addSubview(YACUAIOBVO_VIEW)
@@ -171,17 +190,17 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    @objc private func YACUAIOBVO_TRIGGER_REACTION() {
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Liked!", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            self.YACUAIOBVO_REACTION_WELL.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }) { _ in
-            UIView.animate(withDuration: 0.2) {
-                self.YACUAIOBVO_REACTION_WELL.transform = .identity
-            }
-        }
-    }
+//    @objc private func YACUAIOBVO_TRIGGER_REACTION() {
+//        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Liked!", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+//        
+//        UIView.animate(withDuration: 0.2, animations: {
+//            self.YACUAIOBVO_REACTION_WELL.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+//        }) { _ in
+//            UIView.animate(withDuration: 0.2) {
+//                self.YACUAIOBVO_REACTION_WELL.transform = .identity
+//            }
+//        }
+//    }
 
     @objc private func YACUAIOBVO_EXECUTE_RETREAT() {
         self.navigationController?.popViewController(animated: true)

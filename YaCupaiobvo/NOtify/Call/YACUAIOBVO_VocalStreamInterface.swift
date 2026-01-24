@@ -2,7 +2,7 @@
 //  YACUAIOBVO_VocalStreamInterface.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
@@ -15,7 +15,15 @@ struct YACUAIOBVO_SessionRegistry: Codable {
 }
 
 class YACUAIOBVO_VocalStreamInterface: UIViewController {
-
+    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>
+    init(YACUAIOBVO_PROFILE_DATA: Dictionary<String, Any>) {
+        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     private let YACUAIOBVO_ENVIRONMENT_BACKDROP = UIImageView()
     private let YACUAIOBVO_REMOTE_PORTRAIT_FRAME = UIView()
     private let YACUAIOBVO_REMOTE_PORTRAIT_CONTENT = UIImageView()
@@ -37,15 +45,15 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
     private let YACUAIOBVO_TERMINATE_TRIGGER = UIButton()
     
     private var YACUAIOBVO_ELAPSED_QUANTUM: Int = 265
-    private var YACUAIOBVO_STREAM_TICKER: Timer?
+//    private var YACUAIOBVO_STREAM_TICKER: Timer?
     
-    var YACUAIOBVO_TARGET_IDENTITY: String = "John Lamb"
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVO_CONSTRUCT_STAGE()
         YACUAIOBVO_POSITION_ELEMENTS()
-        YACUAIOBVO_IGNITE_CHRONO()
+//        YACUAIOBVO_IGNITE_CHRONO()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -54,26 +62,27 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
 
     private func YACUAIOBVO_CONSTRUCT_STAGE() {
         view.backgroundColor = .black
-        
+        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.image = UIImage(named: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVOAvatar")
         YACUAIOBVO_ENVIRONMENT_BACKDROP.contentMode = .scaleAspectFill
-        YACUAIOBVO_ENVIRONMENT_BACKDROP.image = UIImage(named: "YACUAIOBVO_CALL_BG")
+        YACUAIOBVO_ENVIRONMENT_BACKDROP.image = UIImage(named: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_ENVIRONMENT_BACKDROP.layer.masksToBounds = true
         YACUAIOBVO_ENVIRONMENT_BACKDROP.backgroundColor = .darkGray
         
         YACUAIOBVO_REMOTE_PORTRAIT_FRAME.layer.cornerRadius = 16
         YACUAIOBVO_REMOTE_PORTRAIT_FRAME.clipsToBounds = true
         YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.contentMode = .scaleAspectFill
-        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.backgroundColor = .gray
+//        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.backgroundColor = .gray
         
         YACUAIOBVO_INCIDENT_REPORT_TRIGGER.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
         YACUAIOBVO_INCIDENT_REPORT_TRIGGER.tintColor = .white
         
-        YACUAIOBVO_PARTICIPANT_NAME_TAG.text = YACUAIOBVO_TARGET_IDENTITY
+        YACUAIOBVO_PARTICIPANT_NAME_TAG.text = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_NICKNAME"] as? String
         YACUAIOBVO_PARTICIPANT_NAME_TAG.textColor = .white
         YACUAIOBVO_PARTICIPANT_NAME_TAG.font = .systemFont(ofSize: 22, weight: .medium)
         
         YACUAIOBVO_CHRONOMETER_TAG.textColor = .white
         YACUAIOBVO_CHRONOMETER_TAG.font = .systemFont(ofSize: 16, weight: .regular)
-        YACUAIOBVO_CHRONOMETER_TAG.text = YACUAIOBVO_FORMAT_QUANTUM(YACUAIOBVO_ELAPSED_QUANTUM)
+        YACUAIOBVO_CHRONOMETER_TAG.text = "Calling..."
         
         YACUAIOBVO_TERMINATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.35, blue: 0.35, alpha: 1.0)
         YACUAIOBVO_TERMINATE_TRIGGER.setImage(UIImage(systemName: "phone.down.fill"), for: .normal)
@@ -82,7 +91,22 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
         YACUAIOBVO_TERMINATE_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_EXECUTE_HALT), for: .touchUpInside)
         
         YACUAIOBVO_ASSEMBLE_INTERACTIVE_NODES()
+        NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_EXECUTE_HALT), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
+        YACUAIOBVO_INCIDENT_REPORT_TRIGGER.addTarget(self, action: #selector(actionsheetForPick), for: .touchUpInside)
     }
+    
+  @objc  func actionsheetForPick()  {
+      let acteeet = YACUAIOBVO_SafetyActionSheet.init()
+      acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String ?? ""
+      acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
+          let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
+          self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
+      }
+      
+     
+       self.present(acteeet, animated: true)
+    }
+    
     
     private func YACUAIOBVO_ASSEMBLE_INTERACTIVE_NODES() {
         let YACUAIOBVO_ICON_CONFIGS = [
@@ -159,13 +183,13 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
         ])
     }
 
-    private func YACUAIOBVO_IGNITE_CHRONO() {
-        YACUAIOBVO_STREAM_TICKER = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            self.YACUAIOBVO_ELAPSED_QUANTUM += 1
-            self.YACUAIOBVO_CHRONOMETER_TAG.text = self.YACUAIOBVO_FORMAT_QUANTUM(self.YACUAIOBVO_ELAPSED_QUANTUM)
-        }
-    }
+//    private func YACUAIOBVO_IGNITE_CHRONO() {
+//        YACUAIOBVO_STREAM_TICKER = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+//            guard let self = self else { return }
+//            self.YACUAIOBVO_ELAPSED_QUANTUM += 1
+//            self.YACUAIOBVO_CHRONOMETER_TAG.text = self.YACUAIOBVO_FORMAT_QUANTUM(self.YACUAIOBVO_ELAPSED_QUANTUM)
+//        }
+//    }
 
     private func YACUAIOBVO_FORMAT_QUANTUM(_ YACUAIOBVO_TOTAL: Int) -> String {
         let YACUAIOBVO_MIN = YACUAIOBVO_TOTAL / 60
@@ -174,20 +198,20 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
     }
 
     @objc private func YACUAIOBVO_EXECUTE_HALT() {
-        YACUAIOBVO_STREAM_TICKER?.invalidate()
-        
-        let YACUAIOBVO_RECORD = YACUAIOBVO_SessionRegistry(
-            YACUAIOBVO_SESSION_ID: UUID(),
-            YACUAIOBVO_PARTICIPANT_LABEL: YACUAIOBVO_TARGET_IDENTITY,
-            YACUAIOBVO_DURATION_TOTAL: YACUAIOBVO_FORMAT_QUANTUM(YACUAIOBVO_ELAPSED_QUANTUM),
-            YACUAIOBVO_START_MOMENT: Date()
-        )
-        
-        YACUAIOBVO_PERSIST_SESSION(YACUAIOBVO_RECORD)
-        dismiss(animated: true)
+//        YACUAIOBVO_STREAM_TICKER?.invalidate()
+//        
+//        let YACUAIOBVO_RECORD = YACUAIOBVO_SessionRegistry(
+//            YACUAIOBVO_SESSION_ID: UUID(),
+//            YACUAIOBVO_PARTICIPANT_LABEL: self.YACUAIOBVO_PROFILE_DATA,
+//            YACUAIOBVO_DURATION_TOTAL: YACUAIOBVO_FORMAT_QUANTUM(YACUAIOBVO_ELAPSED_QUANTUM),
+//            YACUAIOBVO_START_MOMENT: Date()
+//        )
+//        
+//        YACUAIOBVO_PERSIST_SESSION(YACUAIOBVO_RECORD)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    private func YACUAIOBVO_PERSIST_SESSION(_ YACUAIOBVO_DATA: YACUAIOBVO_SessionRegistry) {
+    private func YACUAIOBVO_PERSIST_SESSION(_ YACUAIOBVO_DATA: Dictionary<String,Any>) {
         let YACUAIOBVO_KEY = "YACUAIOBVO_SESSION_HISTORY"
         var YACUAIOBVO_HISTORY: [YACUAIOBVO_SessionRegistry] = []
         
@@ -196,7 +220,7 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
             YACUAIOBVO_HISTORY = YACUAIOBVO_EXISTING
         }
         
-        YACUAIOBVO_HISTORY.append(YACUAIOBVO_DATA)
+//        YACUAIOBVO_HISTORY.append(YACUAIOBVO_DATA)
         if let YACUAIOBVO_ENCODED = try? JSONEncoder().encode(YACUAIOBVO_HISTORY) {
             UserDefaults.standard.set(YACUAIOBVO_ENCODED, forKey: YACUAIOBVO_KEY)
         }

@@ -13,10 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let YACUAIOBVO_LOGGED_IN = UserDefaults.standard.bool(forKey: "YACUAIOBVO_SESSION_ACTIVE")
+      
         window = UIWindow.init(frame: UIScreen.main.bounds)
                 
-        if YACUAIOBVO_LOGGED_IN {
+        if let _ = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE {
             YACUAIOBVO_SET_MAIN_HUB()
         } else {
             YACUAIOBVO_SET_AUTH_PORTAL()
@@ -26,9 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func YACUAIOBVO_SET_AUTH_PORTAL() {
-        let YACUAIOBVO_AUTH_VC = YACUAIOBVOMainTabController()//YACUAIOBVO_AccessPortalController()
-        window?.rootViewController = YACUAIOBVO_AUTH_VC
-        
+        let YACUAIOBVO_LOGIN_FLOW = YACUAIOBVO_AccessPortalController()
+                  
+        let YACUAIOBVO_NAV_CONTAINER = UINavigationController(rootViewController: YACUAIOBVO_LOGIN_FLOW)
+        window!.rootViewController = YACUAIOBVO_NAV_CONTAINER
     }
 
        

@@ -2,7 +2,7 @@
 //  YACUAIOBVO_StyleDiscoveryCell.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/21.
+//  Created by YaCupaiobvo on 2026/1/21.
 //
 import UIKit
 
@@ -17,7 +17,7 @@ class YACUAIOBVO_StyleDiscoveryCell: UICollectionViewCell {
     private let YACUAIOBVO_LIKE_name_LABEL = UILabel()
    
     private let YACUAIOBVO_ARROW_IMG = UIImageView()
-    private let YACUAIOBVO_REPORT_TRIGGER = UIButton()
+     let YACUAIOBVO_REPORT_TRIGGER = UIButton()
     
     
     
@@ -53,7 +53,7 @@ class YACUAIOBVO_StyleDiscoveryCell: UICollectionViewCell {
         YACUAIOBVO_TITLE_LABEL.textColor = UIColor(red: 0.22, green: 0.25, blue: 0.32, alpha: 1)
         YACUAIOBVO_TITLE_LABEL.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_TITLE_LABEL)
-        
+        YACUAIOBVO_ACTION_Avator_WRAPPER.layer.masksToBounds = true
         YACUAIOBVO_ACTION_Avator_WRAPPER.backgroundColor = .lightGray
         YACUAIOBVO_ACTION_Avator_WRAPPER.layer.cornerRadius = 10
         YACUAIOBVO_ACTION_Avator_WRAPPER.translatesAutoresizingMaskIntoConstraints = false
@@ -107,9 +107,10 @@ class YACUAIOBVO_StyleDiscoveryCell: UICollectionViewCell {
         ])
     }
     
-    func YACUAIOBVO_REFRESH_CONTENT(YACUAIOBVO_NAME: String, YACUAIOBVO_VAL: String, YACUAIOBVO_IMG: String) {
+    func YACUAIOBVO_REFRESH_CONTENT(YACUAIOBVO_NAME: String, YACUAIOBVO_VAL: String, YACUAIOBVO_IMG: String,YACUAIOBVO_avator:String) {
         YACUAIOBVO_TITLE_LABEL.text = YACUAIOBVO_NAME
-//        YACUAIOBVO_LIKE_name_LABEL.text = "Likes:\(YACUAIOBVO_VAL)"
+        YACUAIOBVO_LIKE_name_LABEL.text = YACUAIOBVO_VAL
+        YACUAIOBVO_ACTION_Avator_WRAPPER.image = UIImage(named: YACUAIOBVO_avator)
         YACUAIOBVO_MAIN_HERO_VIEW.image = UIImage(named: YACUAIOBVO_IMG)
     }
 }

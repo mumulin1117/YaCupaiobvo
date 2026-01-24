@@ -2,7 +2,7 @@
 //  YACUAIOBVO_SignalPulseHub.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  YACUAIOBVO_SuggestionCell.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/20.
+//  Created by YaCupaiobvo on 2026/1/20.
 //
 
 import UIKit
@@ -22,6 +22,7 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         YACUAIOBVO_BUILD_CELL()
+        YACUAIOBVO_ACTION_knok.isUserInteractionEnabled = false
     }
     
     required init?(coder: NSCoder) { fatalError() }
@@ -45,7 +46,7 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
         contentView.addSubview(YACUAIOBVO_ACTION_report)
         
         
-        YACUAIOBVO_LIKE_COUNT.text = "Likes:240"
+        YACUAIOBVO_LIKE_COUNT.text = "Likes:0"
         YACUAIOBVO_LIKE_COUNT.font = UIFont.systemFont(ofSize: 14)
         YACUAIOBVO_LIKE_COUNT.textColor = .gray
         YACUAIOBVO_LIKE_COUNT.translatesAutoresizingMaskIntoConstraints = false
@@ -89,5 +90,14 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
             YACUAIOBVO_ACTION_knok.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant:0),
             YACUAIOBVO_ACTION_knok.topAnchor.constraint(equalTo: YACUAIOBVO_LIKE_COUNT.bottomAnchor,constant: 11)
         ])
+    }
+    
+    
+    func  YACUAIOBVO_ACTION_HomeDataModel(YACUAIOBVOdic:Dictionary<String,Any>)  {
+        YACUAIOBVO_FRAME_IMG.image = UIImage(named: (YACUAIOBVOdic["YACUAIOBVOimglist"] as? Array<String>)?.first ?? "")
+        YACUAIOBVO_TITLE_LBL.text = YACUAIOBVOdic["YACUAIOBVOtitle"] as? String
+        
+        YACUAIOBVO_LIKE_COUNT.text = "Likes:\(YACUAIOBVOdic["YACUAIOBVOlikeCount"] as? Int ?? 0)"
+        YACUAIOBVO_ACTION_knok.isHidden = !(YACUAIOBVOdic["YACUAIOBVOIfNeedUnlock"] as? Bool ?? true)
     }
 }

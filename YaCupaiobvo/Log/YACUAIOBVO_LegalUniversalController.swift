@@ -2,7 +2,7 @@
 //  YACUAIOBVO_LegalUniversalController.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/20.
+//  Created by YaCupaiobvo on 2026/1/20.
 //
 
 import UIKit

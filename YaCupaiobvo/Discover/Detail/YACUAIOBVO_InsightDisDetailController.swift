@@ -2,7 +2,7 @@
 //  YACUAIOBVO_InsightDisDetailController.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/22.
+//  Created by YaCupaiobvo on 2026/1/22.
 //
 
 import UIKit
@@ -73,7 +73,7 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         
         YACUAIOBVO_NAME_BANNER.font = .systemFont(ofSize: 16, weight: .medium)
         YACUAIOBVO_NAME_BANNER.textColor = .darkGray
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_DISMISS_FLOW), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
         YACUAIOBVO_FOLLOW_TRIGGER.setImage(UIImage.init(named: "YACUAIOBVO_FOLLOW_TRIGGER"), for: .normal)
         YACUAIOBVO_FOLLOW_TRIGGER.setImage(UIImage.init(named: "YACUAIOBVO_FOLLOW_TRIGGERed"), for: .selected)
         YACUAIOBVO_FOLLOW_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_TOGGLE_SUBSCRIPTION), for: .touchUpInside)
@@ -88,15 +88,15 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
 //        YACUAIOBVO_FOLLOW_STATUS_BADGE.isHidden = true
 //
         YACUAIOBVO_HEART_PULSE.setTitleColor(UIColor(red: 0.22, green: 0.25, blue: 0.32, alpha: 0.7000), for: .normal)
-        YACUAIOBVO_HEART_PULSE.setTitle("0", for: .normal)
+        
         YACUAIOBVO_HEART_PULSE.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 12)
-        YACUAIOBVO_HEART_PULSE.setImage(UIImage(systemName: "heart"), for: .normal)
-        YACUAIOBVO_HEART_PULSE.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-        YACUAIOBVO_HEART_PULSE.tintColor = UIColor(red: 1, green: 0.56, blue: 0.51, alpha: 1)
+        YACUAIOBVO_HEART_PULSE.setImage(UIImage(named: "YACUAIOBVOHeadrt-off"), for: .normal)
+        YACUAIOBVO_HEART_PULSE.setImage(UIImage(named: "YACUAIOBVOHeadrt-offfill"), for: .selected)
+        
         YACUAIOBVO_HEART_PULSE.addTarget(self, action: #selector(YACUAIOBVO_EXECUTE_ADORE), for: .touchUpInside)
         
         YACUAIOBVO_Comment_PULSE.setTitleColor(UIColor(red: 0.22, green: 0.25, blue: 0.32, alpha: 0.7000), for: .normal)
-        YACUAIOBVO_Comment_PULSE.setTitle("0", for: .normal)
+        YACUAIOBVO_Comment_PULSE.setTitle("3", for: .normal)
         YACUAIOBVO_Comment_PULSE.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 12)
         YACUAIOBVO_Comment_PULSE.setImage(UIImage(named: "YACUAIOBVO_Comment_PULSE"), for: .normal)
        
@@ -106,7 +106,7 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
     
     //进入用户主页
     @objc func YACUAIOBVO_enteruserDetail_LAYOUT(){
-        self.navigationController?.pushViewController(YACUAIOBVO_UserProfileExhibitionHub.init(), animated: true)
+        self.navigationController?.pushViewController(YACUAIOBVO_UserProfileExhibitionHub.init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_DATA_REGISTRY), animated: true)
     }
     
 
@@ -194,25 +194,54 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
     }
 
     private func YACUAIOBVO_BIND_ATTRIBUTES() {
-        YACUAIOBVO_NAME_BANNER.text = YACUAIOBVO_DATA_REGISTRY["authorName"] as? String ?? "Expert"
-        YACUAIOBVO_CONTENT_SUMMARY.text = YACUAIOBVO_DATA_REGISTRY["description"] as? String ?? "Curated sunglass looks for the community."
+        YACUAIOBVO_NAME_BANNER.text = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_NICKNAME"] as? String ?? "Expert"
+        YACUAIOBVO_CONTENT_SUMMARY.text = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_discover_content"] as? String ?? "Curated sunglass looks for the community."
         
-        if let YACUAIOBVO_AVATAR_STR = YACUAIOBVO_DATA_REGISTRY["avatar"] as? String {
+        if let YACUAIOBVO_AVATAR_STR = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_AVATAR_REF"] as? String {
             YACUAIOBVO_AVATAR_PLATE.setImage(UIImage(named: YACUAIOBVO_AVATAR_STR), for: .normal)
         }
+        
+        
+        if let YACUAIOBVO_them_STR = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_discover_pic"] as? String {
+            YACUAIOBVO_HERO_IMAGE.image = UIImage(named: YACUAIOBVO_them_STR)
+        }
+        
+        // 2. 获取当前用户已关注的 ID 集合
+        guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
+            return
+        }
+        let YACUAIOBVO_MY_FOLLOWING_LIST = YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_ID"] as? String ?? "")
+        YACUAIOBVO_IS_ENGAGED = YACUAIOBVO_MY_FOLLOWING_LIST
+        YACUAIOBVO_FOLLOW_TRIGGER.isSelected = YACUAIOBVO_IS_ENGAGED
+        
+        YACUAIOBVO_HEART_PULSE.setTitle("\(YACUAIOBVO_DATA_REGISTRY["YACUAIOBVOlikeCount"] as? Int ?? 0)", for: .normal)
+        
     }
 
     @objc private func YACUAIOBVO_TOGGLE_SUBSCRIPTION() {
         YACUAIOBVO_IS_STALKED.toggle()
         YACUAIOBVO_FOLLOW_TRIGGER.isSelected = YACUAIOBVO_IS_STALKED
+        
         let YACUAIOBVO_MSG = YACUAIOBVO_IS_STALKED ? "Subscription Active" : "Subscription Removed"
         YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        
+        let useif = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_ID"] as? String
+        
+        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: useif ?? "")
+       
     }
 
     @objc private func YACUAIOBVO_EXECUTE_ADORE() {
         YACUAIOBVO_IS_ENGAGED.toggle()
         YACUAIOBVO_HEART_PULSE.isSelected = YACUAIOBVO_IS_ENGAGED
         
+        var  count = (YACUAIOBVO_DATA_REGISTRY["YACUAIOBVOlikeCount"] as? Int ?? 0)
+        if YACUAIOBVO_IS_ENGAGED {
+            count += 1
+        }else{
+            count -= 1
+        }
+        YACUAIOBVO_HEART_PULSE.setTitle("\(count)", for: .normal)
         let YACUAIOBVO_HAPTIC = UIImpactFeedbackGenerator(style: .medium)
         YACUAIOBVO_HAPTIC.impactOccurred()
         
