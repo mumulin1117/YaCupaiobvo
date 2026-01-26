@@ -51,7 +51,7 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         YACUAIOBVO_CONSTRUCT_HIERARCHY()
         YACUAIOBVO_TRIGGER_NETWORK_FETCH()
         
-        YACUAIOBVO_EMPTY_SHADOW.image = UIImage(named: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
+        YACUAIOBVO_EMPTY_SHADOW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
                
         YACUAIOBVO_EMPTY_SHADOW.contentMode = .scaleAspectFit
         YACUAIOBVO_EMPTY_SHADOW.isHidden = true
@@ -66,9 +66,9 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         
         switch YACUAIOBVO_ACTIVE_SCOPE {
         case .YACUAIOBVO_FANS: 
-            YACUAIOBVO_SCOPE_TITLE.text = "Fans"
-        case .YACUAIOBVO_FOLLOWING: 
-            YACUAIOBVO_SCOPE_TITLE.text = "Following"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fans"
+        case .YACUAIOBVO_FOLLOWING:
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Following"
             // 1. 获取当前用户关注的 ID 集合 (Set<String>)
             guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
                 print("未登录或关注列表为空")
@@ -88,7 +88,7 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
             // 你可以将它直接赋值给 TableView 的数据源
             YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
         case .YACUAIOBVO_RESTRICTED_ZONE:
-            YACUAIOBVO_SCOPE_TITLE.text = "Blocklist"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Blocklist"
         
             guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET else {
                 return
@@ -104,10 +104,10 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
             YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
             
         case .YACUAIOBVO_RESTRICTED_post:
-            YACUAIOBVO_SCOPE_TITLE.text = "My Post"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Post"
             YACUAIOBVO_ENTITY_COLLECTION = []
         case .YACUAIOBVO_RESTRICTED_like:
-            YACUAIOBVO_SCOPE_TITLE.text = "My Like"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Like"
             YACUAIOBVO_ENTITY_COLLECTION = []
         }
         
@@ -255,23 +255,23 @@ class YACUAIOBVO_SocialNodeCell: UITableViewCell {
 
     func YACUAIOBVO_CONFIG_NODE(_ YACUAIOBVO_DATA: Dictionary<String,Any>, YACUAIOBVO_SCOPE: YACUAIOBVO_SOCIAL_SCOPE) {
         YACUAIOBVO_NAME_DISPLAY.text = YACUAIOBVO_DATA["YACUAIOBVO_NICKNAME"] as? String
-        YACUAIOBVO_AVATAR_FRAME.image = UIImage(named: YACUAIOBVO_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "") // Placeholder
+        YACUAIOBVO_AVATAR_FRAME.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "") // Placeholder
         
         switch YACUAIOBVO_SCOPE {
         case .YACUAIOBVO_FANS, .YACUAIOBVO_FOLLOWING:
-            YACUAIOBVO_STATE_TRIGGER.setTitle("Followed", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Followed", for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_ZONE:
-            YACUAIOBVO_STATE_TRIGGER.setTitle("Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Remove", for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_post:
-            YACUAIOBVO_STATE_TRIGGER.setTitle("Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Remove", for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_like:
-            YACUAIOBVO_STATE_TRIGGER.setTitle("Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Remove", for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         }

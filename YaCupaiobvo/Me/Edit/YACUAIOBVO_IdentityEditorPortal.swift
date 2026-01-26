@@ -67,28 +67,28 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         YACUAIOBVO_DISMISS_TRIGGER.tintColor = .black
         YACUAIOBVO_DISMISS_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_BACK_INVOKED), for: .touchUpInside)
         
-        YACUAIOBVO_PAGE_SUBJECT.text = "Fill in the information"
+        YACUAIOBVO_PAGE_SUBJECT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fill in the information"
         YACUAIOBVO_PAGE_SUBJECT.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_AVATAR_PREVIEW.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.9, alpha: 1.0)
         YACUAIOBVO_AVATAR_PREVIEW.layer.cornerRadius = 60
         YACUAIOBVO_AVATAR_PREVIEW.clipsToBounds = true
         YACUAIOBVO_AVATAR_PREVIEW.contentMode = .scaleAspectFill
-        YACUAIOBVO_AVATAR_PREVIEW.image = UIImage(named: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVO_av_1")
+        YACUAIOBVO_AVATAR_PREVIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVO_av_1")
         YACUAIOBVO_AVATAR_PREVIEW.tintColor = UIColor(red: 1.0, green: 0.6, blue: 0.55, alpha: 1.0)
         
         YACUAIOBVO_AVATAR_PICKER_ENTRY.addTarget(self, action: #selector(YACUAIOBVO_MEDIA_HUB_OPEN), for: .touchUpInside)
         
-        YACUAIOBVO_NAME_FIELD_TITLE.text = "User Name"
+        YACUAIOBVO_NAME_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")User Name"
         YACUAIOBVO_NAME_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
-        YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = "Give a name"
+        YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Give a name"
         
         YACUAIOBVO_NAME_INPUT_WRAPPER.text = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_NICKNAME
         YACUAIOBVO_NAME_INPUT_WRAPPER.borderStyle = .roundedRect
         YACUAIOBVO_NAME_INPUT_WRAPPER.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         
-        YACUAIOBVO_BIO_FIELD_TITLE.text = "About me"
+        YACUAIOBVO_BIO_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"About me"
         YACUAIOBVO_BIO_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
         YACUAIOBVO_BIO_TEXT_STATION.layer.cornerRadius = 8

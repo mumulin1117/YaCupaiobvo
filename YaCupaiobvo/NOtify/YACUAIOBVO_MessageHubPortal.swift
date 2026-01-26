@@ -35,7 +35,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
         YACUAIOBVO_INIT_ENVIRONMENT()
         YACUAIOBVO_TRIGGER_NETWORK_SYNC()
         
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
@@ -47,7 +47,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     private func YACUAIOBVO_INIT_ENVIRONMENT() {
         view.backgroundColor = .white
         NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_TRIGGER_NETWORK_SYNC), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
-        YACUAIOBVO_TITLE_VIEW.image = UIImage(named: "YACUAIOBVO_MSG_LOGO")
+        YACUAIOBVO_TITLE_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_MSG_LOGO")
         YACUAIOBVO_TITLE_VIEW.contentMode = .left
         YACUAIOBVO_TITLE_VIEW.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_TITLE_VIEW)

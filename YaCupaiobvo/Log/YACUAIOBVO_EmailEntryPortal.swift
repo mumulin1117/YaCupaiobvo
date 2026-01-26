@@ -42,7 +42,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
     private func YACUAIOBVO_BUILD_INTERFACE() {
         view.backgroundColor = .white
     
-        YACUAIOBVO_HERO_SHADE_VIEW.image = UIImage(named: "YACUAIOBVO_LOGIN_BG")
+        YACUAIOBVO_HERO_SHADE_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_LOGIN_BG")
         YACUAIOBVO_HERO_SHADE_VIEW.contentMode = .scaleAspectFill
         YACUAIOBVO_HERO_SHADE_VIEW.clipsToBounds = true
         YACUAIOBVO_HERO_SHADE_VIEW.translatesAutoresizingMaskIntoConstraints = false
@@ -53,21 +53,21 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         view.addSubview(YACUAIOBVO_HERO_CoverView_VIEW)
         
         
-        YACUAIOBVO_GREETING_TITLE.text = "Welcome!"
+        YACUAIOBVO_GREETING_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Welcome!"
         YACUAIOBVO_GREETING_TITLE.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         YACUAIOBVO_GREETING_TITLE.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_GREETING_TITLE)
         
       
         
-        YACUAIOBVO_MAIL_FIELD.placeholder = "Email Address"
+        YACUAIOBVO_MAIL_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Email Address"
         YACUAIOBVO_MAIL_FIELD.borderStyle = .roundedRect
         YACUAIOBVO_MAIL_FIELD.keyboardType = .emailAddress
         YACUAIOBVO_MAIL_FIELD.autocapitalizationType = .none
         YACUAIOBVO_MAIL_FIELD.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_MAIL_FIELD)
         
-        YACUAIOBVO_SECRET_FIELD.placeholder = "Password"
+        YACUAIOBVO_SECRET_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Password"
         YACUAIOBVO_SECRET_FIELD.borderStyle = .roundedRect
         YACUAIOBVO_SECRET_FIELD.isSecureTextEntry = true
         YACUAIOBVO_SECRET_FIELD.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_SECRET_FIELD.rightView = YACUAIOBVO_VISIBILITY_TOGGLE
         YACUAIOBVO_SECRET_FIELD.rightViewMode = .always
         YACUAIOBVO_RECOVERY_LINK.numberOfLines = 2
-        YACUAIOBVO_RECOVERY_LINK.text = "If you don't have an account, we will create one for you automatically"
+        YACUAIOBVO_RECOVERY_LINK.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"If you don't have an account, we will create one for you automatically"
         YACUAIOBVO_RECOVERY_LINK.textColor = .systemBlue
         
         YACUAIOBVO_RECOVERY_LINK.font = UIFont.systemFont(ofSize: 14)
@@ -87,7 +87,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_RECOVERY_LINK.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_RECOVERY_LINK)
         
-        YACUAIOBVO_PROCEED_ACTION_BTN.setTitle("Login", for: .normal)
+        YACUAIOBVO_PROCEED_ACTION_BTN.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Login", for: .normal)
         YACUAIOBVO_PROCEED_ACTION_BTN.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.53, alpha: 1.0)
         YACUAIOBVO_PROCEED_ACTION_BTN.layer.cornerRadius = 28
         YACUAIOBVO_PROCEED_ACTION_BTN.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -144,7 +144,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         guard let YACUAIOBVO_M = YACUAIOBVO_MAIL_FIELD.text, !YACUAIOBVO_M.isEmpty,
               let YACUAIOBVO_P = YACUAIOBVO_SECRET_FIELD.text, !YACUAIOBVO_P.isEmpty else {
 //            YACUAIOBVO_PUSH_HINT("Incomplete Info", "Please fill in all fields.")
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Incomplete Info,Please fill in all fields.", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Incomplete Info,Please fill in all fields.", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
        

@@ -262,7 +262,7 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         YACUAIOBVO_PORTRAIT_WELL.backgroundColor = .systemGray6
         
         YACUAIOBVO_ALIAS_LABEL.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        YACUAIOBVO_VIDEO_MODALITY.setImage(UIImage(named: "YACUAIOBVO_VIDEO_MODALITY"), for: .normal)
+        YACUAIOBVO_VIDEO_MODALITY.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_VIDEO_MODALITY"), for: .normal)
         YACUAIOBVO_VIDEO_MODALITY.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_VIDEO_MODALITY.layer.cornerRadius = 15
         YACUAIOBVO_VIDEO_MODALITY.tintColor = .white
@@ -273,10 +273,10 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         YACUAIOBVO_BIO_LABEL.textColor = .gray
         YACUAIOBVO_BIO_LABEL.font = UIFont.systemFont(ofSize: 15)
         
-        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(UIImage.init(named: "YACUAIOBVO_ACTION_FOLLOW"), for: .selected)
-        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(UIImage.init(named: "YACUAIOBVO_ACTION_FOLLOWed"), for: .normal)
+        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_FOLLOW"), for: .selected)
+        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_FOLLOWed"), for: .normal)
         
-        YACUAIOBVO_ACTION_MESSAGE.setBackgroundImage(UIImage.init(named: "badgeMeasgYACU"), for: .normal)
+        YACUAIOBVO_ACTION_MESSAGE.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "badgeMeasgYACU"), for: .normal)
         
         [YACUAIOBVO_PORTRAIT_WELL, YACUAIOBVO_ALIAS_LABEL, YACUAIOBVO_VIDEO_MODALITY,
          YACUAIOBVO_BIO_LABEL, YACUAIOBVO_FOLLOW_COUNT_LABEL, YACUAIOBVO_FAN_COUNT_LABEL,
@@ -323,12 +323,12 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     
   
     func YACUAIOBVO_HYDRATE_DATA() {
-        YACUAIOBVO_PORTRAIT_WELL.image = UIImage(named:  self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_PORTRAIT_WELL.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS:  self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         YACUAIOBVO_ALIAS_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_NICKNAME"] as? String
         YACUAIOBVO_BIO_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_BIO_TEXT"] as? String  ?? "Say something to introduce yourself."
         
-        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: "Follow")
-        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: "Fans")
+        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Follow")
+        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fans")
     }
     
     private func YACUAIOBVO_FORMAT_STAT(_ YACUAIOBVO_VAL: String, YACUAIOBVO_TAG: String) -> NSAttributedString {

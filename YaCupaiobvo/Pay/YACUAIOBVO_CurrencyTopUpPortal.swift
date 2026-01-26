@@ -42,7 +42,9 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
         }
     private func YACUAIOBVO_FETCH_OFFICIAL_SK_LIST() {
             let YACUAIOBVO_IDS: Set<String> = [
-                "com.yabvo.coins.400", "com.yabvo.coins.800", "com.yabvo.coins.1900"
+                "yzixshxsasblntgo", "lkzdtmkdyqtqrsyz", "yabvocoains1900",
+                "wjrbzsjeiuguxnjq","yabvocoains4250","dcrjypscdwchgdnn",
+                "yabvocoains7700","jkulyhuijfurwepw","vasvfditlnceulut","ceccygbjdvlxckza"
             ]
             let YACUAIOBVO_REQ = SKProductsRequest(productIdentifiers: YACUAIOBVO_IDS)
             YACUAIOBVO_REQ.delegate = self
@@ -59,16 +61,16 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
     
     private func YACUAIOBVO_PREPARE_DATA_SOURCE() {
         YACUAIOBVO_OFFER_LIST = [
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.400", YACUAIOBVO_AMOUNT: 400, YACUAIOBVO_PRICE_LABEL: "$0.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.800", YACUAIOBVO_AMOUNT: 800, YACUAIOBVO_PRICE_LABEL: "$1.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.1900", YACUAIOBVO_AMOUNT: 1900, YACUAIOBVO_PRICE_LABEL: "$3.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.2450", YACUAIOBVO_AMOUNT: 2450, YACUAIOBVO_PRICE_LABEL: "$4.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.4250", YACUAIOBVO_AMOUNT: 4250, YACUAIOBVO_PRICE_LABEL: "$8.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.4900", YACUAIOBVO_AMOUNT: 4900, YACUAIOBVO_PRICE_LABEL: "$9.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.7700", YACUAIOBVO_AMOUNT: 7700, YACUAIOBVO_PRICE_LABEL: "$14.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.9800", YACUAIOBVO_AMOUNT: 9800, YACUAIOBVO_PRICE_LABEL: "$19.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.24500", YACUAIOBVO_AMOUNT: 24500, YACUAIOBVO_PRICE_LABEL: "$49.99"),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "com.yabvo.coins.49000", YACUAIOBVO_AMOUNT: 49000, YACUAIOBVO_PRICE_LABEL: "$99.99")
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yzixshxsasblntgo", YACUAIOBVO_AMOUNT: 400, YACUAIOBVO_PRICE_LABEL: "$0.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "lkzdtmkdyqtqrsyz", YACUAIOBVO_AMOUNT: 800, YACUAIOBVO_PRICE_LABEL: "$1.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains1900", YACUAIOBVO_AMOUNT: 1900, YACUAIOBVO_PRICE_LABEL: "$3.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "wjrbzsjeiuguxnjq", YACUAIOBVO_AMOUNT: 2450, YACUAIOBVO_PRICE_LABEL: "$4.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains4250", YACUAIOBVO_AMOUNT: 4250, YACUAIOBVO_PRICE_LABEL: "$8.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "dcrjypscdwchgdnn", YACUAIOBVO_AMOUNT: 5150, YACUAIOBVO_PRICE_LABEL: "$9.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains7700", YACUAIOBVO_AMOUNT: 7700, YACUAIOBVO_PRICE_LABEL: "$14.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "jkulyhuijfurwepw", YACUAIOBVO_AMOUNT: 10800, YACUAIOBVO_PRICE_LABEL: "$19.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "vasvfditlnceulut", YACUAIOBVO_AMOUNT: 29400, YACUAIOBVO_PRICE_LABEL: "$49.99"),
+            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "ceccygbjdvlxckza", YACUAIOBVO_AMOUNT: 63700, YACUAIOBVO_PRICE_LABEL: "$99.99")
         ]
     }
 
@@ -76,7 +78,7 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         YACUAIOBVO_HERO_BACKDROP.contentMode = .scaleAspectFill
-        YACUAIOBVO_HERO_BACKDROP.image = UIImage(named: "YACUAIOBVO_wallet_bg")
+        YACUAIOBVO_HERO_BACKDROP.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_wallet_bg")
         YACUAIOBVO_HERO_BACKDROP.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_HERO_BACKDROP)
         
@@ -215,8 +217,14 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
             // Match ID to local coin value
             if YACUAIOBVO_ID.contains("400") { YACUAIOBVO_ADD_VAL = 400 }
             else if YACUAIOBVO_ID.contains("800") { YACUAIOBVO_ADD_VAL = 800 }
+            else if YACUAIOBVO_ID.contains("2450") { YACUAIOBVO_ADD_VAL = 2450 }
+            else if YACUAIOBVO_ID.contains("5150") { YACUAIOBVO_ADD_VAL = 5150 }
+            else if YACUAIOBVO_ID.contains("10800") { YACUAIOBVO_ADD_VAL = 10800 }
+            else if YACUAIOBVO_ID.contains("29400") { YACUAIOBVO_ADD_VAL = 29400 }
+            else if YACUAIOBVO_ID.contains("63700") { YACUAIOBVO_ADD_VAL = 63700 }
             else if YACUAIOBVO_ID.contains("1900") { YACUAIOBVO_ADD_VAL = 1900 }
-            
+            else if YACUAIOBVO_ID.contains("4250") { YACUAIOBVO_ADD_VAL = 4250 }
+            else if YACUAIOBVO_ID.contains("7700") { YACUAIOBVO_ADD_VAL = 7700 }
             let YACUAIOBVO_CURRENT = UserDefaults.standard.integer(forKey: YACUAIOBVO_STORAGE_KEY)
             UserDefaults.standard.set(YACUAIOBVO_CURRENT + YACUAIOBVO_ADD_VAL, forKey: YACUAIOBVO_STORAGE_KEY)
             
@@ -264,11 +272,11 @@ class YACUAIOBVO_CoinPackageNode: UICollectionViewCell {
     private func YACUAIOBVO_INIT_NODE() {
         self.backgroundColor = .clear
         YACUAIOBVO_OUTER_SHELL.contentMode = .scaleToFill
-        YACUAIOBVO_OUTER_SHELL.image = UIImage(named: "YACUAIOBVO_OUTER_SHELL")
+        YACUAIOBVO_OUTER_SHELL.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_OUTER_SHELL")
         YACUAIOBVO_OUTER_SHELL.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_OUTER_SHELL)
         
-        YACUAIOBVO_ICON.image = UIImage(named: "bitcoinsign.circle.fill")
+        YACUAIOBVO_ICON.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill")
        
         YACUAIOBVO_ICON.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_OUTER_SHELL.addSubview(YACUAIOBVO_ICON)

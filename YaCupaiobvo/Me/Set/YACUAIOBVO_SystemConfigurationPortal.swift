@@ -16,7 +16,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
     private let YACUAIOBVO_EXIT_SESSION_PILOT = UIButton()
     private let YACUAIOBVO_TERMINATE_ACCOUNT_PILOT = UIButton()
     
-    private let YACUAIOBVO_MENU_OPTIONS = ["Privacy Settings", "User agreement", "Blacklist"]
+    private let YACUAIOBVO_MENU_OPTIONS = [YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Privacy Settings", YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"User agreement", YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Blacklist"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_RETREAT_TRIGGER.tintColor = .black
         YACUAIOBVO_RETREAT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_PERFORM_RETREAT), for: .touchUpInside)
         
-        YACUAIOBVO_TOP_HEADING.text = "Setting"
+        YACUAIOBVO_TOP_HEADING.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Setting"
         YACUAIOBVO_TOP_HEADING.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_PREFERENCE_LIST.delegate = self
@@ -40,13 +40,13 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_PREFERENCE_LIST.separatorStyle = .singleLine
         YACUAIOBVO_PREFERENCE_LIST.register(UITableViewCell.self, forCellReuseIdentifier: "YACUAIOBVO_PREF_NODE")
         YACUAIOBVO_EXIT_SESSION_PILOT.addTarget(self, action: #selector(YACUAIOBVO_EXIT_SESSION_logout), for: .touchUpInside)
-        YACUAIOBVO_EXIT_SESSION_PILOT.setTitle("Log Out", for: .normal)
+        YACUAIOBVO_EXIT_SESSION_PILOT.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Log Out", for: .normal)
         YACUAIOBVO_EXIT_SESSION_PILOT.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         YACUAIOBVO_EXIT_SESSION_PILOT.setTitleColor(.gray, for: .normal)
         YACUAIOBVO_EXIT_SESSION_PILOT.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVO_EXIT_SESSION_PILOT.layer.cornerRadius = 28
         
-        YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.setTitle("Delete Account", for: .normal)
+        YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Delete Account", for: .normal)
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.setTitleColor(.white, for: .normal)
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -185,24 +185,24 @@ class YACUAIOBVO_TerminationSecurityNotice: UIViewController {
         YACUAIOBVO_ALERT_CORE.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_ALERT_CORE)
         
-        YACUAIOBVO_WARN_LABEL.text = "Delete Account"
+        YACUAIOBVO_WARN_LABEL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Delete Account"
         YACUAIOBVO_WARN_LABEL.textColor = UIColor(red: 1.0, green: 0.45, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_WARN_LABEL.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         YACUAIOBVO_WARN_LABEL.textAlignment = .center
         
-        YACUAIOBVO_DETAIL_LABEL.text = "Deleting the account will clear the account data. Are you sure todelete?"
+        YACUAIOBVO_DETAIL_LABEL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Deleting the account will clear the account data. Are you sure todelete?"
         YACUAIOBVO_DETAIL_LABEL.numberOfLines = 0
         YACUAIOBVO_DETAIL_LABEL.textAlignment = .center
         YACUAIOBVO_DETAIL_LABEL.font = UIFont.systemFont(ofSize: 15)
         YACUAIOBVO_DETAIL_LABEL.textColor = .darkGray
         
-        YACUAIOBVO_NEGATE_ACTION.setTitle("Cancel", for: .normal)
+        YACUAIOBVO_NEGATE_ACTION.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Cancel", for: .normal)
         YACUAIOBVO_NEGATE_ACTION.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         YACUAIOBVO_NEGATE_ACTION.setTitleColor(.gray, for: .normal)
         YACUAIOBVO_NEGATE_ACTION.layer.cornerRadius = 20
         YACUAIOBVO_NEGATE_ACTION.addTarget(self, action: #selector(YACUAIOBVO_HIDE_POPUP), for: .touchUpInside)
         
-        YACUAIOBVO_AFFIRM_ACTION.setTitle("Yes", for: .normal)
+        YACUAIOBVO_AFFIRM_ACTION.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Yes", for: .normal)
         YACUAIOBVO_AFFIRM_ACTION.backgroundColor = UIColor(red: 1.0, green: 0.45, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_AFFIRM_ACTION.setTitleColor(.white, for: .normal)
         YACUAIOBVO_AFFIRM_ACTION.layer.cornerRadius = 20

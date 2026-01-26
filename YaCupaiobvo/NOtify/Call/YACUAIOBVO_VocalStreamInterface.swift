@@ -62,9 +62,9 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
 
     private func YACUAIOBVO_CONSTRUCT_STAGE() {
         view.backgroundColor = .black
-        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.image = UIImage(named: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVOAvatar")
+        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVOAvatar")
         YACUAIOBVO_ENVIRONMENT_BACKDROP.contentMode = .scaleAspectFill
-        YACUAIOBVO_ENVIRONMENT_BACKDROP.image = UIImage(named: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_ENVIRONMENT_BACKDROP.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         YACUAIOBVO_ENVIRONMENT_BACKDROP.layer.masksToBounds = true
         YACUAIOBVO_ENVIRONMENT_BACKDROP.backgroundColor = .darkGray
         
@@ -82,7 +82,7 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
         
         YACUAIOBVO_CHRONOMETER_TAG.textColor = .white
         YACUAIOBVO_CHRONOMETER_TAG.font = .systemFont(ofSize: 16, weight: .regular)
-        YACUAIOBVO_CHRONOMETER_TAG.text = "Calling..."
+        YACUAIOBVO_CHRONOMETER_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Calling..."
         
         YACUAIOBVO_TERMINATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.35, blue: 0.35, alpha: 1.0)
         YACUAIOBVO_TERMINATE_TRIGGER.setImage(UIImage(systemName: "phone.down.fill"), for: .normal)

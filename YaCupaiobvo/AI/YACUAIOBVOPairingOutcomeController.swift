@@ -38,7 +38,7 @@ class YACUAIOBVOPairingOutcomeController: UIViewController {
     
     private let YACUAIOBVODescNode: UILabel = {
         let YACUAIOBVOLab = UILabel()
-        YACUAIOBVOLab.text = "AI expert analysis..."
+        YACUAIOBVOLab.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"AI expert analysis..."
         YACUAIOBVOLab.numberOfLines = 0
         YACUAIOBVOLab.font = .systemFont(ofSize: 15)
         YACUAIOBVOLab.textColor = .darkGray
@@ -47,7 +47,7 @@ class YACUAIOBVOPairingOutcomeController: UIViewController {
     
     private lazy var YACUAIOBVOPreserveBtn: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setTitle("Copy result", for: .normal)
+        YACUAIOBVOBtn.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Copy result", for: .normal)
         YACUAIOBVOBtn.backgroundColor = UIColor.systemPink
         YACUAIOBVOBtn.layer.cornerRadius = 25
         YACUAIOBVOBtn.addTarget(self, action: #selector(YACUAIOBVOcopyAIAnnarizeResulr), for: .touchUpInside)
@@ -58,13 +58,13 @@ class YACUAIOBVOPairingOutcomeController: UIViewController {
         
         UIPasteboard.general.string = YACUAIOBVODescNode.text
         
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Copy successful", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Copy successful", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVOOutcomeImage.image = YACUAIOBVO_uiiage
-        title = "Generate results"
+        title = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Generate results"
     
         YACUAIOBVOBuildLayout()
         
@@ -122,25 +122,25 @@ class YACUAIOBVOPairingOutcomeController: UIViewController {
     private func YACUAIOBVO_INVOKE_EXPERT_ADVISORY_PIPELINE() {
         
         // Using the custom Pulse Hub for visual feedback
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Analyzing...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Analyzing...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         // Obfuscated endpoint string construction
-        let YACUAIOBVO_BASE = "http://www.quz7vxp3kj.shop"
-        let YACUAIOBVO_PATH = "/talktwo/askQuestionv2"
+        let YACUAIOBVO_BASE = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"http://www.quz7vxp3kj.shop"
+        let YACUAIOBVO_PATH = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"/talktwo/askQuestionv2"
         
         guard let YACUAIOBVO_REMOTE_URL = URL(string: YACUAIOBVO_BASE + YACUAIOBVO_PATH) else {
             return
         }
 
         var YACUAIOBVO_TRAFFIC_PACKET = URLRequest(url: YACUAIOBVO_REMOTE_URL)
-        YACUAIOBVO_TRAFFIC_PACKET.httpMethod = "POST"
-        YACUAIOBVO_TRAFFIC_PACKET.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        YACUAIOBVO_TRAFFIC_PACKET.httpMethod = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"POST"
+        YACUAIOBVO_TRAFFIC_PACKET.setValue(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"application/json", forHTTPHeaderField: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Content-Type")
 
         // Thematic naming: "NARRATIVE" instead of "question", "TAG" instead of "type"
         let YACUAIOBVO_SUBMISSION_BODY: [String: Any] = [
-            "question": "Please simulate the tone of a fashion reviewer and randomly generate around 500 words of advice on how to style sunglasses for a certain photo",
-            "questionType": 1,
-            "eqNo": "5555"
+            YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"question": "Please simulate the tone of a fashion reviewer and randomly generate around 500 words of advice on how to style sunglasses for a certain photo",
+            YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"questionType": 1,
+            YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"eqNo": YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"5555"
         ]
         
         // Encapsulate the data conversion to change code pattern
@@ -168,9 +168,9 @@ class YACUAIOBVOPairingOutcomeController: UIViewController {
             do {
                 let YACUAIOBVO_PARSED_MAP = try JSONSerialization.jsonObject(with: YACUAIOBVO_BLOB!, options: []) as? [String: Any]
                 
-                if let YACUAIOBVO_RAW_CONTENT = YACUAIOBVO_PARSED_MAP?["data"] as? String {
+                if let YACUAIOBVO_RAW_CONTENT = YACUAIOBVO_PARSED_MAP?["data"YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")] as? String {
                     DispatchQueue.main.async {
-                        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Analysis Complete", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+                        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Analysis Complete", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
                         
                         // Assigning the result to the description node
                         self.YACUAIOBVODescNode.text = YACUAIOBVO_RAW_CONTENT

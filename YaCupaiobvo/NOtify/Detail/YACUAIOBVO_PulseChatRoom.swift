@@ -82,7 +82,7 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
         YACUAIOBVO_CONTROL_DOCK.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         YACUAIOBVO_CONTROL_DOCK.layer.cornerRadius = 25
         
-        YACUAIOBVO_NARRATIVE_INPUT.placeholder = "Say something..."
+        YACUAIOBVO_NARRATIVE_INPUT.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Say something..."
         YACUAIOBVO_NARRATIVE_INPUT.delegate = self
         
 //        YACUAIOBVO_EMOJI_WELL.setImage(UIImage(systemName: "face.smiling"), for: .normal)

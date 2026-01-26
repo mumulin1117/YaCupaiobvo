@@ -140,17 +140,17 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         view.addSubview(YACUAIOBVO_TOP_SEGMENT)
         
            
-        YACUAIOBVO_Publish_LBL.setImage(UIImage(named: "fleversenghow"), for: .normal)
+        YACUAIOBVO_Publish_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "fleversenghow"), for: .normal)
         YACUAIOBVO_Publish_LBL.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_Publish_LBL)
         
-        YACUAIOBVO_DISCOVER_LBL.setImage(UIImage(named: "YACUAIOBVODiscover"), for: .normal)
-        YACUAIOBVO_DISCOVER_LBL.setImage(UIImage(named: "YACUAIOBVOdisc"), for: .selected)
+        YACUAIOBVO_DISCOVER_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVODiscover"), for: .normal)
+        YACUAIOBVO_DISCOVER_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOdisc"), for: .selected)
         YACUAIOBVO_DISCOVER_LBL.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_DISCOVER_LBL)
         
-        YACUAIOBVO_FOLLOW_LBL.setImage(UIImage(named: "YACUAIOBVOFollowing"), for: .normal)
-        YACUAIOBVO_FOLLOW_LBL.setImage(UIImage(named: "YACUAIOBVOfollo"), for: .selected)
+        YACUAIOBVO_FOLLOW_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOFollowing"), for: .normal)
+        YACUAIOBVO_FOLLOW_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOfollo"), for: .selected)
         YACUAIOBVO_FOLLOW_LBL.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_FOLLOW_LBL)
         

@@ -25,7 +25,7 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     private let YACUAIOBVO_SCROLLER = UITableView(frame: .zero, style: .grouped)
     private let YACUAIOBVO_TOP_SETTING_ICON = UIButton(type: .system)
 //    private var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_UserMetric?
-    private let YACUAIOBVO_OPTION_POOL = ["Wallet", "My Posts", "My Likes"]
+    private let YACUAIOBVO_OPTION_POOL = [YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Wallet", YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Posts", YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Likes"]
 
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -181,7 +181,7 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         YACUAIOBVO_PORTRAIT_VIEW.layer.cornerRadius = 60
         YACUAIOBVO_PORTRAIT_VIEW.clipsToBounds = true
         YACUAIOBVO_PORTRAIT_VIEW.backgroundColor = .systemGray6
-        YACUAIOBVO_PORTRAIT_VIEW.image = UIImage(named: "YACUAIOBVO_USER_AVATAR")
+        YACUAIOBVO_PORTRAIT_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_USER_AVATAR")
         YACUAIOBVO_PORTRAIT_VIEW.translatesAutoresizingMaskIntoConstraints = false
         addSubview(YACUAIOBVO_PORTRAIT_VIEW)
         
@@ -201,8 +201,8 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         
         YACUAIOBVO_FOLLOW_COUNT.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         YACUAIOBVO_FANS_COUNT.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        YACUAIOBVO_FOLLOW_TAG.text = "Follow"; YACUAIOBVO_FOLLOW_TAG.textColor = .systemGray
-        YACUAIOBVO_FANS_TAG.text = "Fans"; YACUAIOBVO_FANS_TAG.textColor = .systemGray
+        YACUAIOBVO_FOLLOW_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Follow"; YACUAIOBVO_FOLLOW_TAG.textColor = .systemGray
+        YACUAIOBVO_FANS_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fans"; YACUAIOBVO_FANS_TAG.textColor = .systemGray
         
         let YACUAIOBVO_FOLLOW_STACK = UIStackView(arrangedSubviews: [YACUAIOBVO_FOLLOW_COUNT, YACUAIOBVO_FOLLOW_TAG])
         YACUAIOBVO_FOLLOW_STACK.axis = .vertical; YACUAIOBVO_FOLLOW_STACK.alignment = .center
@@ -242,7 +242,7 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         YACUAIOBVO_BIO_TEXT.text = YACUAIOBVO_DATA.YACUAIOBVO_BIO_TEXT
         YACUAIOBVO_FOLLOW_COUNT.text = "\(YACUAIOBVO_DATA.YACUAIOBVO_FOLLOWING_SET.count)"
         YACUAIOBVO_FANS_COUNT.text = "0"
-        YACUAIOBVO_PORTRAIT_VIEW.image = UIImage(named: YACUAIOBVO_DATA.YACUAIOBVO_AVATAR_REF)
+        YACUAIOBVO_PORTRAIT_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA.YACUAIOBVO_AVATAR_REF)
     }
 }
 

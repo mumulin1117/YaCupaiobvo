@@ -23,7 +23,7 @@ class YACUAIOBVO_ReportDetailFlow: UIViewController {
         YACUAIOBVO_BACK_TRIGGER.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_BACK_TRIGGER)
         view.backgroundColor = .white
-        title = "Report"
+        title = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Report"
         YACUAIOBVO_APPLY_DARK_TITLE_THEME()
         YACUAIOBVO_FABRICATE_OPTIONS()
     }
@@ -50,7 +50,7 @@ class YACUAIOBVO_ReportDetailFlow: UIViewController {
         }
         
         let YACUAIOBVO_SUBMIT = UIButton()
-        YACUAIOBVO_SUBMIT.setTitle("Submit", for: .normal)
+        YACUAIOBVO_SUBMIT.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Submit", for: .normal)
         YACUAIOBVO_SUBMIT.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
         YACUAIOBVO_SUBMIT.layer.cornerRadius = 28
         YACUAIOBVO_SUBMIT.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
@@ -92,7 +92,7 @@ class YACUAIOBVO_ReportDetailFlow: UIViewController {
     }
     
     @objc private func YACUAIOBVO_DISPATCH_REPORT() {
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Report Submitted", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Report Submitted", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.navigationController?.popToRootViewController(animated: true)
         }

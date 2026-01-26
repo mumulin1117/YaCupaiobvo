@@ -67,7 +67,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         super.viewDidLoad()
         
         YACUAIOBVO_INIT_BASE_STYLE()
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
@@ -86,7 +86,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         YACUAIOBVO_CONTENT_STACK.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_MAIN_SCROLLER.addSubview(YACUAIOBVO_CONTENT_STACK)
         
-        YACUAIOBVO_AI_HERO_TRIGGER.setBackgroundImage(UIImage(named: "YACUAIOBVO_HERO_BANNER"), for: .normal)
+        YACUAIOBVO_AI_HERO_TRIGGER.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_HERO_BANNER"), for: .normal)
         YACUAIOBVO_AI_HERO_TRIGGER.imageView?.contentMode = .scaleToFill
       
         YACUAIOBVO_AI_HERO_TRIGGER.translatesAutoresizingMaskIntoConstraints = false
@@ -110,8 +110,8 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
     }
 
     private func YACUAIOBVO_CONFIGURE_TAB(_ YACUAIOBVO_BTN: UIButton, _ YACUAIOBVO_IMG_NAME: String, _ YACUAIOBVO_TAG: Int) {
-        YACUAIOBVO_BTN.setImage(UIImage(named: YACUAIOBVO_IMG_NAME), for: .normal)
-        YACUAIOBVO_BTN.setImage(UIImage(named: YACUAIOBVO_IMG_NAME + "_ACTIVE"), for: .selected)
+        YACUAIOBVO_BTN.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG_NAME), for: .normal)
+        YACUAIOBVO_BTN.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG_NAME + "_ACTIVE"), for: .selected)
         YACUAIOBVO_BTN.tag = YACUAIOBVO_TAG
         YACUAIOBVO_BTN.addTarget(self, action: #selector(YACUAIOBVO_SWITCH_CATEGORY(YACUAIOBVO_SENDER:)), for: .touchUpInside)
         YACUAIOBVO_CAT_STACK_WRAPPER.addArrangedSubview(YACUAIOBVO_BTN)

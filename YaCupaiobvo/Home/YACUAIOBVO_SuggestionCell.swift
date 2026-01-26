@@ -32,27 +32,27 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
         YACUAIOBVO_FRAME_IMG.layer.cornerRadius = 25
         YACUAIOBVO_FRAME_IMG.clipsToBounds = true
         YACUAIOBVO_FRAME_IMG.contentMode = .scaleAspectFill
-        YACUAIOBVO_FRAME_IMG.image = UIImage(named: "YACUAIOBVO_POST_MOCK")
+        YACUAIOBVO_FRAME_IMG.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_POST_MOCK")
         YACUAIOBVO_FRAME_IMG.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_FRAME_IMG)
         
-        YACUAIOBVO_TITLE_LBL.text = "Square glasses"
+        YACUAIOBVO_TITLE_LBL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Square glasses"
         YACUAIOBVO_TITLE_LBL.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         YACUAIOBVO_TITLE_LBL.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_TITLE_LBL)
         
-        YACUAIOBVO_ACTION_report.setImage(UIImage.init(named: "YACUAIOBVO_ACTION_report"), for: .normal)
+        YACUAIOBVO_ACTION_report.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_report"), for: .normal)
         YACUAIOBVO_ACTION_report.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_ACTION_report)
         
         
-        YACUAIOBVO_LIKE_COUNT.text = "Likes:0"
+        YACUAIOBVO_LIKE_COUNT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Likes:0"
         YACUAIOBVO_LIKE_COUNT.font = UIFont.systemFont(ofSize: 14)
         YACUAIOBVO_LIKE_COUNT.textColor = .gray
         YACUAIOBVO_LIKE_COUNT.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_LIKE_COUNT)
         
-        YACUAIOBVO_ACTION_ARROW.setImage(UIImage(named: "arrow.rightleadr"), for: .normal)
+        YACUAIOBVO_ACTION_ARROW.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "arrow.rightleadr"), for: .normal)
         YACUAIOBVO_ACTION_ARROW.backgroundColor = .white
         YACUAIOBVO_ACTION_ARROW.layer.cornerRadius = 12
         YACUAIOBVO_ACTION_ARROW.layer.masksToBounds  = true
@@ -60,7 +60,7 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
         YACUAIOBVO_FRAME_IMG.addSubview(YACUAIOBVO_ACTION_ARROW)
         
         
-        YACUAIOBVO_ACTION_knok.setImage(UIImage(named: "YACUAIOBVOknoldr"), for: .normal)
+        YACUAIOBVO_ACTION_knok.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOknoldr"), for: .normal)
         YACUAIOBVO_ACTION_knok.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_ACTION_knok)
         
@@ -94,7 +94,7 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
     
     
     func  YACUAIOBVO_ACTION_HomeDataModel(YACUAIOBVOdic:Dictionary<String,Any>)  {
-        YACUAIOBVO_FRAME_IMG.image = UIImage(named: (YACUAIOBVOdic["YACUAIOBVOimglist"] as? Array<String>)?.first ?? "")
+        YACUAIOBVO_FRAME_IMG.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: (YACUAIOBVOdic["YACUAIOBVOimglist"] as? Array<String>)?.first ?? "")
         YACUAIOBVO_TITLE_LBL.text = YACUAIOBVOdic["YACUAIOBVOtitle"] as? String
         
         YACUAIOBVO_LIKE_COUNT.text = "Likes:\(YACUAIOBVOdic["YACUAIOBVOlikeCount"] as? Int ?? 0)"

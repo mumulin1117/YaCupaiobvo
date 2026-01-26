@@ -91,7 +91,7 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
         YACUAIOBVO_INPUT_DOCK.backgroundColor = UIColor(white: 0.98, alpha: 1)
         YACUAIOBVO_INPUT_DOCK.layer.cornerRadius = 25
         
-        YACUAIOBVO_NARRATIVE_FIELD.placeholder = "Write a comment..."
+        YACUAIOBVO_NARRATIVE_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Write a comment..."
         YACUAIOBVO_NARRATIVE_FIELD.font = .systemFont(ofSize: 15)
         YACUAIOBVO_NARRATIVE_FIELD.delegate = self
         YACUAIOBVO_DISPATCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_CLOSE_PANEL), for: .touchUpInside)
@@ -186,8 +186,8 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
         YACUAIOBVO_NARRATIVE_FIELD.resignFirstResponder()
         YACUAIOBVO_NARRATIVE_FIELD.text = ""
         
-        let YACUAIOBVO_NOTICE = UIAlertController(title: "Submission Success", message: "Your comment has been submitted and will be visible after safety review.", preferredStyle: .alert)
-        YACUAIOBVO_NOTICE.addAction(UIAlertAction(title: "OK", style: .default))
+        let YACUAIOBVO_NOTICE = UIAlertController(title: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Submission Success", message: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Your comment has been submitted and will be visible after safety review.", preferredStyle: .alert)
+        YACUAIOBVO_NOTICE.addAction(UIAlertAction(title: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"OK", style: .default))
         self.present(YACUAIOBVO_NOTICE, animated: true)
     }
 
@@ -222,7 +222,7 @@ class YACUAIOBVO_PulseCommentCell: UITableViewCell {
         YACUAIOBVO_PORTRAIT.layer.cornerRadius = 20
         YACUAIOBVO_PORTRAIT.clipsToBounds = true
         YACUAIOBVO_PORTRAIT.backgroundColor = .systemGray6
-        YACUAIOBVO_PORTRAIT.image = UIImage(named: "person.crop.circle.fill")
+        YACUAIOBVO_PORTRAIT.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "person.crop.circle.fill")
         YACUAIOBVO_PORTRAIT.tintColor = .systemGray4
         
         YACUAIOBVO_ALIAS_TAG.font = .systemFont(ofSize: 15, weight: .semibold)
@@ -258,6 +258,6 @@ class YACUAIOBVO_PulseCommentCell: UITableViewCell {
     func YACUAIOBVO_REFRESH_NODE(YACUAIOBVO_USER: String, YACUAIOBVO_MSG: String,YACUAIOBVO_avator:String) {
         YACUAIOBVO_ALIAS_TAG.text = YACUAIOBVO_USER
         YACUAIOBVO_MSG_TAG.text = YACUAIOBVO_MSG
-        YACUAIOBVO_PORTRAIT.image =  UIImage(named: YACUAIOBVO_avator)
+        YACUAIOBVO_PORTRAIT.image =  YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_avator)
     }
 }

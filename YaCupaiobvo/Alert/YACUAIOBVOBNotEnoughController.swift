@@ -54,7 +54,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOExclamationNode: UIImageView = {
         let YACUAIOBVOImg = UIImageView()
-        YACUAIOBVOImg.image = UIImage(named: checkingType == .tipsinfluence ? "YACUAIOBVOWarningIcon" : "YACUAIOBVOunlockIcon")
+        YACUAIOBVOImg.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: checkingType == .tipsinfluence ? "YACUAIOBVOWarningIcon" : "YACUAIOBVOunlockIcon")
         YACUAIOBVOImg.contentMode = .scaleAspectFit
         YACUAIOBVOImg.translatesAutoresizingMaskIntoConstraints = false
         return YACUAIOBVOImg
@@ -62,7 +62,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOMessageLabel: UILabel = {
         let YACUAIOBVOLab = UILabel()
-        YACUAIOBVOLab.text = checkingType == .tipsinfluence ? "Sorry, your current balance is insufficient. Please top up." : "Hello, unlocking the most suitable sunglasses pairing requires 50 gold coins."
+        YACUAIOBVOLab.text = checkingType == .tipsinfluence ? YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Sorry, your current balance is insufficient. Please top up." : YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Hello, unlocking the most suitable sunglasses pairing requires 50 gold coins."
         YACUAIOBVOLab.textColor = .darkGray
         YACUAIOBVOLab.font = .systemFont(ofSize: 17, weight: .medium)
         YACUAIOBVOLab.textAlignment = .center
@@ -73,7 +73,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOAbortTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setImage(UIImage.init(named: "YACUAIOBVOAbortIcon" ), for: .normal)
+        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOAbortIcon" ), for: .normal)
         YACUAIOBVOBtn.addTarget(self, action: #selector(YACUAIOBVOTerminateFlow), for: .touchUpInside)
         YACUAIOBVOBtn.translatesAutoresizingMaskIntoConstraints = false
         return YACUAIOBVOBtn
@@ -81,7 +81,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOReplenishTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setImage(UIImage.init(named: checkingType == .tipsinfluence ? "YACUAIOBVOReplenishicon" : "YACUAIOBVObuy"), for: .normal)
+        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: checkingType == .tipsinfluence ? "YACUAIOBVOReplenishicon" : "YACUAIOBVObuy"), for: .normal)
         YACUAIOBVOBtn.addTarget(self, action: #selector(YACUAIOBVOInvokeStore), for: .touchUpInside)
         YACUAIOBVOBtn.translatesAutoresizingMaskIntoConstraints = false
         return YACUAIOBVOBtn

@@ -29,14 +29,14 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     
     private let YACUAIOBVOEtherealBackdrop: UIImageView = {
         let YACUAIOBVOView = UIImageView()
-        YACUAIOBVOView.image = UIImage(named: "YACUAIOBVO_wallet_bg")
+        YACUAIOBVOView.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_wallet_bg")
         YACUAIOBVOView.contentMode = .scaleAspectFill
         YACUAIOBVOView.clipsToBounds = true
         return YACUAIOBVOView
     }()
     
     private let YACUAIOBVOAestheticPanel: UIImageView = {
-        let YACUAIOBVOView = UIImageView(image: UIImage.init(named: "YACUAIOBVOAISuggstion"))
+        let YACUAIOBVOView = UIImageView(image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOAISuggstion"))
        
         return YACUAIOBVOView
     }()
@@ -44,7 +44,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     private let YACUAIOBVOUploadChamber: UIButton = {
         let YACUAIOBVOBtn = UIButton()
       
-        YACUAIOBVOBtn.setImage(UIImage(named: "YACUAIOBVOCameraIcon"), for: .normal)
+        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOCameraIcon"), for: .normal)
         return YACUAIOBVOBtn
     }()
     
@@ -52,8 +52,8 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     
     private let YACUAIOBVOGenerateTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setImage(UIImage.init(named: "bitcoinsign.circle.fill"), for: .normal)
-        YACUAIOBVOBtn.setTitle("300  Generate", for: .normal)
+        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill"), for: .normal)
+        YACUAIOBVOBtn.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"300  Generate", for: .normal)
         YACUAIOBVOBtn.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVOBtn.backgroundColor = UIColor.systemPink
         YACUAIOBVOBtn.layer.cornerRadius = 25
@@ -138,7 +138,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     @objc private func YACUAIOBVOValidateTransaction() {
         
         guard let result = self.YACUAIOBVORecordimge else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Upload your sunglasses picture first!", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Upload your sunglasses picture first!", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             
             return
         }
@@ -156,7 +156,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     private func YACUAIOBVOExecuteCrystalProcessing(result:UIImage) {
         
        
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
