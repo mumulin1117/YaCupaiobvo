@@ -7,16 +7,16 @@
 
 import UIKit
 
-struct YACUAIOBVO_NarrativeEntity: Codable {
-    let YACUAIOBVO_IDENTIFIER: UUID
-    let YACUAIOBVO_CONTENT: String
-    let YACUAIOBVO_IS_NATIVE_ORIGIN: Bool
-    let YACUAIOBVO_TIMESTAMP: Date
-}
+//struct YACUAIOBVO_NarrativeEntity: Codable {
+//    let YACUAIOBVO_IDENTIFIER: UUID
+//    let YACUAIOBVO_CONTENT: String
+//    let YACUAIOBVO_IS_NATIVE_ORIGIN: Bool
+//    let YACUAIOBVO_TIMESTAMP: Date
+//}
 
 class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>
-    init(YACUAIOBVO_PROFILE_DATA: Dictionary<String, Any>) {
+    var YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_COMMUEntity
+    init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_COMMUEntity) {
         self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,15 +32,13 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     private let YACUAIOBVO_LOG_VIEWER = UITableView()
     private let YACUAIOBVO_CONTROL_DOCK = UIView()
     private let YACUAIOBVO_NARRATIVE_INPUT = UITextField()
-    private let YACUAIOBVO_EMOJI_WELL = UIButton()
+//    private let YACUAIOBVO_EMOJI_WELL = UIButton()
     private let YACUAIOBVO_TRANSMIT_TRIGGER = UIButton()
     
-    private var YACUAIOBVO_CHRONICLE_BUFFER: [YACUAIOBVO_NarrativeEntity] = []
-    var YACUAIOBVO_TARGET_PEER_NAME: String = "Haley James"
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        YACUAIOBVO_LOAD_PERSISTED_LOGS()
+//        YACUAIOBVO_LOAD_PERSISTED_LOGS()
         YACUAIOBVO_ARCHITECT_STAGING()
         YACUAIOBVO_BIND_CONSTRAINTS()
         
@@ -52,7 +50,7 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     
   @objc  func actionsheetForPick()  {
       let acteeet = YACUAIOBVO_SafetyActionSheet.init()
-      acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String ?? ""
+      acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String ?? ""
       acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
           let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
           self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
@@ -62,26 +60,6 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
        self.present(acteeet, animated: true)
     }
 
-    private func YACUAIOBVO_LOAD_PERSISTED_LOGS() {
-        let YACUAIOBVO_STORAGE_KEY = "YACUAIOBVO_CHRONICLE_\(YACUAIOBVO_TARGET_PEER_NAME)"
-        if let YACUAIOBVO_RAW_DATA = UserDefaults.standard.data(forKey: YACUAIOBVO_STORAGE_KEY),
-           let YACUAIOBVO_DECODED = try? JSONDecoder().decode([YACUAIOBVO_NarrativeEntity].self, from: YACUAIOBVO_RAW_DATA) {
-            YACUAIOBVO_CHRONICLE_BUFFER = YACUAIOBVO_DECODED
-        } else {
-            YACUAIOBVO_CHRONICLE_BUFFER = [
-                YACUAIOBVO_NarrativeEntity(YACUAIOBVO_IDENTIFIER: UUID(), YACUAIOBVO_CONTENT: "Hey Lucas!", YACUAIOBVO_IS_NATIVE_ORIGIN: false, YACUAIOBVO_TIMESTAMP: Date()),
-                YACUAIOBVO_NarrativeEntity(YACUAIOBVO_IDENTIFIER: UUID(), YACUAIOBVO_CONTENT: "How's your project going?", YACUAIOBVO_IS_NATIVE_ORIGIN: false, YACUAIOBVO_TIMESTAMP: Date())
-            ]
-        }
-    }
-
-    private func YACUAIOBVO_SYNC_TO_PERSISTENCE() {
-        let YACUAIOBVO_STORAGE_KEY = "YACUAIOBVO_CHRONICLE_\(YACUAIOBVO_TARGET_PEER_NAME)"
-        if let YACUAIOBVO_ENCODED = try? JSONEncoder().encode(YACUAIOBVO_CHRONICLE_BUFFER) {
-            UserDefaults.standard.set(YACUAIOBVO_ENCODED, forKey: YACUAIOBVO_STORAGE_KEY)
-        }
-    }
-
     private func YACUAIOBVO_ARCHITECT_STAGING() {
         view.backgroundColor = .white
         
@@ -89,7 +67,7 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
         YACUAIOBVO_RETREAT_TRIGGER.tintColor = .black
         YACUAIOBVO_RETREAT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_DISMISS_SCENE), for: .touchUpInside)
         
-        YACUAIOBVO_PEER_TITLE.text = YACUAIOBVO_TARGET_PEER_NAME
+        YACUAIOBVO_PEER_TITLE.text = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_NICKNAME"] as? String
         YACUAIOBVO_PEER_TITLE.font = .systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_CAUTION_TRIGGER.setImage(UIImage(systemName: "exclamationmark.circle.fill"), for: .normal)
@@ -107,8 +85,8 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
         YACUAIOBVO_NARRATIVE_INPUT.placeholder = "Say something..."
         YACUAIOBVO_NARRATIVE_INPUT.delegate = self
         
-        YACUAIOBVO_EMOJI_WELL.setImage(UIImage(systemName: "face.smiling"), for: .normal)
-        YACUAIOBVO_EMOJI_WELL.tintColor = .lightGray
+//        YACUAIOBVO_EMOJI_WELL.setImage(UIImage(systemName: "face.smiling"), for: .normal)
+//        YACUAIOBVO_EMOJI_WELL.tintColor = .lightGray
         
         YACUAIOBVO_TRANSMIT_TRIGGER.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
         YACUAIOBVO_TRANSMIT_TRIGGER.tintColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
@@ -126,7 +104,7 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
             YACUAIOBVO_TOP_NAVIGATION.addSubview($0)
         }
         
-        [YACUAIOBVO_NARRATIVE_INPUT, YACUAIOBVO_EMOJI_WELL, YACUAIOBVO_TRANSMIT_TRIGGER].forEach {
+        [YACUAIOBVO_NARRATIVE_INPUT, YACUAIOBVO_TRANSMIT_TRIGGER].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             YACUAIOBVO_CONTROL_DOCK.addSubview($0)
         }
@@ -157,12 +135,12 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
             YACUAIOBVO_CONTROL_DOCK.heightAnchor.constraint(equalToConstant: 50),
             
             YACUAIOBVO_NARRATIVE_INPUT.leadingAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.leadingAnchor, constant: 20),
-            YACUAIOBVO_NARRATIVE_INPUT.trailingAnchor.constraint(equalTo: YACUAIOBVO_EMOJI_WELL.leadingAnchor, constant: -10),
+            YACUAIOBVO_NARRATIVE_INPUT.trailingAnchor.constraint(equalTo: YACUAIOBVO_TRANSMIT_TRIGGER.leadingAnchor, constant: -10),
             YACUAIOBVO_NARRATIVE_INPUT.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
             
-            YACUAIOBVO_EMOJI_WELL.trailingAnchor.constraint(equalTo: YACUAIOBVO_TRANSMIT_TRIGGER.leadingAnchor, constant: -10),
-            YACUAIOBVO_EMOJI_WELL.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
-            
+//            YACUAIOBVO_EMOJI_WELL.trailingAnchor.constraint(equalTo: YACUAIOBVO_TRANSMIT_TRIGGER.leadingAnchor, constant: -10),
+//            YACUAIOBVO_EMOJI_WELL.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
+//            
             YACUAIOBVO_TRANSMIT_TRIGGER.trailingAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.trailingAnchor, constant: -10),
             YACUAIOBVO_TRANSMIT_TRIGGER.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
             YACUAIOBVO_TRANSMIT_TRIGGER.widthAnchor.constraint(equalToConstant: 36),
@@ -173,13 +151,14 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     @objc private func YACUAIOBVO_PROCESS_TRANSMISSION() {
         guard let YACUAIOBVO_TEXT = YACUAIOBVO_NARRATIVE_INPUT.text, !YACUAIOBVO_TEXT.isEmpty else { return }
         
-        let YACUAIOBVO_NEW_ENTRY = YACUAIOBVO_NarrativeEntity(YACUAIOBVO_IDENTIFIER: UUID(), YACUAIOBVO_CONTENT: YACUAIOBVO_TEXT, YACUAIOBVO_IS_NATIVE_ORIGIN: true, YACUAIOBVO_TIMESTAMP: Date())
+        let YACUAIOBVO_REPLY = YACUAIOBVO_ChatEntity.init(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: YACUAIOBVO_TEXT,YACUAIOBVO_mestimedate: Date())
         
-        YACUAIOBVO_CHRONICLE_BUFFER.append(YACUAIOBVO_NEW_ENTRY)
+        self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.append(YACUAIOBVO_REPLY)
+        
         YACUAIOBVO_NARRATIVE_INPUT.text = ""
-        YACUAIOBVO_SYNC_TO_PERSISTENCE()
+        YACUAIOBVO_NARRATIVE_INPUT.resignFirstResponder()
         
-        let YACUAIOBVO_IDX = IndexPath(row: YACUAIOBVO_CHRONICLE_BUFFER.count - 1, section: 0)
+        let YACUAIOBVO_IDX = IndexPath(row: YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.count - 1, section: 0)
         YACUAIOBVO_LOG_VIEWER.insertRows(at: [YACUAIOBVO_IDX], with: .fade)
         YACUAIOBVO_LOG_VIEWER.scrollToRow(at: YACUAIOBVO_IDX, at: .bottom, animated: true)
         
@@ -187,15 +166,34 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     }
 
     private func YACUAIOBVO_TRIGGER_MOCK_REPLY() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            let YACUAIOBVO_REPLY = YACUAIOBVO_NarrativeEntity(YACUAIOBVO_IDENTIFIER: UUID(), YACUAIOBVO_CONTENT: "Got it, thanks!", YACUAIOBVO_IS_NATIVE_ORIGIN: false, YACUAIOBVO_TIMESTAMP: Date())
-            self.YACUAIOBVO_CHRONICLE_BUFFER.append(YACUAIOBVO_REPLY)
-            self.YACUAIOBVO_SYNC_TO_PERSISTENCE()
-            let YACUAIOBVO_IDX = IndexPath(row: self.YACUAIOBVO_CHRONICLE_BUFFER.count - 1, section: 0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+            let YACUAIOBVO_REPLY = YACUAIOBVO_ChatEntity.init(YACUAIOBVO_mesgisOTHER: true, YACUAIOBVO_mescontent: "Got it, thanks!",YACUAIOBVO_mestimedate: Date())
+            
+            self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.append(YACUAIOBVO_REPLY)
+          
+            let YACUAIOBVO_IDX = IndexPath(row: self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.count - 1, section: 0)
             self.YACUAIOBVO_LOG_VIEWER.insertRows(at: [YACUAIOBVO_IDX], with: .fade)
             self.YACUAIOBVO_LOG_VIEWER.scrollToRow(at: YACUAIOBVO_IDX, at: .bottom, animated: true)
+            
+            updateMesg()
         }
     }
+    
+    
+    func updateMesg()  {
+        for (i,item) in YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.enumerated() {
+            if (item.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String ==  self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String) && self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.count > 0{
+                YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[i] = self.YACUAIOBVO_PROFILE_DATA
+            }
+        }
+        
+        if YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.filter({ YACUAIOBVO_COMMUEntity in
+            YACUAIOBVO_COMMUEntity.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String == self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String
+         }).count == 0  {
+            YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.insert(self.YACUAIOBVO_PROFILE_DATA, at: 0)
+        }
+    }
+    
 
     @objc private func YACUAIOBVO_ADJUST_FOR_KEYBOARD(notification: Notification) {
         guard let YACUAIOBVO_FRAME = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
@@ -212,12 +210,12 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return YACUAIOBVO_CHRONICLE_BUFFER.count
+        return self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let YACUAIOBVO_CELL = tableView.dequeueReusableCell(withIdentifier: "YACUAIOBVO_CHAT_NODE", for: indexPath) as! YACUAIOBVO_PulseChatCell
-        YACUAIOBVO_CELL.YACUAIOBVO_REFRESH_UI(with: YACUAIOBVO_CHRONICLE_BUFFER[indexPath.row])
+        YACUAIOBVO_CELL.YACUAIOBVO_REFRESH_UI(with: self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint[indexPath.row])
         return YACUAIOBVO_CELL
     }
 }
@@ -248,12 +246,12 @@ class YACUAIOBVO_PulseChatCell: UITableViewCell {
         YACUAIOBVO_CONTENT_TAG.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func YACUAIOBVO_REFRESH_UI(with YACUAIOBVO_ENTITY: YACUAIOBVO_NarrativeEntity) {
-        YACUAIOBVO_CONTENT_TAG.text = YACUAIOBVO_ENTITY.YACUAIOBVO_CONTENT
+    func YACUAIOBVO_REFRESH_UI(with YACUAIOBVO_ENTITY: YACUAIOBVO_ChatEntity) {
+        YACUAIOBVO_CONTENT_TAG.text = YACUAIOBVO_ENTITY.YACUAIOBVO_mescontent
         
         YACUAIOBVO_BUBBLE.constraints.forEach { YACUAIOBVO_BUBBLE.removeConstraint($0) }
         
-        if YACUAIOBVO_ENTITY.YACUAIOBVO_IS_NATIVE_ORIGIN {
+        if YACUAIOBVO_ENTITY.YACUAIOBVO_mesgisOTHER == false{
             YACUAIOBVO_BUBBLE.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
             YACUAIOBVO_CONTENT_TAG.textColor = .white
             NSLayoutConstraint.activate([

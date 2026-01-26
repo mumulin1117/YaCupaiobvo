@@ -8,17 +8,26 @@
 import UIKit
 
 struct YACUAIOBVO_ChatEntity {
-    let YACUAIOBVO_ID: String
-    let YACUAIOBVO_USER_NAME: String
-    let YACUAIOBVO_USER_MOTTO: String
-    let YACUAIOBVO_UNREAD_COUNT: Int
+    let YACUAIOBVO_mesgisOTHER:Bool
+    let YACUAIOBVO_mescontent: String
+    let YACUAIOBVO_mestimedate:Date
+    
+
+}
+
+struct YACUAIOBVO_COMMUEntity{
+    
+    let YACUAIOBVO_userinfo:Dictionary<String,Any>
+    
+    var YACUAIOBVO_chokint :[YACUAIOBVO_ChatEntity]
+    
 }
 
 class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private let YACUAIOBVO_TITLE_VIEW = UIImageView()
     private let YACUAIOBVO_LIST_BRIDGE = UITableView()
-    private var YACUAIOBVO_DATA_REPOSITORIES: [YACUAIOBVO_ChatEntity] = []
+//    private var YACUAIOBVO_DATA_REPOSITORIES: [YACUAIOBVO_COMMUEntity] = []
     private let YACUAIOBVO_REFRESH_CORE = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -37,7 +46,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
 
     private func YACUAIOBVO_INIT_ENVIRONMENT() {
         view.backgroundColor = .white
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_TRIGGER_NETWORK_SYNC), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
         YACUAIOBVO_TITLE_VIEW.image = UIImage(named: "YACUAIOBVO_MSG_LOGO")
         YACUAIOBVO_TITLE_VIEW.contentMode = .left
         YACUAIOBVO_TITLE_VIEW.translatesAutoresizingMaskIntoConstraints = false
@@ -68,29 +77,17 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     }
 
     @objc private func YACUAIOBVO_TRIGGER_NETWORK_SYNC() {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1.2) {
-            let YACUAIOBVO_MOCK_SET = [
-                YACUAIOBVO_ChatEntity(YACUAIOBVO_ID: "101", YACUAIOBVO_USER_NAME: "Haley James", YACUAIOBVO_USER_MOTTO: "Stand up for what you believe in", YACUAIOBVO_UNREAD_COUNT: 9),
-                YACUAIOBVO_ChatEntity(YACUAIOBVO_ID: "102", YACUAIOBVO_USER_NAME: "Nathan Scott", YACUAIOBVO_USER_MOTTO: "One day you're seventeen and planning for someday...", YACUAIOBVO_UNREAD_COUNT: 0),
-                YACUAIOBVO_ChatEntity(YACUAIOBVO_ID: "103", YACUAIOBVO_USER_NAME: "Brooke Davis", YACUAIOBVO_USER_MOTTO: "I am who I am. No excuses.", YACUAIOBVO_UNREAD_COUNT: 2),
-                YACUAIOBVO_ChatEntity(YACUAIOBVO_ID: "104", YACUAIOBVO_USER_NAME: "Jamie Scott", YACUAIOBVO_USER_MOTTO: "Some people are a little different. I think that's cool.", YACUAIOBVO_UNREAD_COUNT: 0)
-            ]
-            
-            DispatchQueue.main.async {
-                self.YACUAIOBVO_DATA_REPOSITORIES = YACUAIOBVO_MOCK_SET
-                self.YACUAIOBVO_LIST_BRIDGE.reloadData()
-                self.YACUAIOBVO_REFRESH_CORE.endRefreshing()
-            }
-        }
+        self.YACUAIOBVO_LIST_BRIDGE.reloadData()
+        self.YACUAIOBVO_REFRESH_CORE.endRefreshing()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return YACUAIOBVO_DATA_REPOSITORIES.count
+        return YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let YACUAIOBVO_CELL = tableView.dequeueReusableCell(withIdentifier: "YACUAIOBVO_MSG_NODE", for: indexPath) as! YACUAIOBVO_MessageParcelCell
-        let YACUAIOBVO_ITEM = YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
+        let YACUAIOBVO_ITEM = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
         YACUAIOBVO_CELL.YACUAIOBVO_BIND_DATA(YACUAIOBVO_ITEM)
         return YACUAIOBVO_CELL
     }
@@ -100,8 +97,8 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let chatringVc =  YACUAIOBVO_PulseChatRoom.init(YACUAIOBVO_PROFILE_DATA: [:])
+        let YACUAIOBVO_ITEM = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
+        let chatringVc =  YACUAIOBVO_PulseChatRoom.init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_ITEM)
         chatringVc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(chatringVc, animated: true)
     }

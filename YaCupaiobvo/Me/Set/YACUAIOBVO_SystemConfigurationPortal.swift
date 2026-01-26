@@ -39,7 +39,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_PREFERENCE_LIST.isScrollEnabled = false
         YACUAIOBVO_PREFERENCE_LIST.separatorStyle = .singleLine
         YACUAIOBVO_PREFERENCE_LIST.register(UITableViewCell.self, forCellReuseIdentifier: "YACUAIOBVO_PREF_NODE")
-        
+        YACUAIOBVO_EXIT_SESSION_PILOT.addTarget(self, action: #selector(YACUAIOBVO_EXIT_SESSION_logout), for: .touchUpInside)
         YACUAIOBVO_EXIT_SESSION_PILOT.setTitle("Log Out", for: .normal)
         YACUAIOBVO_EXIT_SESSION_PILOT.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         YACUAIOBVO_EXIT_SESSION_PILOT.setTitleColor(.gray, for: .normal)
@@ -54,6 +54,15 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.addTarget(self, action: #selector(YACUAIOBVO_TRIGGER_TERMINATION_FLOW), for: .touchUpInside)
     }
 
+   @objc func YACUAIOBVO_EXIT_SESSION_logout()  {
+       YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE = nil
+       YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES  = []
+       YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_TERMINATE_SESSION()
+       let YACUAIOBVO_LOGIN_FLOW = YACUAIOBVO_AccessPortalController()
+                 
+       let YACUAIOBVO_NAV_CONTAINER = UINavigationController(rootViewController: YACUAIOBVO_LOGIN_FLOW)
+       ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = YACUAIOBVO_NAV_CONTAINER
+    }
     private func YACUAIOBVO_CONSTRUCT_LAYOUT_HIERARCHY() {
         [YACUAIOBVO_RETREAT_TRIGGER, YACUAIOBVO_TOP_HEADING, YACUAIOBVO_PREFERENCE_LIST,
          YACUAIOBVO_EXIT_SESSION_PILOT, YACUAIOBVO_TERMINATE_ACCOUNT_PILOT].forEach {
@@ -94,23 +103,24 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_MODAL.modalPresentationStyle = .overFullScreen
         YACUAIOBVO_MODAL.modalTransitionStyle = .crossDissolve
         YACUAIOBVO_MODAL.YACUAIOBVO_CONFIRM_BLOCK = { [weak self] in
-            self?.YACUAIOBVO_EXECUTE_DATA_WIPE_SIM()
+            YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_ERASE_ACCOUNT()
+            self?.YACUAIOBVO_EXIT_SESSION_logout()
         }
         present(YACUAIOBVO_MODAL, animated: true)
     }
     
-    private func YACUAIOBVO_EXECUTE_DATA_WIPE_SIM() {
-        let YACUAIOBVO_LOADER = UIActivityIndicatorView(style: .medium)
-        YACUAIOBVO_LOADER.center = view.center
-        view.addSubview(YACUAIOBVO_LOADER)
-        YACUAIOBVO_LOADER.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            YACUAIOBVO_LOADER.stopAnimating()
-            UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-            exit(0)
-        }
-    }
+//    private func YACUAIOBVO_EXECUTE_DATA_WIPE_SIM() {
+//        let YACUAIOBVO_LOADER = UIActivityIndicatorView(style: .medium)
+//        YACUAIOBVO_LOADER.center = view.center
+//        view.addSubview(YACUAIOBVO_LOADER)
+//        YACUAIOBVO_LOADER.startAnimating()
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//            YACUAIOBVO_LOADER.stopAnimating()
+//            UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+//            exit(0)
+//        }
+//    }
 }
 
 extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableViewDataSource {
@@ -144,6 +154,8 @@ extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableView
             YACUAIOBVOvc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
         }
+        
+        
     }
 }
 

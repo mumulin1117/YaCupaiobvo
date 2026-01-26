@@ -78,7 +78,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_VISIBILITY_TOGGLE.addTarget(self, action: #selector(YACUAIOBVO_SWITCH_SECRET_MASK), for: .touchUpInside)
         YACUAIOBVO_SECRET_FIELD.rightView = YACUAIOBVO_VISIBILITY_TOGGLE
         YACUAIOBVO_SECRET_FIELD.rightViewMode = .always
-        
+        YACUAIOBVO_RECOVERY_LINK.numberOfLines = 2
         YACUAIOBVO_RECOVERY_LINK.text = "If you don't have an account, we will create one for you automatically"
         YACUAIOBVO_RECOVERY_LINK.textColor = .systemBlue
         

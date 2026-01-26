@@ -203,9 +203,19 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
      }
     @objc func YACUAIOBVO_ACTION_MESSAGE() {
-        let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: self.YACUAIOBVO_PROFILE_DATA)
+        if  let YACUAIOBVO_ITEM = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.filter({ YACUAIOBVO_COMMUEntity in
+            YACUAIOBVO_COMMUEntity.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String == self.YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String
+        }).first {
+            let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_ITEM)
+            YACUAIOBVOvc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
+            return
+      }
+        let newset = YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: self.YACUAIOBVO_PROFILE_DATA, YACUAIOBVO_chokint: [])
+        let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: newset)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
+        
      }
     
     

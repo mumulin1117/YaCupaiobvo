@@ -45,15 +45,15 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
     
     private let YACUAIOBVO_CONFIRM_ACTION_PILOT = UIButton()
     
-    var YACUAIOBVO_EXISTING_NAME: String = ""
-    var YACUAIOBVO_EXISTING_BIO: String = ""
-    var YACUAIOBVO_EXISTING_PORTRAIT: UIImage?
+//    var YACUAIOBVO_EXISTING_NAME: String = ""
+//    var YACUAIOBVO_EXISTING_BIO: String = ""
+//    var YACUAIOBVO_EXISTING_PORTRAIT: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVO_PREPARE_CANVAS()
         YACUAIOBVO_LAYOUT_COMPONENTS()
-        YACUAIOBVO_INJECT_INITIAL_DATA()
+//        YACUAIOBVO_INJECT_INITIAL_DATA()
     }
 
     private func YACUAIOBVO_PREPARE_CANVAS() {
@@ -74,15 +74,17 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         YACUAIOBVO_AVATAR_PREVIEW.layer.cornerRadius = 60
         YACUAIOBVO_AVATAR_PREVIEW.clipsToBounds = true
         YACUAIOBVO_AVATAR_PREVIEW.contentMode = .scaleAspectFill
-        YACUAIOBVO_AVATAR_PREVIEW.image = UIImage(systemName: "person.fill")
+        YACUAIOBVO_AVATAR_PREVIEW.image = UIImage(named: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVO_av_1")
         YACUAIOBVO_AVATAR_PREVIEW.tintColor = UIColor(red: 1.0, green: 0.6, blue: 0.55, alpha: 1.0)
         
         YACUAIOBVO_AVATAR_PICKER_ENTRY.addTarget(self, action: #selector(YACUAIOBVO_MEDIA_HUB_OPEN), for: .touchUpInside)
         
-        YACUAIOBVO_NAME_FIELD_TITLE.text = "User name"
+        YACUAIOBVO_NAME_FIELD_TITLE.text = "User Name"
         YACUAIOBVO_NAME_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
         YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = "Give a name"
+        
+        YACUAIOBVO_NAME_INPUT_WRAPPER.text = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_NICKNAME
         YACUAIOBVO_NAME_INPUT_WRAPPER.borderStyle = .roundedRect
         YACUAIOBVO_NAME_INPUT_WRAPPER.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         
@@ -94,7 +96,7 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         YACUAIOBVO_BIO_TEXT_STATION.layer.borderColor = UIColor.systemGray4.cgColor
         YACUAIOBVO_BIO_TEXT_STATION.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         YACUAIOBVO_BIO_TEXT_STATION.font = UIFont.systemFont(ofSize: 15)
-        
+        YACUAIOBVO_BIO_TEXT_STATION.text = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BIO_TEXT
         YACUAIOBVO_CONFIRM_ACTION_PILOT.setTitle("Start", for: .normal)
         YACUAIOBVO_CONFIRM_ACTION_PILOT.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
         YACUAIOBVO_CONFIRM_ACTION_PILOT.setTitleColor(.white, for: .normal)
@@ -150,13 +152,13 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         ])
     }
 
-    private func YACUAIOBVO_INJECT_INITIAL_DATA() {
-        YACUAIOBVO_NAME_INPUT_WRAPPER.text = YACUAIOBVO_EXISTING_NAME
-        YACUAIOBVO_BIO_TEXT_STATION.text = YACUAIOBVO_EXISTING_BIO
-        if let YACUAIOBVO_IMG = YACUAIOBVO_EXISTING_PORTRAIT {
-            YACUAIOBVO_AVATAR_PREVIEW.image = YACUAIOBVO_IMG
-        }
-    }
+//    private func YACUAIOBVO_INJECT_INITIAL_DATA() {
+//        YACUAIOBVO_NAME_INPUT_WRAPPER.text = YACUAIOBVO_EXISTING_NAME
+//        YACUAIOBVO_BIO_TEXT_STATION.text = YACUAIOBVO_EXISTING_BIO
+//        if let YACUAIOBVO_IMG = YACUAIOBVO_EXISTING_PORTRAIT {
+//            YACUAIOBVO_AVATAR_PREVIEW.image = YACUAIOBVO_IMG
+//        }
+//    }
 
     @objc private func YACUAIOBVO_MEDIA_HUB_OPEN() {
         let YACUAIOBVO_PICKER = UIImagePickerController()

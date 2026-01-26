@@ -11,10 +11,15 @@ enum YACUAIOBVO_SOCIAL_SCOPE {
     case YACUAIOBVO_FANS
     case YACUAIOBVO_FOLLOWING
     case YACUAIOBVO_RESTRICTED_ZONE
+    case YACUAIOBVO_RESTRICTED_post
+    case YACUAIOBVO_RESTRICTED_like
 }
 
 class YACUAIOBVO_SocialConnectionPortal: UIViewController {
-
+    private let YACUAIOBVO_EMPTY_SHADOW = UIImageView()
+    
+    
+    
     var YACUAIOBVO_ACTIVE_SCOPE: YACUAIOBVO_SOCIAL_SCOPE = .YACUAIOBVO_FANS
     init(YACUAIOBVO_ACTIVE_SCOPE: YACUAIOBVO_SOCIAL_SCOPE) {
         self.YACUAIOBVO_ACTIVE_SCOPE = YACUAIOBVO_ACTIVE_SCOPE
@@ -31,7 +36,7 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
     private let YACUAIOBVO_DATA_STREAM = UITableView()
     private let YACUAIOBVO_REFRESH_ENGINE = UIRefreshControl()
     
-    private var YACUAIOBVO_ENTITY_COLLECTION: [YACUAIOBVO_SocialEntity] = []
+    private var YACUAIOBVO_ENTITY_COLLECTION: [Dictionary<String,Any>] = []
 
     struct YACUAIOBVO_SocialEntity {
         let YACUAIOBVO_UID: String
@@ -45,6 +50,11 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         YACUAIOBVO_INITIALIZE_CANVAS()
         YACUAIOBVO_CONSTRUCT_HIERARCHY()
         YACUAIOBVO_TRIGGER_NETWORK_FETCH()
+        
+        YACUAIOBVO_EMPTY_SHADOW.image = UIImage(named: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
+               
+        YACUAIOBVO_EMPTY_SHADOW.contentMode = .scaleAspectFit
+        YACUAIOBVO_EMPTY_SHADOW.isHidden = true
     }
 
     private func YACUAIOBVO_INITIALIZE_CANVAS() {
@@ -55,10 +65,55 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         YACUAIOBVO_RETREAT_LINK.addTarget(self, action: #selector(YACUAIOBVO_INVOKE_RETREAT), for: .touchUpInside)
         
         switch YACUAIOBVO_ACTIVE_SCOPE {
-        case .YACUAIOBVO_FANS: YACUAIOBVO_SCOPE_TITLE.text = "Fans"
-        case .YACUAIOBVO_FOLLOWING: YACUAIOBVO_SCOPE_TITLE.text = "Following"
-        case .YACUAIOBVO_RESTRICTED_ZONE: YACUAIOBVO_SCOPE_TITLE.text = "Blocklist"
+        case .YACUAIOBVO_FANS: 
+            YACUAIOBVO_SCOPE_TITLE.text = "Fans"
+        case .YACUAIOBVO_FOLLOWING: 
+            YACUAIOBVO_SCOPE_TITLE.text = "Following"
+            // 1. 获取当前用户关注的 ID 集合 (Set<String>)
+            guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
+                print("未登录或关注列表为空")
+                return
+            }
+
+            // 2. 从全局数据源 YACUAIOBVO_user_datas 中筛选
+            // 逻辑：遍历所有用户，如果该用户的 ID 存在于关注集合中，则保留
+            let YACUAIOBVO_MY_FOLLOWING_USERS = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
+                if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as?  String {
+                    return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)
+                }
+                return false
+            }
+
+            // 此时 YACUAIOBVO_MY_FOLLOWING_USERS 就是你关注的所有用户的详细信息列表
+            // 你可以将它直接赋值给 TableView 的数据源
+            YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
+        case .YACUAIOBVO_RESTRICTED_ZONE:
+            YACUAIOBVO_SCOPE_TITLE.text = "Blocklist"
+        
+            guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET else {
+                return
+            }
+
+            let YACUAIOBVO_MY_FOLLOWING_USERS = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
+                if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as?  String {
+                    return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)
+                }
+                return false
+            }
+
+            YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
+            
+        case .YACUAIOBVO_RESTRICTED_post:
+            YACUAIOBVO_SCOPE_TITLE.text = "My Post"
+            YACUAIOBVO_ENTITY_COLLECTION = []
+        case .YACUAIOBVO_RESTRICTED_like:
+            YACUAIOBVO_SCOPE_TITLE.text = "My Like"
+            YACUAIOBVO_ENTITY_COLLECTION = []
         }
+        
+        
+        YACUAIOBVO_SYNC_VISUAL_STATE()
+        
         YACUAIOBVO_SCOPE_TITLE.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_DATA_STREAM.delegate = self
@@ -71,7 +126,7 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
     }
 
     private func YACUAIOBVO_CONSTRUCT_HIERARCHY() {
-        [YACUAIOBVO_RETREAT_LINK, YACUAIOBVO_SCOPE_TITLE, YACUAIOBVO_DATA_STREAM].forEach {
+        [YACUAIOBVO_RETREAT_LINK, YACUAIOBVO_SCOPE_TITLE, YACUAIOBVO_DATA_STREAM,YACUAIOBVO_EMPTY_SHADOW].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
@@ -86,19 +141,36 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
             YACUAIOBVO_DATA_STREAM.topAnchor.constraint(equalTo: YACUAIOBVO_RETREAT_LINK.bottomAnchor, constant: 20),
             YACUAIOBVO_DATA_STREAM.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             YACUAIOBVO_DATA_STREAM.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            YACUAIOBVO_DATA_STREAM.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            YACUAIOBVO_DATA_STREAM.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            YACUAIOBVO_EMPTY_SHADOW.centerXAnchor.constraint(equalTo: YACUAIOBVO_DATA_STREAM.centerXAnchor),
+                        YACUAIOBVO_EMPTY_SHADOW.centerYAnchor.constraint(equalTo: YACUAIOBVO_DATA_STREAM.centerYAnchor),
+                        YACUAIOBVO_EMPTY_SHADOW.widthAnchor.constraint(equalToConstant: 200),
+                        YACUAIOBVO_EMPTY_SHADOW.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 
+    
+    private func YACUAIOBVO_SYNC_VISUAL_STATE() {
+            let YACUAIOBVO_IS_EMPTY = YACUAIOBVO_ENTITY_COLLECTION.isEmpty
+            
+            // 使用简单的动画切换显示状态，增加质感
+            UIView.animate(withDuration: 0.25) {
+                self.YACUAIOBVO_EMPTY_SHADOW.alpha = YACUAIOBVO_IS_EMPTY ? 1.0 : 0.0
+                self.YACUAIOBVO_DATA_STREAM.alpha = YACUAIOBVO_IS_EMPTY ? 0.0 : 1.0
+            } completion: { _ in
+                self.YACUAIOBVO_EMPTY_SHADOW.isHidden = !YACUAIOBVO_IS_EMPTY
+            }
+        }
+    
     @objc private func YACUAIOBVO_TRIGGER_NETWORK_FETCH() {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.2) {
-            let YACUAIOBVO_MOCK_DATA = [
-                YACUAIOBVO_SocialEntity(YACUAIOBVO_UID: "101", YACUAIOBVO_ALIAS: "Haley James", YACUAIOBVO_PORTRAIT_PATH: "p1", YACUAIOBVO_INTERACT_STATUS: false),
-                YACUAIOBVO_SocialEntity(YACUAIOBVO_UID: "102", YACUAIOBVO_ALIAS: "Nathan Scott", YACUAIOBVO_PORTRAIT_PATH: "p2", YACUAIOBVO_INTERACT_STATUS: true)
-            ]
+//            let YACUAIOBVO_MOCK_DATA = [
+//                YACUAIOBVO_SocialEntity(YACUAIOBVO_UID: "101", YACUAIOBVO_ALIAS: "Haley James", YACUAIOBVO_PORTRAIT_PATH: "p1", YACUAIOBVO_INTERACT_STATUS: false),
+//                YACUAIOBVO_SocialEntity(YACUAIOBVO_UID: "102", YACUAIOBVO_ALIAS: "Nathan Scott", YACUAIOBVO_PORTRAIT_PATH: "p2", YACUAIOBVO_INTERACT_STATUS: true)
+//            ]
             
             DispatchQueue.main.async {
-                self.YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MOCK_DATA
+//                self.YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MOCK_DATA
                 self.YACUAIOBVO_DATA_STREAM.reloadData()
                 self.YACUAIOBVO_REFRESH_ENGINE.endRefreshing()
             }
@@ -128,7 +200,7 @@ extension YACUAIOBVO_SocialConnectionPortal: UITableViewDelegate, UITableViewDat
     }
     
     private func YACUAIOBVO_HANDLE_LOCAL_INTERACTION(at indexPath: IndexPath) {
-        YACUAIOBVO_ENTITY_COLLECTION[indexPath.row].YACUAIOBVO_INTERACT_STATUS.toggle()
+//        YACUAIOBVO_ENTITY_COLLECTION[indexPath.row].YACUAIOBVO_INTERACT_STATUS.toggle()
         YACUAIOBVO_DATA_STREAM.reloadRows(at: [indexPath], with: .fade)
     }
 }
@@ -181,22 +253,24 @@ class YACUAIOBVO_SocialNodeCell: UITableViewCell {
         ])
     }
 
-    func YACUAIOBVO_CONFIG_NODE(_ YACUAIOBVO_DATA: YACUAIOBVO_SocialConnectionPortal.YACUAIOBVO_SocialEntity, YACUAIOBVO_SCOPE: YACUAIOBVO_SOCIAL_SCOPE) {
-        YACUAIOBVO_NAME_DISPLAY.text = YACUAIOBVO_DATA.YACUAIOBVO_ALIAS
-        YACUAIOBVO_AVATAR_FRAME.image = UIImage(systemName: "person.circle.fill") // Placeholder
+    func YACUAIOBVO_CONFIG_NODE(_ YACUAIOBVO_DATA: Dictionary<String,Any>, YACUAIOBVO_SCOPE: YACUAIOBVO_SOCIAL_SCOPE) {
+        YACUAIOBVO_NAME_DISPLAY.text = YACUAIOBVO_DATA["YACUAIOBVO_NICKNAME"] as? String
+        YACUAIOBVO_AVATAR_FRAME.image = UIImage(named: YACUAIOBVO_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "") // Placeholder
         
         switch YACUAIOBVO_SCOPE {
         case .YACUAIOBVO_FANS, .YACUAIOBVO_FOLLOWING:
-            if YACUAIOBVO_DATA.YACUAIOBVO_INTERACT_STATUS {
-                YACUAIOBVO_STATE_TRIGGER.setTitle("Followed", for: .normal)
-                YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
-                YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
-            } else {
-                YACUAIOBVO_STATE_TRIGGER.setTitle("Follow", for: .normal)
-                YACUAIOBVO_STATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
-                YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
-            }
+            YACUAIOBVO_STATE_TRIGGER.setTitle("Followed", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
+            YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_ZONE:
+            YACUAIOBVO_STATE_TRIGGER.setTitle("Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
+            YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
+        case .YACUAIOBVO_RESTRICTED_post:
+            YACUAIOBVO_STATE_TRIGGER.setTitle("Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
+            YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
+        case .YACUAIOBVO_RESTRICTED_like:
             YACUAIOBVO_STATE_TRIGGER.setTitle("Remove", for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)

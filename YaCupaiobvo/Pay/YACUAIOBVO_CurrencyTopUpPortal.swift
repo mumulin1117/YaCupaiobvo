@@ -35,6 +35,7 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
         YACUAIOBVO_PREPARE_DATA_SOURCE()
         YACUAIOBVO_CONSTRUCT_SCENE()
         YACUAIOBVO_SYNC_LOCAL_LEDGER()
+        self.YACUAIOBVO_BALANCE_LBL.text = "\(YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_WALLET_BALANCE ?? 0)"
     }
     deinit {
             SKPaymentQueue.default().remove(self)
@@ -173,6 +174,12 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
 //        YACUAIOBVO_INITIATE_PROCUREMENT(YACUAIOBVO_TARGET)
 //    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+#if DEBUG
+        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_ACQUIRE_CREDITS(YACUAIOBVO_VAL: 1000)
+        self.YACUAIOBVO_BALANCE_LBL.text = "\(YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_WALLET_BALANCE ?? 0)"
+        #else
+#endif
             guard indexPath.row < YACUAIOBVO_SK_ENTITIES.count else { return }
             let YACUAIOBVO_PRODUCT_TARGET = YACUAIOBVO_SK_ENTITIES[indexPath.row]
             YACUAIOBVO_EXECUTE_OFFICIAL_PURCHASE(YACUAIOBVO_PRODUCT_TARGET)

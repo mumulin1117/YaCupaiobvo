@@ -25,7 +25,10 @@ struct YACUAIOBVO_IdentityModel: Codable {
 // MARK: - 核心逻辑控制中枢
 class YACUAIOBVO_CoreSystem {
     
+    
     static let YACUAIOBVO_HUB = YACUAIOBVO_CoreSystem()
+    
+     var YACUAIOBVO_DATA_REPOSITORIES: [YACUAIOBVO_COMMUEntity] = []
     
     private let YACUAIOBVO_STORAGE = UserDefaults.standard
     private let YACUAIOBVO_KEY_SESSION = "YACUAIOBVO_USER_STORAGE_INDEX"
@@ -48,9 +51,22 @@ class YACUAIOBVO_CoreSystem {
             YACUAIOBVO_AVATAR_REF: YACUAIOBVO_IS_TEST ? "YACUAIOBVO_p1" : "YACUAIOBVOAvatar",
             YACUAIOBVO_BIO_TEXT: YACUAIOBVO_IS_TEST ? "Professional stylist based in Paris. Love vintage looks." : "Hey there! Using Pulse.",
             YACUAIOBVO_WALLET_BALANCE: YACUAIOBVO_IS_TEST ? 888 : 0,
-            YACUAIOBVO_FANS_SET: YACUAIOBVO_IS_TEST ? ["UID_1", "UID_2", "UID_3"] : []
+            YACUAIOBVO_FOLLOWING_SET: YACUAIOBVO_IS_TEST ? ["user_007", "user_006"] : [],
+            
+            YACUAIOBVO_FANS_SET: YACUAIOBVO_IS_TEST ? ["user_009"] : []
         )
-        
+        if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
+            let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
+            
+            let demouserCh1 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
+            YACUAIOBVO_DATA_REPOSITORIES = [
+                
+                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
+                
+                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
+                
+            ]
+        }
         YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_NEW_MODEL
         YACUAIOBVO_INTERNAL_SYNC()
     }
@@ -101,6 +117,15 @@ class YACUAIOBVO_CoreSystem {
         if !YACUAIOBVO_P.YACUAIOBVO_BLOCK_SET.contains(YACUAIOBVO_T_ID) {
             YACUAIOBVO_P.YACUAIOBVO_BLOCK_SET.insert(YACUAIOBVO_T_ID)
             YACUAIOBVO_P.YACUAIOBVO_FOLLOWING_SET.remove(YACUAIOBVO_T_ID)
+            
+           
+        }
+        for (i,item) in self.YACUAIOBVO_DATA_REPOSITORIES.enumerated() {
+            if item.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String ==  YACUAIOBVO_T_ID{
+                self.YACUAIOBVO_DATA_REPOSITORIES.remove(at: i)
+                print("-------------remove----------")
+                print(self.YACUAIOBVO_DATA_REPOSITORIES)
+            }
         }
         NotificationCenter.default.post(name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
         YACUAIOBVO_UPDATE_NODE(YACUAIOBVO_P)
@@ -140,9 +165,25 @@ class YACUAIOBVO_CoreSystem {
     }
 
     private func YACUAIOBVO_INTERNAL_LOAD() {
+        print("-------------init----------")
         if let YACUAIOBVO_RAW = YACUAIOBVO_STORAGE.data(forKey: YACUAIOBVO_KEY_SESSION),
            let YACUAIOBVO_DE = try? JSONDecoder().decode(YACUAIOBVO_IdentityModel.self, from: YACUAIOBVO_RAW) {
             YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_DE
+            
+            if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
+                let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
+                
+                let demouserCh1 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
+                YACUAIOBVO_DATA_REPOSITORIES = [
+                    
+                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
+                    
+                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
+                    
+                ]
+            }
+           
+            
         }
     }
 }

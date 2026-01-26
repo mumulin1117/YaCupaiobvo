@@ -8,13 +8,23 @@
 import UIKit
 import PhotosUI
 //AI Start
-class YACUAIOBVOGlassVisionController: UIViewController {
+class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughControllerDelegate {
+    func unlockTag(page: Int) {
+        
+    }
+    
+    func tpPurchase() {
+        let paugecon  = YACUAIOBVO_CurrencyTopUpPortal()
+        paugecon.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(paugecon, animated: true)
+    }
+    
     private let YACUAIOBVO_BACK_TRIGGER = UIButton()
     
     private var YACUAIOBVORecordimge:UIImage?
     
     
-    private var YACUAIOBVOAccountPulse: Int = 1000 // Mock Balance
+   
     private let YACUAIOBVOTariff: Int = 300
     
     private let YACUAIOBVOEtherealBackdrop: UIImageView = {
@@ -126,26 +136,31 @@ class YACUAIOBVOGlassVisionController: UIViewController {
     }
     
     @objc private func YACUAIOBVOValidateTransaction() {
-        if YACUAIOBVOAccountPulse >= YACUAIOBVOTariff {
-            YACUAIOBVOExecuteCrystalProcessing()
+        
+        guard let result = self.YACUAIOBVORecordimge else {
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Upload your sunglasses picture first!", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            
+            return
+        }
+        
+        if YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_EXPEND_CREDITS(YACUAIOBVO_VAL: YACUAIOBVOTariff) {
+            YACUAIOBVOExecuteCrystalProcessing(result: result)
         } else {
             let YACUAIOBVOAlert = YACUAIOBVOBNotEnoughController(checkingType: .tipsinfluence)
             YACUAIOBVOAlert.modalPresentationStyle = .overCurrentContext
+            YACUAIOBVOAlert.delegate = self
             self.present(YACUAIOBVOAlert, animated: true)
         }
     }
     
-    private func YACUAIOBVOExecuteCrystalProcessing() {
+    private func YACUAIOBVOExecuteCrystalProcessing(result:UIImage) {
         
-        guard let result = self.YACUAIOBVORecordimge else {
-            return
-        }
+       
         YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
             
-            self.YACUAIOBVOAccountPulse -= self.YACUAIOBVOTariff
             let YACUAIOBVOResult = YACUAIOBVOPairingOutcomeController(YACUAIOBVO_uiiage: result)
             self.navigationController?.pushViewController(YACUAIOBVOResult, animated: true)
         }

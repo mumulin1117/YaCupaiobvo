@@ -14,13 +14,24 @@ struct YACUAIOBVO_UserMetric {
     let YACUAIOBVO_FANS_TOTAL: String
 }
 
-class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource, YACUAIOBVO_IdentityUpdateProtocol {
+    func YACUAIOBVO_DID_FINISH_MODIFICATION(YACUAIOBVO_NEW_NAME: String, YACUAIOBVO_NEW_BIO: String, YACUAIOBVO_NEW_IMAGE: UIImage?) {
+        YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_BIO_TEXT.text = YACUAIOBVO_NEW_BIO
+        YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_PORTRAIT_VIEW.image = YACUAIOBVO_NEW_IMAGE
+        YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_NICKNAME_LABEL.text = YACUAIOBVO_NEW_NAME
+    }
+    
+    let YACUAIOBVO_HEAD_WRAPPER = YACUAIOBVO_ProfileHeaderModule()
     private let YACUAIOBVO_SCROLLER = UITableView(frame: .zero, style: .grouped)
     private let YACUAIOBVO_TOP_SETTING_ICON = UIButton(type: .system)
-    private var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_UserMetric?
-    private let YACUAIOBVO_OPTION_POOL = ["Wallet", "My Posts", "My Likes", "My Match"]
+//    private var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_UserMetric?
+    private let YACUAIOBVO_OPTION_POOL = ["Wallet", "My Posts", "My Likes"]
 
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        YACUAIOBVO_SCROLLER.reloadData()
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         YACUAIOBVO_BUILD_PRIMARY_SCENE()
@@ -59,14 +70,14 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
 
     private func YACUAIOBVO_FETCH_REMOTE_METRICS() {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
-            let YACUAIOBVO_SYNC_OBJECT = YACUAIOBVO_UserMetric(
-                YACUAIOBVO_DISPLAY_NAME: "Anna Smith",
-                YACUAIOBVO_SIGNATURE_TEXT: "Say something to introduce yourself.",
-                YACUAIOBVO_FOLLOW_TOTAL: "1.2k",
-                YACUAIOBVO_FANS_TOTAL: "0"
-            )
+//            let YACUAIOBVO_SYNC_OBJECT = YACUAIOBVO_UserMetric(
+//                YACUAIOBVO_DISPLAY_NAME: "Anna Smith",
+//                YACUAIOBVO_SIGNATURE_TEXT: "Say something to introduce yourself.",
+//                YACUAIOBVO_FOLLOW_TOTAL: "1.2k",
+//                YACUAIOBVO_FANS_TOTAL: "0"
+//            )
             DispatchQueue.main.async {
-                self.YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_SYNC_OBJECT
+//                self.YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_SYNC_OBJECT
                 self.YACUAIOBVO_SCROLLER.reloadData()
             }
         }
@@ -83,13 +94,15 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let YACUAIOBVO_HEAD_WRAPPER = YACUAIOBVO_ProfileHeaderModule()
+        
+        
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_EDIT_ICON.addTarget(self, action: #selector(YACUAIOBVOsuperBneisu), for: .touchUpInside)
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_FOLLOW_TAG.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVOsuperTosharet(atpVire:))))
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_FANS_TAG.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVOsuperTosharet(atpVire:))))
-        if let YACUAIOBVO_INFO = YACUAIOBVO_CURRENT_PROFILE {
+        if let YACUAIOBVO_INFO = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE {
             YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_UPDATE_IDENTITY(YACUAIOBVO_INFO)
         }
+       
         return YACUAIOBVO_HEAD_WRAPPER
     }
    @objc func YACUAIOBVOsuperTosharet(atpVire:UITapGestureRecognizer)  {
@@ -113,9 +126,21 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            self.navigationController?.pushViewController(YACUAIOBVO_CurrencyTopUpPortal(), animated: true)
-        }else if indexPath.row == 1{
-            
+            let ananlsizxe = YACUAIOBVO_CurrencyTopUpPortal()
+            ananlsizxe.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(ananlsizxe, animated: true)
+        }
+        
+        if indexPath.row == 1 {
+            let YACUAIOBVOvc =  YACUAIOBVO_SocialConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_post)
+            YACUAIOBVOvc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
+        }
+        
+        if indexPath.row == 2 {
+            let YACUAIOBVOvc =  YACUAIOBVO_SocialConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_like)
+            YACUAIOBVOvc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
         }
         
        
@@ -124,16 +149,17 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
    @objc func YACUAIOBVOsuperBneisu()  {
        let YACUAIOBVOvc = YACUAIOBVO_IdentityEditorPortal()
        YACUAIOBVOvc.hidesBottomBarWhenPushed = true
+       YACUAIOBVOvc.YACUAIOBVO_DELEGATE = self
        self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
     }
 }
 
 class YACUAIOBVO_ProfileHeaderModule: UIView {
     
-    private let YACUAIOBVO_PORTRAIT_VIEW = UIImageView()
-    private let YACUAIOBVO_NICKNAME_LABEL = UILabel()
+     let YACUAIOBVO_PORTRAIT_VIEW = UIImageView()
+     let YACUAIOBVO_NICKNAME_LABEL = UILabel()
      let YACUAIOBVO_EDIT_ICON = UIButton()
-    private let YACUAIOBVO_BIO_TEXT = UILabel()
+     let YACUAIOBVO_BIO_TEXT = UILabel()
     private let YACUAIOBVO_FOLLOW_COUNT = UILabel()
     private let YACUAIOBVO_FANS_COUNT = UILabel()
      let YACUAIOBVO_FOLLOW_TAG = UILabel()
@@ -206,15 +232,17 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
             YACUAIOBVO_EDIT_ICON.heightAnchor.constraint(equalToConstant: 22),
             
             YACUAIOBVO_BIO_TEXT.topAnchor.constraint(equalTo: YACUAIOBVO_NICKNAME_LABEL.bottomAnchor, constant: 8),
-            YACUAIOBVO_BIO_TEXT.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
+            YACUAIOBVO_BIO_TEXT.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            YACUAIOBVO_BIO_TEXT.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
     
-    func YACUAIOBVO_UPDATE_IDENTITY(_ YACUAIOBVO_DATA: YACUAIOBVO_UserMetric) {
-        YACUAIOBVO_NICKNAME_LABEL.text = YACUAIOBVO_DATA.YACUAIOBVO_DISPLAY_NAME
-        YACUAIOBVO_BIO_TEXT.text = YACUAIOBVO_DATA.YACUAIOBVO_SIGNATURE_TEXT
-        YACUAIOBVO_FOLLOW_COUNT.text = YACUAIOBVO_DATA.YACUAIOBVO_FOLLOW_TOTAL
-        YACUAIOBVO_FANS_COUNT.text = YACUAIOBVO_DATA.YACUAIOBVO_FANS_TOTAL
+    func YACUAIOBVO_UPDATE_IDENTITY(_ YACUAIOBVO_DATA: YACUAIOBVO_IdentityModel) {
+        YACUAIOBVO_NICKNAME_LABEL.text = YACUAIOBVO_DATA.YACUAIOBVO_NICKNAME
+        YACUAIOBVO_BIO_TEXT.text = YACUAIOBVO_DATA.YACUAIOBVO_BIO_TEXT
+        YACUAIOBVO_FOLLOW_COUNT.text = "\(YACUAIOBVO_DATA.YACUAIOBVO_FOLLOWING_SET.count)"
+        YACUAIOBVO_FANS_COUNT.text = "0"
+        YACUAIOBVO_PORTRAIT_VIEW.image = UIImage(named: YACUAIOBVO_DATA.YACUAIOBVO_AVATAR_REF)
     }
 }
 
