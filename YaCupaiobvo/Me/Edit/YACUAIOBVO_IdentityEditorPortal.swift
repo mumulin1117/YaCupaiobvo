@@ -67,7 +67,7 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         YACUAIOBVO_DISMISS_TRIGGER.tintColor = .black
         YACUAIOBVO_DISMISS_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_BACK_INVOKED), for: .touchUpInside)
         
-        YACUAIOBVO_PAGE_SUBJECT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fill in the information"
+        YACUAIOBVO_PAGE_SUBJECT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Af8A/GMNOm8I1FrLahhy5/bx5bqzi0wpFgsQoHXghRdZ6GIRhNvh9GW+r+e3e0NvDbKDzJnjQg==")
         YACUAIOBVO_PAGE_SUBJECT.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_AVATAR_PREVIEW.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.9, alpha: 1.0)
@@ -79,16 +79,16 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         
         YACUAIOBVO_AVATAR_PICKER_ENTRY.addTarget(self, action: #selector(YACUAIOBVO_MEDIA_HUB_OPEN), for: .touchUpInside)
         
-        YACUAIOBVO_NAME_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")User Name"
+        YACUAIOBVO_NAME_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MxWNZs0ogEx+qaGhv3UaIIuBbhqxCSYjg9BgtwzzeMgBZd15V9NAsy8=")
         YACUAIOBVO_NAME_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
-        YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Give a name"
+        YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Bp7m+o8MdxWwbBpPHHJQHJeQ88VZtJcy9gyK0WQYhY+67z7Yq8tH348fzA==")
         
         YACUAIOBVO_NAME_INPUT_WRAPPER.text = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_NICKNAME
         YACUAIOBVO_NAME_INPUT_WRAPPER.borderStyle = .roundedRect
         YACUAIOBVO_NAME_INPUT_WRAPPER.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         
-        YACUAIOBVO_BIO_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"About me"
+        YACUAIOBVO_BIO_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "w7tfpIkQ0zAFjOB/1xpzWaIy5giaBGqWuD9T/ehWERrYJBRal0AuIQ==")
         YACUAIOBVO_BIO_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
         YACUAIOBVO_BIO_TEXT_STATION.layer.cornerRadius = 8

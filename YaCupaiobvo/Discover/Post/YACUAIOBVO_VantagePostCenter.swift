@@ -53,7 +53,7 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
         view.addSubview(bafgoai)
         
         
-        YACUAIOBVO_SCENE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Share Look"
+        YACUAIOBVO_SCENE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "jUSAct3mF4xSwxsEH1T7WdLZZCxzDWy2kQckQoGG+Ahbzqw5VfM6IB7S")
         YACUAIOBVO_SCENE_TITLE.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVO_SCENE_TITLE.textColor = .black
         
@@ -84,12 +84,12 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
         YACUAIOBVO_NARRATIVE_INPUT.delegate = self
         YACUAIOBVO_NARRATIVE_INPUT.backgroundColor = .clear
         
-        YACUAIOBVO_GHOST_TEXT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Write down what you want to say..."
+        YACUAIOBVO_GHOST_TEXT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "APsEhjQqTw3secoU72SqyrRwhISrGfBGL80eciLZYuAsI3txOEA0HiKTKb0VsnSbv5bK6O7Lb2ImW/Q4vBP4xA+P")
         YACUAIOBVO_GHOST_TEXT.font = .systemFont(ofSize: 16)
         YACUAIOBVO_GHOST_TEXT.textColor = .lightGray
         
         YACUAIOBVO_LAUNCH_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
-        YACUAIOBVO_LAUNCH_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Post", for: .normal)
+        YACUAIOBVO_LAUNCH_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "7sfnbYAQHeKwv5TnjtOxsuHrV9FNdcPXGBNTeCVTQfYCkNfT"), for: .normal)
         YACUAIOBVO_LAUNCH_TRIGGER.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVO_LAUNCH_TRIGGER.layer.cornerRadius = 28
         YACUAIOBVO_LAUNCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_FINALIZE_POST), for: .touchUpInside)
@@ -193,15 +193,15 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
 
     @objc private func YACUAIOBVO_FINALIZE_POST() {
         guard YACUAIOBVO_SELECTED_ASSET != nil else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Please select an image", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eF16DBA4XB5sXbNHzrhGcSlep5z/JYzJ3T747eIYMlpJ7cDe6TNn+XnX4/1OB9xGPHLwqIhO"), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
         
         YACUAIOBVO_LAUNCH_TRIGGER.isEnabled = false
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Publishing...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "NfgPYRIrU43exiomafNqd05VMdSHgollEehzigaXRklY9gBflv1EQfd048Z0"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Published successfully!", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "GKQuwRRJwp5VwyVH2KR89HYipUuo45xmZvFacnttJDuuGfqj5l/LmiaP6eBGSDu9lQBuZxoJ0w=="), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
             self.YACUAIOBVO_RETREAT_ACTION()
         }
     }

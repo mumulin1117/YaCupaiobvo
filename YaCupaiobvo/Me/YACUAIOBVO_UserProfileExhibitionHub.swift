@@ -327,8 +327,8 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         YACUAIOBVO_ALIAS_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_NICKNAME"] as? String
         YACUAIOBVO_BIO_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_BIO_TEXT"] as? String  ?? "Say something to introduce yourself."
         
-        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Follow")
-        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fans")
+        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ysRyxANsLXkWWgQ8t0j+dhomwbUPx2frE/dbqvd3BpvJstj1nbQ="))
+        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "uRK7Hr5Hmj/Nv4gOa8AVP1vmLRKJuXBwwxKxBw5i4Pvg5A4h"))
     }
     
     private func YACUAIOBVO_FORMAT_STAT(_ YACUAIOBVO_VAL: String, YACUAIOBVO_TAG: String) -> NSAttributedString {

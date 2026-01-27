@@ -53,21 +53,21 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         view.addSubview(YACUAIOBVO_HERO_CoverView_VIEW)
         
         
-        YACUAIOBVO_GREETING_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Welcome!"
+        YACUAIOBVO_GREETING_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "FCVCfv3RFB/j0Af41g32JnuUfMg6u6hRmSLwyzt9pHp2at+uLVwwVA==")
         YACUAIOBVO_GREETING_TITLE.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         YACUAIOBVO_GREETING_TITLE.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_GREETING_TITLE)
         
       
         
-        YACUAIOBVO_MAIL_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Email Address"
+        YACUAIOBVO_MAIL_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "xs5AtyI8bYyqkQJi9aknYF6QTXLX088XXUYuIir/L9FnVn8yeto/RsxiTkYG")
         YACUAIOBVO_MAIL_FIELD.borderStyle = .roundedRect
         YACUAIOBVO_MAIL_FIELD.keyboardType = .emailAddress
         YACUAIOBVO_MAIL_FIELD.autocapitalizationType = .none
         YACUAIOBVO_MAIL_FIELD.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_MAIL_FIELD)
         
-        YACUAIOBVO_SECRET_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Password"
+        YACUAIOBVO_SECRET_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "jb06h3g5szV8EUYlIpgTECvyjySM6V9KT6mpQWfuo7vwwnICez1J6w")
         YACUAIOBVO_SECRET_FIELD.borderStyle = .roundedRect
         YACUAIOBVO_SECRET_FIELD.isSecureTextEntry = true
         YACUAIOBVO_SECRET_FIELD.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_SECRET_FIELD.rightView = YACUAIOBVO_VISIBILITY_TOGGLE
         YACUAIOBVO_SECRET_FIELD.rightViewMode = .always
         YACUAIOBVO_RECOVERY_LINK.numberOfLines = 2
-        YACUAIOBVO_RECOVERY_LINK.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"If you don't have an account, we will create one for you automatically"
+        YACUAIOBVO_RECOVERY_LINK.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "RnppLnT0/SV4EraehZWoGxlDzHLMqPSKaaX+I78xw83mEVhzw7BfHvCmFPWY/Khsq3zFo6YxjH/LOTkmoGbYW+UoixmVwOZ93sGkIbPHC+/qRgwN05YCaS/MdWlhoGOtwOQn2CPv")
         YACUAIOBVO_RECOVERY_LINK.textColor = .systemBlue
         
         YACUAIOBVO_RECOVERY_LINK.font = UIFont.systemFont(ofSize: 14)
@@ -87,7 +87,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_RECOVERY_LINK.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_RECOVERY_LINK)
         
-        YACUAIOBVO_PROCEED_ACTION_BTN.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Login", for: .normal)
+        YACUAIOBVO_PROCEED_ACTION_BTN.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "pQ+OaPoUeXgJDITSmuHnIpes+uYM+Oo+DwuJWaEZHQ3Ure7Q8Q=="), for: .normal)
         YACUAIOBVO_PROCEED_ACTION_BTN.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.53, alpha: 1.0)
         YACUAIOBVO_PROCEED_ACTION_BTN.layer.cornerRadius = 28
         YACUAIOBVO_PROCEED_ACTION_BTN.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -144,7 +144,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         guard let YACUAIOBVO_M = YACUAIOBVO_MAIL_FIELD.text, !YACUAIOBVO_M.isEmpty,
               let YACUAIOBVO_P = YACUAIOBVO_SECRET_FIELD.text, !YACUAIOBVO_P.isEmpty else {
 //            YACUAIOBVO_PUSH_HINT("Incomplete Info", "Please fill in all fields.")
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Incomplete Info,Please fill in all fields.", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "AG0IlRUvQlbensB4bn51BkVNKA5r9BvsGTbjei/mG6sW6QIDFvyd2LQ8q9Cphk5UcIvRvc6kdNNg52GMEn9FPedwv/1boDhebeM="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
        

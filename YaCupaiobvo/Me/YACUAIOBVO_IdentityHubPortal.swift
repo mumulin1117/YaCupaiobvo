@@ -25,7 +25,7 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     private let YACUAIOBVO_SCROLLER = UITableView(frame: .zero, style: .grouped)
     private let YACUAIOBVO_TOP_SETTING_ICON = UIButton(type: .system)
 //    private var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_UserMetric?
-    private let YACUAIOBVO_OPTION_POOL = [YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Wallet", YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Posts", YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Likes"]
+    private let YACUAIOBVO_OPTION_POOL = [YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eOZFi85Oyro88Biha8vHk3nTFcepO5eqPFXTQ153mV1TGssLKeE="), YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "9LFRJuJe+ppMM3Fiz9h5wLCixvsHu+cRtAhTLbr4EIDXKWdR6LpSng=="), YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "KBcSAP4qRirm8AwUDVkAFStUlprAs74XaP/Grr93M903uvY9UzSntg==")]
 
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -201,8 +201,8 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         
         YACUAIOBVO_FOLLOW_COUNT.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         YACUAIOBVO_FANS_COUNT.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        YACUAIOBVO_FOLLOW_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Follow"; YACUAIOBVO_FOLLOW_TAG.textColor = .systemGray
-        YACUAIOBVO_FANS_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fans"; YACUAIOBVO_FANS_TAG.textColor = .systemGray
+        YACUAIOBVO_FOLLOW_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hMtDQYTYlWKpo+bT0xUvRnsCCgWm+qUWf8lGNUSP8itz3cOkzyE="); YACUAIOBVO_FOLLOW_TAG.textColor = .systemGray
+        YACUAIOBVO_FANS_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sKDeHoPnqykUaI2AbXQ5y5iiWeLHqae+IiX62Nvpigm9OiRl"); YACUAIOBVO_FANS_TAG.textColor = .systemGray
         
         let YACUAIOBVO_FOLLOW_STACK = UIStackView(arrangedSubviews: [YACUAIOBVO_FOLLOW_COUNT, YACUAIOBVO_FOLLOW_TAG])
         YACUAIOBVO_FOLLOW_STACK.axis = .vertical; YACUAIOBVO_FOLLOW_STACK.alignment = .center

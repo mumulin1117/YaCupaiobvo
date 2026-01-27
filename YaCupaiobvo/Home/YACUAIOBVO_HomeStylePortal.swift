@@ -67,7 +67,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         super.viewDidLoad()
         
         YACUAIOBVO_INIT_BASE_STYLE()
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "z1Qsa0iPAgFnmeu3wSrqeO3QvYSLsRP+y5grgbS/Ovz4ez84uCsq04xE"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()

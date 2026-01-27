@@ -62,7 +62,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOMessageLabel: UILabel = {
         let YACUAIOBVOLab = UILabel()
-        YACUAIOBVOLab.text = checkingType == .tipsinfluence ? YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Sorry, your current balance is insufficient. Please top up." : YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Hello, unlocking the most suitable sunglasses pairing requires 50 gold coins."
+        YACUAIOBVOLab.text = checkingType == .tipsinfluence ? YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "QOeGRG83r3hmZIBE2Nef5wNkBaKPzygKRu/r5ANqEHHBK1Vqj5CElnxI3BdLEnv7Bgp35073M2PSDNYLe3FDKmdSJUaF/kmfZ2y15Lv2fdeHKh1f0i5eqWx2Aw==") : YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ozf0YI8j4ty5rpDk+nfjS/HXZcXNoYyJsBiXlENWm0boi9aWQn1ExrWtKsmaNg8bhyD7sqM7NpMeBJL7qcTUfk7gLYLYWVW1mQ5T3KRjANva47oaONHOHZZRBzArmWabLGrNhJ3gnMOZNYvqqQ==")
         YACUAIOBVOLab.textColor = .darkGray
         YACUAIOBVOLab.font = .systemFont(ofSize: 17, weight: .medium)
         YACUAIOBVOLab.textAlignment = .center

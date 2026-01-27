@@ -66,17 +66,15 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         
         switch YACUAIOBVO_ACTIVE_SCOPE {
         case .YACUAIOBVO_FANS: 
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Fans"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "8S0ssc+n0kAaw32sEMr5Nvie8/R+7RmM8xvEKsEKx+AxkHw7")
         case .YACUAIOBVO_FOLLOWING:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Following"
-            // 1. 获取当前用户关注的 ID 集合 (Set<String>)
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WwDrArtVUxXMxHiP2BESNgFo5OjKftETahyP1pjrskuR3p+DnsGRxeY=")
+          
             guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
-                print("未登录或关注列表为空")
+               
                 return
             }
 
-            // 2. 从全局数据源 YACUAIOBVO_user_datas 中筛选
-            // 逻辑：遍历所有用户，如果该用户的 ID 存在于关注集合中，则保留
             let YACUAIOBVO_MY_FOLLOWING_USERS = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
                 if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as?  String {
                     return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)
@@ -84,11 +82,10 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
                 return false
             }
 
-            // 此时 YACUAIOBVO_MY_FOLLOWING_USERS 就是你关注的所有用户的详细信息列表
-            // 你可以将它直接赋值给 TableView 的数据源
+         
             YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
         case .YACUAIOBVO_RESTRICTED_ZONE:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Blocklist"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "79SX8JTO0lhkPJc1VEnZxBkA/l571ws2CK2/9gR9LZU33UrHZ586ZzM=")
         
             guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET else {
                 return
@@ -104,10 +101,10 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
             YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
             
         case .YACUAIOBVO_RESTRICTED_post:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Post"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "S/69oakHUeDPHKGq9Bv5PNZSUB8h/HWProjJ9em5muVzDlkkzhfA")
             YACUAIOBVO_ENTITY_COLLECTION = []
         case .YACUAIOBVO_RESTRICTED_like:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"My Like"
+            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eE+7NOFtC1QTgzlNbNFktqwbB2TxaZwadOwCOJnq/ZQnG9SkO98T")
             YACUAIOBVO_ENTITY_COLLECTION = []
         }
         
@@ -259,19 +256,19 @@ class YACUAIOBVO_SocialNodeCell: UITableViewCell {
         
         switch YACUAIOBVO_SCOPE {
         case .YACUAIOBVO_FANS, .YACUAIOBVO_FOLLOWING:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Followed", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "kb5aOkIqiqwc61fx9O2QXMNCP0fWYfCWh/iW9NtawSZC7DnFlEs8fQ=="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_ZONE:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "S1Axw2T78YWcqOvwyAqfKNFFZ21/Al4W2Qaf4QSXSrMYFj5llrc="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_post:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1xSOWnR5elYpLcNuu2q5pYcoaxTKsqKRsLP58c2GjBzQKYNTlc8="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_like:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Remove", for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "tSSVt3P9f8eGFap9UTftfB9EEGxQP3hSdIrq2xgSFkI7550LOa8="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         }

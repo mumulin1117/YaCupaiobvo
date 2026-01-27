@@ -82,7 +82,7 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
         
         YACUAIOBVO_CHRONOMETER_TAG.textColor = .white
         YACUAIOBVO_CHRONOMETER_TAG.font = .systemFont(ofSize: 16, weight: .regular)
-        YACUAIOBVO_CHRONOMETER_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Calling..."
+        YACUAIOBVO_CHRONOMETER_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hzy88dZ5CMyFfn1Fy60bgpZIH5S8Bn3z8Thc2Tar/Sj16NRrJ9iIr5/X")
         
         YACUAIOBVO_TERMINATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.35, blue: 0.35, alpha: 1.0)
         YACUAIOBVO_TERMINATE_TRIGGER.setImage(UIImage(systemName: "phone.down.fill"), for: .normal)

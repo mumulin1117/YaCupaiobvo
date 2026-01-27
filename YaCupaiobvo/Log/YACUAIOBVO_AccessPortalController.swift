@@ -30,7 +30,7 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
        
         YACUAIOBVO_MAIL_GATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.53, alpha: 1.0)
         YACUAIOBVO_MAIL_GATE_TRIGGER.layer.cornerRadius = 28
-        YACUAIOBVO_MAIL_GATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"  Email Login", for: .normal)
+        YACUAIOBVO_MAIL_GATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "GUvu/sm+9aJ30pcwN0Arq5oxDV9vq1nHkeKUSZtRIkS99xRs+KGg8ewDZxTv"), for: .normal)
         YACUAIOBVO_MAIL_GATE_TRIGGER.setImage(UIImage(systemName: "envelope.fill"), for: .normal)
         YACUAIOBVO_MAIL_GATE_TRIGGER.tintColor = .white
         YACUAIOBVO_MAIL_GATE_TRIGGER.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -76,11 +76,11 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
     }
     
     private func YACUAIOBVO_SETUP_LEGAL_TEXT() {
-        let YACUAIOBVO_BASE_STR = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Agree with User Agreement and Privacy Policy"
+        let YACUAIOBVO_BASE_STR = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BFDSPpO0Q2FMQ1sxFM+P7qU3dP7AO0BgmMCzJTj8zZY6o/26h1QHGKbcWcivAedp/iwWazFri+sjPL+PdYHB1PPmtn6nTv/Eljuu9g==")
         let YACUAIOBVO_ATTR_TEXT = NSMutableAttributedString(string: YACUAIOBVO_BASE_STR)
         
-        let YACUAIOBVO_RANGE_AGREE = (YACUAIOBVO_BASE_STR as NSString).range(of: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"User Agreement")
-        let YACUAIOBVO_RANGE_PRIVACY = (YACUAIOBVO_BASE_STR as NSString).range(of: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Privacy Policy")
+        let YACUAIOBVO_RANGE_AGREE = (YACUAIOBVO_BASE_STR as NSString).range(of: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "07u8R368A9rREZVbpuBrnM8kQe2y5AfLa0iVq7a9VnpNWRwfwI2AyPe4zqv7Bw=="))
+        let YACUAIOBVO_RANGE_PRIVACY = (YACUAIOBVO_BASE_STR as NSString).range(of: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1hydKL/Me7tozZ4AgsCzzqJf0zhd1FPxbq+ojGm5H9F7UgRTlILKln2B62irGg=="))
         
         YACUAIOBVO_ATTR_TEXT.addAttribute(.link, value: "yacuaiobvo://agreement", range: YACUAIOBVO_RANGE_AGREE)
         YACUAIOBVO_ATTR_TEXT.addAttribute(.link, value: "yacuaiobvo://privacy", range: YACUAIOBVO_RANGE_PRIVACY)
@@ -99,7 +99,7 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
     
     @objc private func YACUAIOBVO_EXECUTE_MAIL_ENTRY() {
         if !YACUAIOBVO_CONSENT_GRANTED {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Please accept the terms to continue.", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "8e1C+1VAbaosHM6rHe0Ygpv7a9tJ7l74tTtKmYHvsAUaYQGcnSo7Luhy7gd/qqO+6spKxYPANFc5gmdMo2CLCIExQRk="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
            
             return
         }
@@ -112,7 +112,7 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
 
 extension YACUAIOBVO_AccessPortalController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE: URL.absoluteString.contains(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"agreement") ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
+        let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE: URL.absoluteString.contains(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")) ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
        
         self.present(YACUAIOBVO_MODAL_LEGAL, animated: true)
         return false

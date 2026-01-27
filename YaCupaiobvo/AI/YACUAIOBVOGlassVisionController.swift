@@ -53,7 +53,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     private let YACUAIOBVOGenerateTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
         YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill"), for: .normal)
-        YACUAIOBVOBtn.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"300  Generate", for: .normal)
+        YACUAIOBVOBtn.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ReX8HBnrFZm6sQNOkUSujsvQWWHqkkCFt+nntLueCjgNNTlXAulJdQwt6rUm"), for: .normal)
         YACUAIOBVOBtn.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVOBtn.backgroundColor = UIColor.systemPink
         YACUAIOBVOBtn.layer.cornerRadius = 25
@@ -138,7 +138,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     @objc private func YACUAIOBVOValidateTransaction() {
         
         guard let result = self.YACUAIOBVORecordimge else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Upload your sunglasses picture first!", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MIZmtJtisSEftDLOV2FiMlsuySfLJrATjHna6ZwRnxB5ls/JxulhVPajUhd0j5+Zluh7+jhT9Ld5PtuKvVbKSecyOHFx"), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             
             return
         }
@@ -156,7 +156,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     private func YACUAIOBVOExecuteCrystalProcessing(result:UIImage) {
         
        
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BTp5jcgbcCRR2uVp5VmrNqR61xpiTtq9hiGhsnwlrsy7v5RVlG+TwGTF"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()

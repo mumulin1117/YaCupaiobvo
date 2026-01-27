@@ -91,7 +91,7 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
         YACUAIOBVO_INPUT_DOCK.backgroundColor = UIColor(white: 0.98, alpha: 1)
         YACUAIOBVO_INPUT_DOCK.layer.cornerRadius = 25
         
-        YACUAIOBVO_NARRATIVE_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Write a comment..."
+        YACUAIOBVO_NARRATIVE_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "DskHJjEJO37KtlHeFUAhyean+ZKry8OZLG7lsilJsTk/4xBBibx/X1jrknWPnmTF6RY=")
         YACUAIOBVO_NARRATIVE_FIELD.font = .systemFont(ofSize: 15)
         YACUAIOBVO_NARRATIVE_FIELD.delegate = self
         YACUAIOBVO_DISPATCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_CLOSE_PANEL), for: .touchUpInside)
@@ -186,8 +186,8 @@ class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UIT
         YACUAIOBVO_NARRATIVE_FIELD.resignFirstResponder()
         YACUAIOBVO_NARRATIVE_FIELD.text = ""
         
-        let YACUAIOBVO_NOTICE = UIAlertController(title: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Submission Success", message: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Your comment has been submitted and will be visible after safety review.", preferredStyle: .alert)
-        YACUAIOBVO_NOTICE.addAction(UIAlertAction(title: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"OK", style: .default))
+        let YACUAIOBVO_NOTICE = UIAlertController(title: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "TURXsPy6yGCldsXOh6h94ZT/yPRXfN+bPS8crposrFaSgErkC6TKxIBv3NBAu02tlIc="), message: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "P7fNASh+R9HK2C1P/iumjNPx99VlNHy+i1j9fSpkh+UxzoGJ5E7InO7TCS+YQ7syvKBf6o5F2nXWVPtWum+k91pmpsEjoDCILjLIXQ2GiFC6EFa2Jg/OCl8ZALG3Iv6JD8omU3FLuL4="), preferredStyle: .alert)
+        YACUAIOBVO_NOTICE.addAction(UIAlertAction(title: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "0J2SnKfYdLPxdgH27UwBMQ0hSkuKiaialbD0TSDFf1Z/Kw=="), style: .default))
         self.present(YACUAIOBVO_NOTICE, animated: true)
     }
 

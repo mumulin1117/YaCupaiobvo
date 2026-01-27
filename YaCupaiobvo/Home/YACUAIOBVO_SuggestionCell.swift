@@ -36,7 +36,7 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
         YACUAIOBVO_FRAME_IMG.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_FRAME_IMG)
         
-        YACUAIOBVO_TITLE_LBL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Square glasses"
+        YACUAIOBVO_TITLE_LBL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "KOlmOUs0UTXr71/6GHtqIyFQAfyRmZ6z7NqY7GTt31aeneAWXRjTYSImW2xXIA==")
         YACUAIOBVO_TITLE_LBL.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         YACUAIOBVO_TITLE_LBL.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_TITLE_LBL)
@@ -46,7 +46,7 @@ class YACUAIOBVO_SuggestionCell: UICollectionViewCell {
         contentView.addSubview(YACUAIOBVO_ACTION_report)
         
         
-        YACUAIOBVO_LIKE_COUNT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "")"Likes:0"
+        YACUAIOBVO_LIKE_COUNT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "CcefJ/6DZfYbFWTY3HYlwntTG6A2fIweVO2CHtDUOFN83Z2NzIyg")
         YACUAIOBVO_LIKE_COUNT.font = UIFont.systemFont(ofSize: 14)
         YACUAIOBVO_LIKE_COUNT.textColor = .gray
         YACUAIOBVO_LIKE_COUNT.translatesAutoresizingMaskIntoConstraints = false
