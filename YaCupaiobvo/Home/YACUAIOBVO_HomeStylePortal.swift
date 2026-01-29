@@ -127,7 +127,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
             YACUAIOBVO_CONTENT_STACK.topAnchor.constraint(equalTo: YACUAIOBVO_MAIN_SCROLLER.topAnchor, constant:0),
             YACUAIOBVO_CONTENT_STACK.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:0),
             YACUAIOBVO_CONTENT_STACK.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:0),
-            YACUAIOBVO_CONTENT_STACK.bottomAnchor.constraint(equalTo: YACUAIOBVO_MAIN_SCROLLER.bottomAnchor,constant: -50),
+            YACUAIOBVO_CONTENT_STACK.bottomAnchor.constraint(equalTo: YACUAIOBVO_MAIN_SCROLLER.bottomAnchor,constant: -120),
             
             YACUAIOBVO_AI_HERO_TRIGGER.heightAnchor.constraint(equalToConstant: 200),
             

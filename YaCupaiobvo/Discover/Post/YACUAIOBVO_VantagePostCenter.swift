@@ -197,6 +197,11 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
             return
         }
         
+        guard  let contetnt = YACUAIOBVO_NARRATIVE_INPUT.text,contetnt.isEmpty == false,contetnt != "Write down what you want to say..."   else {
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Please Write down what you want to say", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            return
+        }
+        
         YACUAIOBVO_LAUNCH_TRIGGER.isEnabled = false
         YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "NfgPYRIrU43exiomafNqd05VMdSHgollEehzigaXRklY9gBflv1EQfd048Z0"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         

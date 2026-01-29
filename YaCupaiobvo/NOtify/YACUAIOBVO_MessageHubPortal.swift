@@ -32,6 +32,12 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        YACUAIOBVO_EMPTY_SHADOW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
+               
+        YACUAIOBVO_EMPTY_SHADOW.contentMode = .scaleAspectFit
+        YACUAIOBVO_EMPTY_SHADOW.isHidden = true
+        
         YACUAIOBVO_INIT_ENVIRONMENT()
         YACUAIOBVO_TRIGGER_NETWORK_SYNC()
         
@@ -43,7 +49,10 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
            
         }
     }
-
+    
+    private let YACUAIOBVO_EMPTY_SHADOW = UIImageView()
+    private let YACUAIOBVO_EMPTY_title = UILabel()
+   
     private func YACUAIOBVO_INIT_ENVIRONMENT() {
         view.backgroundColor = .white
         NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_TRIGGER_NETWORK_SYNC), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
@@ -51,7 +60,10 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
         YACUAIOBVO_TITLE_VIEW.contentMode = .left
         YACUAIOBVO_TITLE_VIEW.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_TITLE_VIEW)
-        
+        YACUAIOBVO_EMPTY_title.text = "No message yet!"
+        YACUAIOBVO_EMPTY_title.textColor = .lightGray
+        YACUAIOBVO_EMPTY_title.font = UIFont.systemFont(ofSize: 15)
+        YACUAIOBVO_EMPTY_title.textAlignment = .center
         YACUAIOBVO_LIST_BRIDGE.delegate = self
         YACUAIOBVO_LIST_BRIDGE.dataSource = self
         YACUAIOBVO_LIST_BRIDGE.separatorStyle = .none
@@ -62,7 +74,13 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
         
         YACUAIOBVO_REFRESH_CORE.addTarget(self, action: #selector(YACUAIOBVO_TRIGGER_NETWORK_SYNC), for: .valueChanged)
         YACUAIOBVO_LIST_BRIDGE.refreshControl = YACUAIOBVO_REFRESH_CORE
-        
+        YACUAIOBVO_EMPTY_title.translatesAutoresizingMaskIntoConstraints = false
+        YACUAIOBVO_EMPTY_title.isHidden = true
+        YACUAIOBVO_EMPTY_SHADOW.translatesAutoresizingMaskIntoConstraints = false
+        YACUAIOBVO_EMPTY_SHADOW.isHidden = true
+        view.addSubview(YACUAIOBVO_EMPTY_SHADOW)
+        view.addSubview(YACUAIOBVO_EMPTY_title)
+    
         NSLayoutConstraint.activate([
             YACUAIOBVO_TITLE_VIEW.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant:0),
             YACUAIOBVO_TITLE_VIEW.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -72,12 +90,25 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
             YACUAIOBVO_LIST_BRIDGE.topAnchor.constraint(equalTo: YACUAIOBVO_TITLE_VIEW.bottomAnchor, constant: 20),
             YACUAIOBVO_LIST_BRIDGE.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             YACUAIOBVO_LIST_BRIDGE.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            YACUAIOBVO_LIST_BRIDGE.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            YACUAIOBVO_LIST_BRIDGE.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            YACUAIOBVO_EMPTY_SHADOW.topAnchor.constraint(equalTo: YACUAIOBVO_TITLE_VIEW.bottomAnchor, constant: 80),
+                        
+            YACUAIOBVO_EMPTY_SHADOW.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            YACUAIOBVO_EMPTY_SHADOW.widthAnchor.constraint(equalToConstant: 150),
+            YACUAIOBVO_EMPTY_SHADOW.heightAnchor.constraint(equalToConstant: 150),
+            YACUAIOBVO_EMPTY_title.topAnchor.constraint(equalTo: YACUAIOBVO_EMPTY_SHADOW.bottomAnchor, constant: 20),
+                        
+            YACUAIOBVO_EMPTY_title.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            YACUAIOBVO_EMPTY_title.widthAnchor.constraint(equalToConstant: 200),
+            YACUAIOBVO_EMPTY_title.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
     @objc private func YACUAIOBVO_TRIGGER_NETWORK_SYNC() {
         self.YACUAIOBVO_LIST_BRIDGE.reloadData()
+        self.YACUAIOBVO_EMPTY_SHADOW.isHidden =  (YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count > 0)
+        self.YACUAIOBVO_EMPTY_title.isHidden =  (YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count > 0)
         self.YACUAIOBVO_REFRESH_CORE.endRefreshing()
     }
 

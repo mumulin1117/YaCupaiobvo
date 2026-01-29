@@ -171,37 +171,41 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
         return YACUAIOBVO_NODE
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let YACUAIOBVO_TARGET = YACUAIOBVO_OFFER_LIST[indexPath.row]
-//        YACUAIOBVO_INITIATE_PROCUREMENT(YACUAIOBVO_TARGET)
-//    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-#if DEBUG
-        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_ACQUIRE_CREDITS(YACUAIOBVO_VAL: 1000)
-        self.YACUAIOBVO_BALANCE_LBL.text = "\(YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_WALLET_BALANCE ?? 0)"
-        #else
-#endif
-            guard indexPath.row < YACUAIOBVO_SK_ENTITIES.count else { return }
+        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Paying...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        guard indexPath.row < YACUAIOBVO_SK_ENTITIES.count else {
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("No product ID!", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            return
+            
+        }
             let YACUAIOBVO_PRODUCT_TARGET = YACUAIOBVO_SK_ENTITIES[indexPath.row]
             YACUAIOBVO_EXECUTE_OFFICIAL_PURCHASE(YACUAIOBVO_PRODUCT_TARGET)
         }
 
         private func YACUAIOBVO_EXECUTE_OFFICIAL_PURCHASE(_ YACUAIOBVO_SK: SKProduct) {
             if SKPaymentQueue.canMakePayments() {
+               
+                
                 let YACUAIOBVO_PAYMENT = SKPayment(product: YACUAIOBVO_SK)
                 SKPaymentQueue.default().add(YACUAIOBVO_PAYMENT)
+                return
             }
+            
+            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Your device currently does not support this in app purchase", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
         }
 
         // MARK: - SKPaymentTransactionObserver
         func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
             for YACUAIOBVO_TRANS in transactions {
+                YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
                 switch YACUAIOBVO_TRANS.transactionState {
                 case .purchased:
+                    YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Pay Successful!", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
                     YACUAIOBVO_GRANT_LOCAL_CURRENCY(YACUAIOBVO_TRANS)
                     SKPaymentQueue.default().finishTransaction(YACUAIOBVO_TRANS)
                 case .failed:
+                    YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Pay failed!", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
                     SKPaymentQueue.default().finishTransaction(YACUAIOBVO_TRANS)
                 case .restored:
                     SKPaymentQueue.default().finishTransaction(YACUAIOBVO_TRANS)
@@ -215,16 +219,17 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
             var YACUAIOBVO_ADD_VAL = 0
             
             // Match ID to local coin value
-            if YACUAIOBVO_ID.contains("400") { YACUAIOBVO_ADD_VAL = 400 }
-            else if YACUAIOBVO_ID.contains("800") { YACUAIOBVO_ADD_VAL = 800 }
-            else if YACUAIOBVO_ID.contains("2450") { YACUAIOBVO_ADD_VAL = 2450 }
-            else if YACUAIOBVO_ID.contains("5150") { YACUAIOBVO_ADD_VAL = 5150 }
-            else if YACUAIOBVO_ID.contains("10800") { YACUAIOBVO_ADD_VAL = 10800 }
-            else if YACUAIOBVO_ID.contains("29400") { YACUAIOBVO_ADD_VAL = 29400 }
-            else if YACUAIOBVO_ID.contains("63700") { YACUAIOBVO_ADD_VAL = 63700 }
-            else if YACUAIOBVO_ID.contains("1900") { YACUAIOBVO_ADD_VAL = 1900 }
-            else if YACUAIOBVO_ID.contains("4250") { YACUAIOBVO_ADD_VAL = 4250 }
-            else if YACUAIOBVO_ID.contains("7700") { YACUAIOBVO_ADD_VAL = 7700 }
+            if YACUAIOBVO_ID.contains("yzixshxsasblntgo") { YACUAIOBVO_ADD_VAL = 400 }
+            else if YACUAIOBVO_ID.contains("lkzdtmkdyqtqrsyz") { YACUAIOBVO_ADD_VAL = 800 }
+            else if YACUAIOBVO_ID.contains("wjrbzsjeiuguxnjq") { YACUAIOBVO_ADD_VAL = 2450 }
+            else if YACUAIOBVO_ID.contains("dcrjypscdwchgdnn") { YACUAIOBVO_ADD_VAL = 5150 }
+            else if YACUAIOBVO_ID.contains("jkulyhuijfurwepw") { YACUAIOBVO_ADD_VAL = 10800 }
+            else if YACUAIOBVO_ID.contains("vasvfditlnceulut") { YACUAIOBVO_ADD_VAL = 29400 }
+            else if YACUAIOBVO_ID.contains("ceccygbjdvlxckza") { YACUAIOBVO_ADD_VAL = 63700 }
+            else if YACUAIOBVO_ID.contains("yabvocoains1900") { YACUAIOBVO_ADD_VAL = 1900 }
+            else if YACUAIOBVO_ID.contains("yabvocoains4250") { YACUAIOBVO_ADD_VAL = 4250 }
+            else if YACUAIOBVO_ID.contains("yabvocoains7700") { YACUAIOBVO_ADD_VAL = 7700 }
+            
             let YACUAIOBVO_CURRENT = UserDefaults.standard.integer(forKey: YACUAIOBVO_STORAGE_KEY)
             UserDefaults.standard.set(YACUAIOBVO_CURRENT + YACUAIOBVO_ADD_VAL, forKey: YACUAIOBVO_STORAGE_KEY)
             

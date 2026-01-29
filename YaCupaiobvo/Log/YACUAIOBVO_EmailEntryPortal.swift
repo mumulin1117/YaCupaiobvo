@@ -67,7 +67,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_MAIL_FIELD.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_MAIL_FIELD)
         
-        YACUAIOBVO_SECRET_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "jb06h3g5szV8EUYlIpgTECvyjySM6V9KT6mpQWfuo7vwwnICez1J6w")
+        YACUAIOBVO_SECRET_FIELD.placeholder = "Enter password"//YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "jb06h3g5szV8EUYlIpgTECvyjySM6V9KT6mpQWfuo7vwwnICez1J6w")
         YACUAIOBVO_SECRET_FIELD.borderStyle = .roundedRect
         YACUAIOBVO_SECRET_FIELD.isSecureTextEntry = true
         YACUAIOBVO_SECRET_FIELD.translatesAutoresizingMaskIntoConstraints = false

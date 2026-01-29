@@ -42,7 +42,7 @@ class YACUAIOBVO_CoreSystem {
 
     // MARK: - 1. 登录与账户生命周期
     func YACUAIOBVO_PERFORM_LOGIN(YACUAIOBVO_MAIL: String) {
-        let YACUAIOBVO_IS_TEST = YACUAIOBVO_MAIL == "admin@yabvo.style"
+        let YACUAIOBVO_IS_TEST = YACUAIOBVO_MAIL == "yabvo33@gmail.com"
         
         // 逻辑：如果是测试账号，预设丰富数据；如果是新注册，创建空数据
         let YACUAIOBVO_NEW_MODEL = YACUAIOBVO_IdentityModel(
@@ -55,6 +55,10 @@ class YACUAIOBVO_CoreSystem {
             
             YACUAIOBVO_FANS_SET: YACUAIOBVO_IS_TEST ? ["user_009"] : []
         )
+      
+        YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_NEW_MODEL
+        YACUAIOBVO_INTERNAL_SYNC()
+        
         if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
             let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
             
@@ -67,8 +71,6 @@ class YACUAIOBVO_CoreSystem {
                 
             ]
         }
-        YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_NEW_MODEL
-        YACUAIOBVO_INTERNAL_SYNC()
     }
     
     func YACUAIOBVO_TERMINATE_SESSION() {
@@ -165,7 +167,7 @@ class YACUAIOBVO_CoreSystem {
     }
 
     private func YACUAIOBVO_INTERNAL_LOAD() {
-        print("-------------init----------")
+       
         if let YACUAIOBVO_RAW = YACUAIOBVO_STORAGE.data(forKey: YACUAIOBVO_KEY_SESSION),
            let YACUAIOBVO_DE = try? JSONDecoder().decode(YACUAIOBVO_IdentityModel.self, from: YACUAIOBVO_RAW) {
             YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_DE
