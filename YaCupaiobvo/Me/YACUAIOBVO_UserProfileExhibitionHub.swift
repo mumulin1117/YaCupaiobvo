@@ -22,7 +22,7 @@ struct YACUAIOBVO_StoryFragment {
     let YACUAIOBVO_NARRATIVE_TITLE: String
     let YACUAIOBVO_HEART_COUNT: Int
 }
-//他人中心
+
 class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @objc private func YACUAIOBVO_TOGGLE_SUBSCRIPTION(biu:UIButton) {
         biu.isSelected = !biu.isSelected
@@ -237,17 +237,14 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
             super.init(frame: frame)
-            // 在这里调用你的 UI 初始化逻辑
+        
         YACUAIOBVO_ASSEMBLE_HEAD()
        
     }
 
-       
-    // 2. 必须同时实现这个 init(coder:)，用于支持从 Xib/Storyboard 加载
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        // 如果使用纯代码，这里可以留空或调用初始化逻辑
-        // YACUAIOBVO_BUILD_INTERFACE()
+       
     }
     
     var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>?{
@@ -334,25 +331,22 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     private func YACUAIOBVO_FORMAT_STAT(_ YACUAIOBVO_VAL: String, YACUAIOBVO_TAG: String) -> NSAttributedString {
         let YACUAIOBVO_FULL_TEXT = "\(YACUAIOBVO_VAL)\n\(YACUAIOBVO_TAG)"
         let YACUAIOBVO_STR = NSMutableAttributedString(string: YACUAIOBVO_FULL_TEXT)
-        
-        // 找到数字的 Range
+     
         let YACUAIOBVO_VAL_RANGE = (YACUAIOBVO_FULL_TEXT as NSString).range(of: YACUAIOBVO_VAL)
-        // 找到标签的 Range
+       
         let YACUAIOBVO_TAG_RANGE = (YACUAIOBVO_FULL_TEXT as NSString).range(of: YACUAIOBVO_TAG)
-        
-        // 设置数字样式：加粗，大字号，黑色（确保可见）
+       
         YACUAIOBVO_STR.addAttributes([
             .font: UIFont.systemFont(ofSize: 20, weight: .bold),
             .foregroundColor: UIColor.black
         ], range: YACUAIOBVO_VAL_RANGE)
-        
-        // 设置标签样式：小字号，灰色
+     
         YACUAIOBVO_STR.addAttributes([
             .font: UIFont.systemFont(ofSize: 13),
-            .foregroundColor: UIColor.darkGray // 稍微加深颜色，防止看不见
+            .foregroundColor: UIColor.darkGray
         ], range: YACUAIOBVO_TAG_RANGE)
         
-        // 设置行间距（可选，优化视觉效果）
+        
         let YACUAIOBVO_STYLE = NSMutableParagraphStyle()
         YACUAIOBVO_STYLE.lineSpacing = 4
         YACUAIOBVO_STYLE.alignment = .center

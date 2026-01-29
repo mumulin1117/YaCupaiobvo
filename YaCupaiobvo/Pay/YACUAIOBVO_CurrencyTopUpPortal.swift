@@ -7,7 +7,7 @@
 
 import UIKit
 import StoreKit
-//支付
+
 struct YACUAIOBVO_CoinPackage {
     let YACUAIOBVO_IDENTIFIER: String
     let YACUAIOBVO_AMOUNT: Int

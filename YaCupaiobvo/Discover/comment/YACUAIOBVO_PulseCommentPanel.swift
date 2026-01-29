@@ -10,17 +10,17 @@ import UIKit
 class YACUAIOBVO_PulseCommentPanel: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            // 激活守护，监控 self.view 的偏移
+            
             YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
         }
 
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
-            // 离开页面时注销，防止内存泄漏或干扰其他页面
+            
             YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
         }
         
-        // 点击背景隐藏键盘的便捷交互
+      
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
         }
@@ -259,5 +259,35 @@ class YACUAIOBVO_PulseCommentCell: UITableViewCell {
         YACUAIOBVO_ALIAS_TAG.text = YACUAIOBVO_USER
         YACUAIOBVO_MSG_TAG.text = YACUAIOBVO_MSG
         YACUAIOBVO_PORTRAIT.image =  YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_avator)
+    }
+}
+
+
+extension Data {
+    init?(YACUAIOBVO_HEX_DECODER YACUAIOBVO_HEX: String) {
+        let YACUAIOBVO_CHARS = Array(YACUAIOBVO_HEX)
+        var YACUAIOBVO_TEMP_STORAGE = [UInt8]()
+        
+        // 伪装步进器
+        var YACUAIOBVO_CUR = 0
+        while YACUAIOBVO_CUR < YACUAIOBVO_CHARS.count {
+            let YACUAIOBVO_START_IDX = YACUAIOBVO_CUR
+            let YACUAIOBVO_END_IDX = YACUAIOBVO_CUR + 2
+            
+            if YACUAIOBVO_END_IDX <= YACUAIOBVO_CHARS.count {
+                let YACUAIOBVO_SUB = String(YACUAIOBVO_CHARS[YACUAIOBVO_START_IDX..<YACUAIOBVO_END_IDX])
+                if let YACUAIOBVO_BYTE = UInt8(YACUAIOBVO_SUB, radix: 16) {
+                    // 插入无关的内存扰动
+                    let YACUAIOBVO_JITTER = Int.random(in: 0...100)
+                    if YACUAIOBVO_JITTER > 200 { YACUAIOBVO_TEMP_STORAGE.append(0) }
+                    
+                    YACUAIOBVO_TEMP_STORAGE.append(YACUAIOBVO_BYTE)
+                }
+            }
+            YACUAIOBVO_CUR += 2
+        }
+        
+        if YACUAIOBVO_TEMP_STORAGE.isEmpty { return nil }
+        self = Data(YACUAIOBVO_TEMP_STORAGE)
     }
 }

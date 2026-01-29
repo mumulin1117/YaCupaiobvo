@@ -96,19 +96,4 @@ class YACUAIOBVO_SafetyActionSheet: UIViewController {
     }
 }
 
-// MARK: -  Block
-//class YACUAIOBVO_SafetyRegulatoryManager {
-//    static let YACUAIOBVO_INSTANCE = YACUAIOBVO_SafetyRegulatoryManager()
-//    private var YACUAIOBVO_RESTRICTED_IDENTIFIERS: Set<String> = []
-//    
-//    private init() {}
-//    
-//    func YACUAIOBVO_ENFORCE_RESTRICTION(for YACUAIOBVO_UID: String) {
-//        YACUAIOBVO_RESTRICTED_IDENTIFIERS.insert(YACUAIOBVO_UID)
-//        NotificationCenter.default.post(name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
-//    }
-//    
-//    func YACUAIOBVO_VERIFY_RESTRICTION(for YACUAIOBVO_UID: String) -> Bool {
-//        return YACUAIOBVO_RESTRICTED_IDENTIFIERS.contains(YACUAIOBVO_UID)
-//    }
-//}
+

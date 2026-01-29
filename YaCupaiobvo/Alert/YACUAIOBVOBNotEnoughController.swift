@@ -5,7 +5,6 @@
 //  Created by YaCupaiobvo on 2026/1/22.
 //
 import UIKit
-//余额不足   需要解锁
 
 protocol YACUAIOBVOBNotEnoughControllerDelegate {
     func unlockTag(page:Int)

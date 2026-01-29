@@ -33,14 +33,14 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         
         let YACUAIOBVO_ALL_DATA = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas
       
-        // 2. 根据当前类别进行切片或条件过滤
+  
         switch YACUAIOBVO_CURRENT_CAT {
         case .YACUAIOBVO_LATEST:
-            return Array(YACUAIOBVO_ALL_DATA.prefix(4)) // 模拟最新数据
+            return Array(YACUAIOBVO_ALL_DATA.prefix(4))
         case .YACUAIOBVO_POPULAR:
-            return YACUAIOBVO_ALL_DATA.filter { ($0["YACUAIOBVOlikeCount"] as? Int ?? 0) > 100 } // 模拟热门
+            return YACUAIOBVO_ALL_DATA.filter { ($0["YACUAIOBVOlikeCount"] as? Int ?? 0) > 100 }
         case .YACUAIOBVO_NO_COST:
-            return YACUAIOBVO_ALL_DATA.filter { ($0["YACUAIOBVOIfNeedUnlock"] as? Bool) == false } // 免费数据
+            return YACUAIOBVO_ALL_DATA.filter { ($0["YACUAIOBVOIfNeedUnlock"] as? Bool) == false } 
         }
         
     }

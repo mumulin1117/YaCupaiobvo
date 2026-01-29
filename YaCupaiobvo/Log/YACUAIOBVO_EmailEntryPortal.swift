@@ -20,17 +20,16 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
     private let YACUAIOBVO_VISIBILITY_TOGGLE = UIButton()
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            // 激活守护，监控 self.view 的偏移
+         
             YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
         }
 
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
-            // 离开页面时注销，防止内存泄漏或干扰其他页面
+         
             YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
         }
         
-        // 点击背景隐藏键盘的便捷交互
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
         }

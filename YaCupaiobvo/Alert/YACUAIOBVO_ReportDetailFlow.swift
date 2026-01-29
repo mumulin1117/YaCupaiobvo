@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//report detail
+
 class YACUAIOBVO_ReportDetailFlow: UIViewController {
     private let YACUAIOBVO_BACK_TRIGGER = UIButton()
     

@@ -2,7 +2,7 @@
 //  YACUAIOBVO_KeyboardGuardian.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/23.
+//  Created by  on 2026/1/23.
 //
 import UIKit
 
@@ -38,7 +38,7 @@ class YACUAIOBVO_KeyboardGuardian: NSObject {
         let YACUAIOBVO_KB_TOP = YACUAIOBVO_CONTAINER.frame.height - YACUAIOBVO_KB_FRAME.height
         let YACUAIOBVO_INPUT_BOTTOM = YACUAIOBVO_INPUT_GLOBAL_FRAME.origin.y + YACUAIOBVO_INPUT_GLOBAL_FRAME.size.height
         
-        // 增加 20 像素的间隙缓冲
+     
         if YACUAIOBVO_INPUT_BOTTOM > YACUAIOBVO_KB_TOP {
             let YACUAIOBVO_OFFSET = YACUAIOBVO_INPUT_BOTTOM - YACUAIOBVO_KB_TOP + 20
             YACUAIOBVO_ANIMATE_SHIFT(YACUAIOBVO_VAL: -YACUAIOBVO_OFFSET)
@@ -56,7 +56,7 @@ class YACUAIOBVO_KeyboardGuardian: NSObject {
     }
 }
 
-// MARK: - 扩展查找当前响应者
+
 extension UIResponder {
     private static weak var YACUAIOBVO_RESPONDER_RESERVOIR: UIResponder?
 

@@ -22,18 +22,17 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
             !YACUAIOBVO_BLOCK_LIST.contains($0["YACUAIOBVO_ID"] as? String ?? "")
             
         }
-        // 2. 根据当前类别进行切片或条件过滤
+   
         switch YACUAIOBVO_CURRENT_CAT {
         case .YACUAIOBVO_Discover:
-            return Array(YACUAIOBVO_NO_BLOCKS) // 模拟最新数据
+            return Array(YACUAIOBVO_NO_BLOCKS)
         case .YACUAIOBVO_Follow:
-           
-            // 2. 获取当前用户已关注的 ID 集合
+     
             guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
-                return [] // 如果未登录或没有关注，返回空数组
+                return []
             }
 
-            // 3. 执行筛选：只保留 ID 存在于关注集合中的用户
+        
             let YACUAIOBVO_MY_FOLLOWING_LIST = YACUAIOBVO_NO_BLOCKS.filter { YACUAIOBVO_USER_DICT in
                 if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as? String {
                     return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)

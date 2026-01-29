@@ -137,10 +137,7 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
             YACUAIOBVO_NARRATIVE_INPUT.leadingAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.leadingAnchor, constant: 20),
             YACUAIOBVO_NARRATIVE_INPUT.trailingAnchor.constraint(equalTo: YACUAIOBVO_TRANSMIT_TRIGGER.leadingAnchor, constant: -10),
             YACUAIOBVO_NARRATIVE_INPUT.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
-            
-//            YACUAIOBVO_EMOJI_WELL.trailingAnchor.constraint(equalTo: YACUAIOBVO_TRANSMIT_TRIGGER.leadingAnchor, constant: -10),
-//            YACUAIOBVO_EMOJI_WELL.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
-//            
+ 
             YACUAIOBVO_TRANSMIT_TRIGGER.trailingAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.trailingAnchor, constant: -10),
             YACUAIOBVO_TRANSMIT_TRIGGER.centerYAnchor.constraint(equalTo: YACUAIOBVO_CONTROL_DOCK.centerYAnchor),
             YACUAIOBVO_TRANSMIT_TRIGGER.widthAnchor.constraint(equalToConstant: 36),

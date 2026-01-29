@@ -2,12 +2,11 @@
 //  YACUAIOBVO_CoreSystem.swift
 //  YaCupaiobvo
 //
-//  Created by mumu on 2026/1/23.
+//  Created by  on 2026/1/23.
 //
 
 import UIKit
 
-// MARK: - 本地数据持久化模型
 struct YACUAIOBVO_IdentityModel: Codable {
     var YACUAIOBVO_ID: String
     var YACUAIOBVO_NICKNAME: String
@@ -15,14 +14,14 @@ struct YACUAIOBVO_IdentityModel: Codable {
     var YACUAIOBVO_BIO_TEXT: String
     var YACUAIOBVO_WALLET_BALANCE: Int
     
-    // 关系集合 (存储用户ID或动态ID)
-    var YACUAIOBVO_FOLLOWING_SET: Set<String> = [] // 我关注的人
-    var YACUAIOBVO_FANS_SET: Set<String> = []      // 模拟粉丝
-    var YACUAIOBVO_BLOCK_SET: Set<String> = []     // 黑名单
-    var YACUAIOBVO_LIKED_MOMENTS: Set<String> = [] // 喜欢的动态
+
+    var YACUAIOBVO_FOLLOWING_SET: Set<String> = []
+    var YACUAIOBVO_FANS_SET: Set<String> = []
+    var YACUAIOBVO_BLOCK_SET: Set<String> = []
+    var YACUAIOBVO_LIKED_MOMENTS: Set<String> = []
 }
 
-// MARK: - 核心逻辑控制中枢
+
 class YACUAIOBVO_CoreSystem {
     
     
@@ -32,19 +31,17 @@ class YACUAIOBVO_CoreSystem {
     
     private let YACUAIOBVO_STORAGE = UserDefaults.standard
     private let YACUAIOBVO_KEY_SESSION = "YACUAIOBVO_USER_STORAGE_INDEX"
-    
-    // 当前登录的内存副本
+   
     var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_IdentityModel?
     
     private init() {
         YACUAIOBVO_INTERNAL_LOAD()
     }
 
-    // MARK: - 1. 登录与账户生命周期
+    
     func YACUAIOBVO_PERFORM_LOGIN(YACUAIOBVO_MAIL: String) {
         let YACUAIOBVO_IS_TEST = YACUAIOBVO_MAIL == "yabvo33@gmail.com"
         
-        // 逻辑：如果是测试账号，预设丰富数据；如果是新注册，创建空数据
         let YACUAIOBVO_NEW_MODEL = YACUAIOBVO_IdentityModel(
             YACUAIOBVO_ID: YACUAIOBVO_IS_TEST ? "YACUAIOBVO_TEST_888" : UUID().uuidString,
             YACUAIOBVO_NICKNAME: YACUAIOBVO_IS_TEST ? "Sophie Fashion" : "User_\(Int.random(in: 1000...9999))",
@@ -80,11 +77,11 @@ class YACUAIOBVO_CoreSystem {
     
     func YACUAIOBVO_ERASE_ACCOUNT() {
         YACUAIOBVO_TERMINATE_SESSION()
-        // 此处模拟注销逻辑，清空所有相关本地缓存
+      
         YACUAIOBVO_STORAGE.synchronize()
     }
 
-    // MARK: - 2. 金币/财务逻辑
+   
     func YACUAIOBVO_ACQUIRE_CREDITS(YACUAIOBVO_VAL: Int) {
         guard var YACUAIOBVO_P = YACUAIOBVO_CURRENT_PROFILE else { return }
         YACUAIOBVO_P.YACUAIOBVO_WALLET_BALANCE += YACUAIOBVO_VAL
@@ -101,7 +98,7 @@ class YACUAIOBVO_CoreSystem {
         return false
     }
 
-    // MARK: - 3. 社交关系逻辑
+
     func YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: String) {
         guard var YACUAIOBVO_P = YACUAIOBVO_CURRENT_PROFILE else { return }
         if YACUAIOBVO_P.YACUAIOBVO_FOLLOWING_SET.contains(YACUAIOBVO_T_ID) {
@@ -125,7 +122,7 @@ class YACUAIOBVO_CoreSystem {
         for (i,item) in self.YACUAIOBVO_DATA_REPOSITORIES.enumerated() {
             if item.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String ==  YACUAIOBVO_T_ID{
                 self.YACUAIOBVO_DATA_REPOSITORIES.remove(at: i)
-                print("-------------remove----------")
+             
                 print(self.YACUAIOBVO_DATA_REPOSITORIES)
             }
         }
@@ -144,7 +141,7 @@ class YACUAIOBVO_CoreSystem {
         YACUAIOBVO_UPDATE_NODE(YACUAIOBVO_P)
     }
 
-    // MARK: - 4. 身份信息修改
+   
     func YACUAIOBVO_UPDATE_IDENTITY(YACUAIOBVO_NAME: String, YACUAIOBVO_IMG: String) {
         guard var YACUAIOBVO_P = YACUAIOBVO_CURRENT_PROFILE else { return }
         YACUAIOBVO_P.YACUAIOBVO_NICKNAME = YACUAIOBVO_NAME
@@ -153,7 +150,7 @@ class YACUAIOBVO_CoreSystem {
         YACUAIOBVO_UPDATE_NODE(YACUAIOBVO_P)
     }
 
-    // MARK: - 私有同步工具
+    
     private func YACUAIOBVO_UPDATE_NODE(_ YACUAIOBVO_M: YACUAIOBVO_IdentityModel) {
         self.YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_M
         self.YACUAIOBVO_INTERNAL_SYNC()

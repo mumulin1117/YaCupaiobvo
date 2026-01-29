@@ -33,7 +33,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        YACUAIOBVO_EMPTY_SHADOW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
+        YACUAIOBVO_EMPTY_SHADOW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder")
                
         YACUAIOBVO_EMPTY_SHADOW.contentMode = .scaleAspectFit
         YACUAIOBVO_EMPTY_SHADOW.isHidden = true
