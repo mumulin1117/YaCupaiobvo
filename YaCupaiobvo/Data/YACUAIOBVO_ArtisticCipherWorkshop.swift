@@ -1,14 +1,3 @@
-//
-//  YACUAIOBVO_ArtisticCipherWorkshop.swift
-//  YaCupaiobvo
-//
-//  Created by mumu on 2026/1/26.
-//
-
-import UIKit
-
-import UIKit
-import CryptoKit
 
 import UIKit
 import CryptoKit
