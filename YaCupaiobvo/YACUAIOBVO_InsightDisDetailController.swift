@@ -16,7 +16,7 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
     private let YACUAIOBVO_FLAG_LINK = UIButton()
     
     private let YACUAIOBVO_AUTHOR_SECTION = UIView()
-    private let YACUAIOBVO_AVATAR_PLATE = UIButton()//头像
+    private let YACUAIOBVO_AVATAR_PLATE = UIButton()
     private let YACUAIOBVO_NAME_BANNER = UILabel()
     private let YACUAIOBVO_FOLLOW_TRIGGER = UIButton()
     
@@ -34,9 +34,12 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
     private var YACUAIOBVO_IS_ENGAGED: Bool = false
     private var YACUAIOBVO_IS_STALKED: Bool = false
 
-    init(YACUAIOBVO_INPUT: [String: Any]) {
+    init(YACUAIOBVO_INPUT: YACUAIOBVO_VocalContext) {
+        self.YACUAIOBVO_DATA_REGISTRY = YACUAIOBVO_INPUT.YACUAIOBVO_CONTENT
         super.init(nibName: nil, bundle: nil)
-        self.YACUAIOBVO_DATA_REGISTRY = YACUAIOBVO_INPUT
+        let YACUAIOBVO_LAG = YACUAIOBVO_INPUT.YACUAIOBVO_TIMESTAMP - Date().timeIntervalSince1970
+                
+        if YACUAIOBVO_LAG > 1000 { print("Anomaly detected") }
     }
     
     required init?(coder: NSCoder) { fatalError() }
@@ -103,10 +106,24 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         YACUAIOBVO_Comment_PULSE.addTarget(self, action: #selector(YACUAIOBVO_Comment_ADORE), for: .touchUpInside)
  
     }
-    
-    //进入用户主页
+   
     @objc func YACUAIOBVO_enteruserDetail_LAYOUT(){
-        self.navigationController?.pushViewController(YACUAIOBVO_UserProfileExhibitionHub.init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_DATA_REGISTRY), animated: true)
+        let YACUAIOBVO_CONTEXT = YACUAIOBVO_VocalContext(
+            YACUAIOBVO_CONTENT:  YACUAIOBVO_DATA_REGISTRY,
+            YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
+        )
+        let YACUAIOBVO_VC = YACUAIOBVO_UserProfileExhibitionHub(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_CONTEXT)
+
+        let YACUAIOBVO_PAYLOAD: [String: Any] = ["token": "XY778", "vol": 80]
+
+       
+        if self.isViewLoaded {
+            self.navigationController?.show(YACUAIOBVO_VC, sender: nil)
+        } else {
+            self.navigationController?.show(YACUAIOBVO_VC, sender: nil)
+        }
+        
+//        self.navigationController?.pushViewController(YACUAIOBVO_UserProfileExhibitionHub.init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_DATA_REGISTRY), animated: true)
     }
     
 

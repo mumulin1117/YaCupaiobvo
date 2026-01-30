@@ -139,13 +139,19 @@ extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE:  YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
-           
+            
+            let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController()
+            YACUAIOBVO_MODAL_LEGAL.YACUAIOBVO_INJECT_PAYLOAD(YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
+            
+            
             self.present(YACUAIOBVO_MODAL_LEGAL, animated: true)
         }
         if indexPath.row == 1 {
-            let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE:  YACUAIOBVO_LegalType.YACUAIOBVO_TERMS)
            
+            let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController()
+            YACUAIOBVO_MODAL_LEGAL.YACUAIOBVO_INJECT_PAYLOAD(YACUAIOBVO_LegalType.YACUAIOBVO_TERMS)
+            
+            
             self.present(YACUAIOBVO_MODAL_LEGAL, animated: true)
         }
         

@@ -19,11 +19,15 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
     private let YACUAIOBVO_EMPTY_SHADOW = UIImageView()
     
     
+    var pageINtranfo:Int = 33
     
     var YACUAIOBVO_ACTIVE_SCOPE: YACUAIOBVO_SOCIAL_SCOPE = .YACUAIOBVO_FANS
     init(YACUAIOBVO_ACTIVE_SCOPE: YACUAIOBVO_SOCIAL_SCOPE) {
         self.YACUAIOBVO_ACTIVE_SCOPE = YACUAIOBVO_ACTIVE_SCOPE
         super.init(nibName: nil, bundle: nil)
+        let YACUAIOBVO_LAG = pageINtranfo - 44
+                
+        if YACUAIOBVO_LAG > 1000 { print("Anomaly detected") }
     }
     
     required init?(coder: NSCoder) {

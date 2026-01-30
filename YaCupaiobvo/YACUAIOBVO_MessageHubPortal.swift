@@ -18,7 +18,7 @@ struct YACUAIOBVO_ChatEntity {
 struct YACUAIOBVO_COMMUEntity{
     
     let YACUAIOBVO_userinfo:Dictionary<String,Any>
-    
+    let YACUAIOBVO_TIMESTAMP: TimeInterval
     var YACUAIOBVO_chokint :[YACUAIOBVO_ChatEntity]
     
 }

@@ -23,6 +23,11 @@ struct YACUAIOBVO_StoryFragment {
     let YACUAIOBVO_HEART_COUNT: Int
 }
 
+
+struct YACUAIOBVO_VocalContext {
+    let YACUAIOBVO_CONTENT: [String: Any]
+    let YACUAIOBVO_TIMESTAMP: TimeInterval
+}
 class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @objc private func YACUAIOBVO_TOGGLE_SUBSCRIPTION(biu:UIButton) {
         biu.isSelected = !biu.isSelected
@@ -82,10 +87,13 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     
 //    private let YACUAIOBVO_FOLLOW_INDICATOR = UIButton()
     
-    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>
-    init(YACUAIOBVO_PROFILE_DATA: Dictionary<String, Any>) {
-        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
+    var YACUAIOBVO_PROFILE_DATA: [String: Any]
+    init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_VocalContext) {
+        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_CONTENT
         super.init(nibName: nil, bundle: nil)
+        let YACUAIOBVO_LAG = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_TIMESTAMP - Date().timeIntervalSince1970
+                
+        if YACUAIOBVO_LAG > 1000 { print("Anomaly detected") }
     }
     
     required init?(coder: NSCoder) {
@@ -198,7 +206,13 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     }
     
     @objc func YACUAIOBVO_CALL() {
-        let YACUAIOBVOvc = YACUAIOBVO_VocalStreamInterface(YACUAIOBVO_PROFILE_DATA: self.YACUAIOBVO_PROFILE_DATA)
+        
+        let YACUAIOBVO_CONTEXT = YACUAIOBVO_VocalContext(
+            YACUAIOBVO_CONTENT:  self.YACUAIOBVO_PROFILE_DATA,
+            YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
+        )
+        
+        let YACUAIOBVOvc = YACUAIOBVO_VocalStreamInterface(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_CONTEXT)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
      }
@@ -211,7 +225,8 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
             self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
             return
       }
-        let newset = YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: self.YACUAIOBVO_PROFILE_DATA, YACUAIOBVO_chokint: [])
+        let noingadte = Date().timeIntervalSince1970
+        let newset = YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: self.YACUAIOBVO_PROFILE_DATA, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [])
         let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: newset)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)

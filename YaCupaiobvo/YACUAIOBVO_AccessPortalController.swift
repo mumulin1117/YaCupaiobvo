@@ -112,7 +112,10 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
 
 extension YACUAIOBVO_AccessPortalController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE: URL.absoluteString.contains(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")) ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
+        let tyepingdtr = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")
+        
+        let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController()
+        YACUAIOBVO_MODAL_LEGAL.YACUAIOBVO_INJECT_PAYLOAD(URL.absoluteString.contains(tyepingdtr) ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)// YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE: URL.absoluteString.contains(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")) ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
        
         self.present(YACUAIOBVO_MODAL_LEGAL, animated: true)
         return false

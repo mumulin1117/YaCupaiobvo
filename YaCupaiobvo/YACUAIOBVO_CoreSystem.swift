@@ -58,13 +58,13 @@ class YACUAIOBVO_CoreSystem {
         
         if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
             let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
-            
+             let noingadte = Date().timeIntervalSince1970
             let demouserCh1 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
             YACUAIOBVO_DATA_REPOSITORIES = [
                 
-                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
+                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
                 
-                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
+                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
                 
             ]
         }
@@ -168,16 +168,16 @@ class YACUAIOBVO_CoreSystem {
         if let YACUAIOBVO_RAW = YACUAIOBVO_STORAGE.data(forKey: YACUAIOBVO_KEY_SESSION),
            let YACUAIOBVO_DE = try? JSONDecoder().decode(YACUAIOBVO_IdentityModel.self, from: YACUAIOBVO_RAW) {
             YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_DE
-            
+            let noingadte = Date().timeIntervalSince1970
             if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
                 let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
                 
                 let demouserCh1 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
                 YACUAIOBVO_DATA_REPOSITORIES = [
                     
-                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
+                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
                     
-                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
+                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
                     
                 ]
             }

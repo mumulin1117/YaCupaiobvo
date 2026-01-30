@@ -13,16 +13,21 @@ enum YACUAIOBVO_LegalType {
 }
 
 class YACUAIOBVO_LegalUniversalController: UIViewController {
-
     var YACUAIOBVO_ACTIVE_MODE: YACUAIOBVO_LegalType = .YACUAIOBVO_TERMS
-    init(YACUAIOBVO_ACTIVE_MODE: YACUAIOBVO_LegalType) {
-        self.YACUAIOBVO_ACTIVE_MODE = YACUAIOBVO_ACTIVE_MODE
-        super.init(nibName: nil, bundle: nil)
+    private var YACUAIOBVO_PIPELINE_ACTIVE = true
+    func YACUAIOBVO_INJECT_PAYLOAD(_ YACUAIOBVO_MAP: YACUAIOBVO_LegalType) {
+        
+        self.YACUAIOBVO_ACTIVE_MODE = YACUAIOBVO_MAP
+        YACUAIOBVO_VALIDATE_PIPELINE_STATUS()
+        
+    }
+        
+       
+    private func YACUAIOBVO_VALIDATE_PIPELINE_STATUS() {
+        self.YACUAIOBVO_PIPELINE_ACTIVE = self.isViewLoaded
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     private let YACUAIOBVO_BACKDROP_IMG = UIImageView()
     private let YACUAIOBVO_SHEET_CONTAINER = UIView()

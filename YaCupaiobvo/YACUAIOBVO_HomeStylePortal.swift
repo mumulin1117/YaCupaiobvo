@@ -12,7 +12,11 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas[page]["YACUAIOBVOIfNeedUnlock"] = false
         self.YACUAIOBVO_HORIZONTAL_COLLECTION.reloadItems(at: [IndexPath(row: page, section: 0)])
         let current = YACUAIOBVO_DISPLAY_POOL[page]
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: current)
+        let YACUAIOBVO_CONTEXT = YACUAIOBVO_VocalContext(
+            YACUAIOBVO_CONTENT: current,
+            YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
+        )
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_CONTEXT)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }
@@ -67,12 +71,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         super.viewDidLoad()
         
         YACUAIOBVO_INIT_BASE_STYLE()
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "z1Qsa0iPAgFnmeu3wSrqeO3QvYSLsRP+y5grgbS/Ovz4ez84uCsq04xE"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
-            YACUAIOBVO_LAYOUT_COMPONENTS()
-        }
+        YACUAIOBVO_LAYOUT_COMPONENTS()
     }
 
     private func YACUAIOBVO_INIT_BASE_STYLE() {
@@ -201,8 +200,11 @@ extension YACUAIOBVO_HomeStylePortal: UICollectionViewDelegate, UICollectionView
             return
         }
        
-        
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: current)
+        let YACUAIOBVO_CONTEXT = YACUAIOBVO_VocalContext(
+            YACUAIOBVO_CONTENT: current,
+            YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
+        )
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_CONTEXT)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }

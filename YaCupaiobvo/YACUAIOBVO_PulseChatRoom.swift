@@ -19,6 +19,9 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_COMMUEntity) {
         self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
         super.init(nibName: nil, bundle: nil)
+        let YACUAIOBVO_LAG = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_TIMESTAMP - Date().timeIntervalSince1970
+                
+        if YACUAIOBVO_LAG > 1000 { print("Anomaly detected") }
     }
     
     required init?(coder: NSCoder) {

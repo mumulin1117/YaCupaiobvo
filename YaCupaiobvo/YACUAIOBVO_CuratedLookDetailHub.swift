@@ -26,9 +26,11 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
     private var YACUAIOBVO_CONTEXT_SOURCE: [String: Any]?
     private var YACUAIOBVO_RESOURCE_POOL: [String] = []
 
-    init(YACUAIOBVO_INCOMING_DATA: [String: Any]) {
+    init(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_VocalContext) {
         super.init(nibName: nil, bundle: nil)
-        self.YACUAIOBVO_CONTEXT_SOURCE = YACUAIOBVO_INCOMING_DATA
+        self.YACUAIOBVO_CONTEXT_SOURCE = YACUAIOBVO_INCOMING_DATA.YACUAIOBVO_CONTENT
+        let YACUAIOBVO_LAG = YACUAIOBVO_INCOMING_DATA.YACUAIOBVO_TIMESTAMP - Date().timeIntervalSince1970
+                if YACUAIOBVO_LAG > 1000 { print("Anomaly detected") }
     }
     
     required init?(coder: NSCoder) { fatalError() }

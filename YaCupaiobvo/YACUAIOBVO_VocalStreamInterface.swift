@@ -15,12 +15,14 @@ struct YACUAIOBVO_SessionRegistry: Codable {
 }
 
 class YACUAIOBVO_VocalStreamInterface: UIViewController {
-    var YACUAIOBVO_PROFILE_DATA: Dictionary<String,Any>
-    init(YACUAIOBVO_PROFILE_DATA: Dictionary<String, Any>) {
-        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
+    var YACUAIOBVO_PROFILE_DATA: [String: Any]
+    init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_VocalContext) {
+        self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_CONTENT
         super.init(nibName: nil, bundle: nil)
+        let YACUAIOBVO_LAG = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_TIMESTAMP - Date().timeIntervalSince1970
+                
+        if YACUAIOBVO_LAG > 1000 { print("Anomaly detected") }
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

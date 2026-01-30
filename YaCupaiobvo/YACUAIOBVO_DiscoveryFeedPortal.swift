@@ -114,7 +114,12 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cheia = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_InsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: cheia)
+        let YACUAIOBVO_CONTEXT = YACUAIOBVO_VocalContext(
+            YACUAIOBVO_CONTENT: cheia,
+            YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
+        )
+        
+        let YACUAIOBVO_DET_VC = YACUAIOBVO_InsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: YACUAIOBVO_CONTEXT)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
         
