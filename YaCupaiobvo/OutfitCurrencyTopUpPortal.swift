@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_CurrencyTopUpPortal.swift
+//  OutfitCurrencyTopUpPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -8,13 +8,13 @@
 import UIKit
 import StoreKit
 
-struct YACUAIOBVO_CoinPackage {
+struct GarnishCoainPackage {
     let YACUAIOBVO_IDENTIFIER: String
     let YACUAIOBVO_AMOUNT: Int
     let YACUAIOBVO_PRICE_LABEL: String
 }
 
-class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObserver, SKProductsRequestDelegate{
+class OutfitCurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObserver, SKProductsRequestDelegate{
     private let YACUAIOBVO_STORAGE_KEY = "YACUAIOBVO_USER_GOLD_RESERVE"
         private var YACUAIOBVO_SK_ENTITIES: [SKProduct] = []
     
@@ -26,7 +26,7 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
     private let YACUAIOBVO_BALANCE_LBL = UILabel()
     
     private var YACUAIOBVO_GRID_DISPLAY: UICollectionView!
-    private var YACUAIOBVO_OFFER_LIST: [YACUAIOBVO_CoinPackage] = []
+    private var YACUAIOBVO_OFFER_LIST: [GarnishCoainPackage] = []
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
         YACUAIOBVO_PREPARE_DATA_SOURCE()
         YACUAIOBVO_CONSTRUCT_SCENE()
         YACUAIOBVO_SYNC_LOCAL_LEDGER()
-        self.YACUAIOBVO_BALANCE_LBL.text = "\(YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_WALLET_BALANCE ?? 0)"
+        self.YACUAIOBVO_BALANCE_LBL.text = "\(SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_WALLET_BALANCE ?? 0)"
     }
     deinit {
             SKPaymentQueue.default().remove(self)
@@ -61,16 +61,16 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
     
     private func YACUAIOBVO_PREPARE_DATA_SOURCE() {
         YACUAIOBVO_OFFER_LIST = [
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yzixshxsasblntgo", YACUAIOBVO_AMOUNT: 400, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "P2FcrAOpLdx11Ss7KHbP8RztltRbanl1/JC52sccFNWEBekvgQ==")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "lkzdtmkdyqtqrsyz", YACUAIOBVO_AMOUNT: 800, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BBlSs2CW6591s6xbRI2DRnlYb9ScjnZTiBBXt0OCwmGWcnBrvw==")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains1900", YACUAIOBVO_AMOUNT: 1900, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1kWEAD4PRbYEo+rN1mI4CWVV1751/u2FmI7JbFPv9NuEnxdR+g==")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "wjrbzsjeiuguxnjq", YACUAIOBVO_AMOUNT: 2450, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "nUGcfZSYWRQpI2pGTv0KUsBb8eq5ieng03+voes0Ia84zIETQg==")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains4250", YACUAIOBVO_AMOUNT: 4250, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ZUuy137Y+rXXhK952H3TLMmaRb++WKTWs7sPLXkOL8uN86JECw==")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "dcrjypscdwchgdnn", YACUAIOBVO_AMOUNT: 5150, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "32PBrJzx03lKMHh8kSl0FpbrgaLF4C21lrCj9CKBtgI0cIBNIA==")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains7700", YACUAIOBVO_AMOUNT: 7700, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Qz6yiB3hmqbt+BifBAtUw9DWFki1ZTQtd8gt64XKeI5le6r+iOA=")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "jkulyhuijfurwepw", YACUAIOBVO_AMOUNT: 10800, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BeZSfQ4YoUIa25oju9h41OSJphoSAeZc/Za5lWHxjCdHeB1Lb2s=")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "vasvfditlnceulut", YACUAIOBVO_AMOUNT: 29400, YACUAIOBVO_PRICE_LABEL: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WKBbMbhZRI9wlnBlKSUc8q/sJPrA56xW+n/MeExUNYNHJgsgCGc=")),
-            YACUAIOBVO_CoinPackage(YACUAIOBVO_IDENTIFIER: "ceccygbjdvlxckza", YACUAIOBVO_AMOUNT: 63700, YACUAIOBVO_PRICE_LABEL:YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "4k7GQPYtiPyDOs4l2WePsdocKbRIgVtecwQVXPwRlo+pXTZ19HM=") )
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "yzixshxsasblntgo", YACUAIOBVO_AMOUNT: 400, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "P2FcrAOpLdx11Ss7KHbP8RztltRbanl1/JC52sccFNWEBekvgQ==")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "lkzdtmkdyqtqrsyz", YACUAIOBVO_AMOUNT: 800, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BBlSs2CW6591s6xbRI2DRnlYb9ScjnZTiBBXt0OCwmGWcnBrvw==")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains1900", YACUAIOBVO_AMOUNT: 1900, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1kWEAD4PRbYEo+rN1mI4CWVV1751/u2FmI7JbFPv9NuEnxdR+g==")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "wjrbzsjeiuguxnjq", YACUAIOBVO_AMOUNT: 2450, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "nUGcfZSYWRQpI2pGTv0KUsBb8eq5ieng03+voes0Ia84zIETQg==")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains4250", YACUAIOBVO_AMOUNT: 4250, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ZUuy137Y+rXXhK952H3TLMmaRb++WKTWs7sPLXkOL8uN86JECw==")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "dcrjypscdwchgdnn", YACUAIOBVO_AMOUNT: 5150, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "32PBrJzx03lKMHh8kSl0FpbrgaLF4C21lrCj9CKBtgI0cIBNIA==")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "yabvocoains7700", YACUAIOBVO_AMOUNT: 7700, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Qz6yiB3hmqbt+BifBAtUw9DWFki1ZTQtd8gt64XKeI5le6r+iOA=")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "jkulyhuijfurwepw", YACUAIOBVO_AMOUNT: 10800, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BeZSfQ4YoUIa25oju9h41OSJphoSAeZc/Za5lWHxjCdHeB1Lb2s=")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "vasvfditlnceulut", YACUAIOBVO_AMOUNT: 29400, YACUAIOBVO_PRICE_LABEL: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WKBbMbhZRI9wlnBlKSUc8q/sJPrA56xW+n/MeExUNYNHJgsgCGc=")),
+            GarnishCoainPackage(YACUAIOBVO_IDENTIFIER: "ceccygbjdvlxckza", YACUAIOBVO_AMOUNT: 63700, YACUAIOBVO_PRICE_LABEL:GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "4k7GQPYtiPyDOs4l2WePsdocKbRIgVtecwQVXPwRlo+pXTZ19HM=") )
         ]
     }
 
@@ -78,7 +78,7 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
         view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         YACUAIOBVO_HERO_BACKDROP.contentMode = .scaleAspectFill
-        YACUAIOBVO_HERO_BACKDROP.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_wallet_bg")
+        YACUAIOBVO_HERO_BACKDROP.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_wallet_bg")
         YACUAIOBVO_HERO_BACKDROP.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_HERO_BACKDROP)
         
@@ -160,7 +160,7 @@ class YACUAIOBVO_CurrencyTopUpPortal: UIViewController ,SKPaymentTransactionObse
     }
 }
 
-extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollectionViewDataSource {
+extension OutfitCurrencyTopUpPortal: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return YACUAIOBVO_OFFER_LIST.count
     }
@@ -173,9 +173,9 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
     
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "SIq3wcjZfX5Jo+nVrzcI7mVNobM9j9sf7ajDl6JEqghmYSy1UsG+WYM="), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "SIq3wcjZfX5Jo+nVrzcI7mVNobM9j9sf7ajDl6JEqghmYSy1UsG+WYM="), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         guard indexPath.row < YACUAIOBVO_SK_ENTITIES.count else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hSmFdbIZBFSno0fFfqu4FcMeJln3oQIqkIHsVHCKa9U3w54jmdiYatboUaFa/A=="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hSmFdbIZBFSno0fFfqu4FcMeJln3oQIqkIHsVHCKa9U3w54jmdiYatboUaFa/A=="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
             
         }
@@ -192,20 +192,20 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
                 return
             }
             
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ATVaiP5FJrvdwK7w2vHaXSVcH0xyuxwUJ8v7c3ri1p/xRhdwXmysaFz8C51Tvtqq3/rN7MzjzoYz7vKtZPTkgVaQBC4w5P/mQZOnc4VdpGgEBEQjDMr4wCmVbQ=="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ATVaiP5FJrvdwK7w2vHaXSVcH0xyuxwUJ8v7c3ri1p/xRhdwXmysaFz8C51Tvtqq3/rN7MzjzoYz7vKtZPTkgVaQBC4w5P/mQZOnc4VdpGgEBEQjDMr4wCmVbQ=="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
         }
 
         // MARK: - SKPaymentTransactionObserver
         func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
             for YACUAIOBVO_TRANS in transactions {
-                YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+                CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
                 switch YACUAIOBVO_TRANS.transactionState {
                 case .purchased:
-                    YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sidyN2SK+8UYS84rWWDf3MCpRTmhkhPr0KDSQZMoQ9U8FwDWf6drOlzkXYFIlEk="), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+                    CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sidyN2SK+8UYS84rWWDf3MCpRTmhkhPr0KDSQZMoQ9U8FwDWf6drOlzkXYFIlEk="), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
                     YACUAIOBVO_GRANT_LOCAL_CURRENCY(YACUAIOBVO_TRANS)
                     SKPaymentQueue.default().finishTransaction(YACUAIOBVO_TRANS)
                 case .failed:
-                    YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "00ZYdkpdi+73XRgeGV5R5aaU/lHc8NucR8dlm+K3rXmaL4zdzrOUCv8lmQ=="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+                    CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "00ZYdkpdi+73XRgeGV5R5aaU/lHc8NucR8dlm+K3rXmaL4zdzrOUCv8lmQ=="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
                     SKPaymentQueue.default().finishTransaction(YACUAIOBVO_TRANS)
                 case .restored:
                     SKPaymentQueue.default().finishTransaction(YACUAIOBVO_TRANS)
@@ -246,7 +246,7 @@ extension YACUAIOBVO_CurrencyTopUpPortal: UICollectionViewDelegate, UICollection
 //        present(YACUAIOBVO_ALERT, animated: true)
 //    }
     
-    private func YACUAIOBVO_EXECUTE_PURCHASE_SIM(_ YACUAIOBVO_DATA: YACUAIOBVO_CoinPackage) {
+    private func YACUAIOBVO_EXECUTE_PURCHASE_SIM(_ YACUAIOBVO_DATA: GarnishCoainPackage) {
         // Mocking IAP Delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             let YACUAIOBVO_OLD = UserDefaults.standard.integer(forKey: self.YACUAIOBVO_STORAGE_KEY)
@@ -277,11 +277,11 @@ class YACUAIOBVO_CoinPackageNode: UICollectionViewCell {
     private func YACUAIOBVO_INIT_NODE() {
         self.backgroundColor = .clear
         YACUAIOBVO_OUTER_SHELL.contentMode = .scaleToFill
-        YACUAIOBVO_OUTER_SHELL.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_OUTER_SHELL")
+        YACUAIOBVO_OUTER_SHELL.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_OUTER_SHELL")
         YACUAIOBVO_OUTER_SHELL.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_OUTER_SHELL)
         
-        YACUAIOBVO_ICON.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill")
+        YACUAIOBVO_ICON.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill")
        
         YACUAIOBVO_ICON.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_OUTER_SHELL.addSubview(YACUAIOBVO_ICON)
@@ -325,7 +325,7 @@ class YACUAIOBVO_CoinPackageNode: UICollectionViewCell {
         ])
     }
     
-    func YACUAIOBVO_POPULATE(_ YACUAIOBVO_INFO: YACUAIOBVO_CoinPackage) {
+    func YACUAIOBVO_POPULATE(_ YACUAIOBVO_INFO: GarnishCoainPackage) {
         YACUAIOBVO_QTY_LBL.text = "\(YACUAIOBVO_INFO.YACUAIOBVO_AMOUNT)"
         YACUAIOBVO_COST_LBL.text = YACUAIOBVO_INFO.YACUAIOBVO_PRICE_LABEL
     }

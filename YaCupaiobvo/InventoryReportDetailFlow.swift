@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_ReportDetailFlow.swift
+//  InventoryReportDetailFlow.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_ReportDetailFlow: UIViewController {
+class InventoryReportDetailFlow: UIViewController {
     private let YACUAIOBVO_BACK_TRIGGER = UIButton()
     
     private let YACUAIOBVO_OPTIONS = ["Political Sensitive", "Violent Pornography", "Advertising Harassment", "Infringement", "Other"]
@@ -23,7 +23,7 @@ class YACUAIOBVO_ReportDetailFlow: UIViewController {
         YACUAIOBVO_BACK_TRIGGER.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_BACK_TRIGGER)
         view.backgroundColor = .white
-        title = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Du/IOGpmiAVFJbd1dkKZsRuhc1Qbp3ukpRxaa5ijbm/Ck11U3r0=")
+        title = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Du/IOGpmiAVFJbd1dkKZsRuhc1Qbp3ukpRxaa5ijbm/Ck11U3r0=")
         YACUAIOBVO_APPLY_DARK_TITLE_THEME()
         YACUAIOBVO_FABRICATE_OPTIONS()
     }
@@ -50,7 +50,7 @@ class YACUAIOBVO_ReportDetailFlow: UIViewController {
         }
         
         let YACUAIOBVO_SUBMIT = UIButton()
-        YACUAIOBVO_SUBMIT.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ZjBb+UTzUduUuxHJmPh0R+mmb7N2pMDE5iS819iHqa1j15cMj6E="), for: .normal)
+        YACUAIOBVO_SUBMIT.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ZjBb+UTzUduUuxHJmPh0R+mmb7N2pMDE5iS819iHqa1j15cMj6E="), for: .normal)
         YACUAIOBVO_SUBMIT.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
         YACUAIOBVO_SUBMIT.layer.cornerRadius = 28
         YACUAIOBVO_SUBMIT.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
@@ -92,7 +92,7 @@ class YACUAIOBVO_ReportDetailFlow: UIViewController {
     }
     
     @objc private func YACUAIOBVO_DISPATCH_REPORT() {
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "3QzFr1lmTM88hhQSlBwnrmvkoz6IXZ0KKRUB2JSEOULoHKxS/LWA2rhJWXzoV2dr"), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "3QzFr1lmTM88hhQSlBwnrmvkoz6IXZ0KKRUB2JSEOULoHKxS/LWA2rhJWXzoV2dr"), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.navigationController?.popToRootViewController(animated: true)
         }

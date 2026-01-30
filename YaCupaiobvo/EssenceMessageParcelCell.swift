@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_MessageParcelCell.swift
+//  EssenceMessageParcelCell.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_MessageParcelCell: UITableViewCell {
+class EssenceMessageParcelCell: UITableViewCell {
     
     private let YACUAIOBVO_AVATAR_FRAME = UIImageView()
     private let YACUAIOBVO_NAME_LBL = UILabel()
@@ -79,10 +79,10 @@ class YACUAIOBVO_MessageParcelCell: UITableViewCell {
         ])
     }
     
-    func YACUAIOBVO_BIND_DATA(_ YACUAIOBVO_DATA: YACUAIOBVO_COMMUEntity) {
+    func YACUAIOBVO_BIND_DATA(_ YACUAIOBVO_DATA: ElixirCOMMUEntity) {
         YACUAIOBVO_NAME_LBL.text = YACUAIOBVO_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_NICKNAME"] as? String
         YACUAIOBVO_MOTTO_LBL.text =  YACUAIOBVO_DATA.YACUAIOBVO_chokint.last?.YACUAIOBVO_mescontent
-        YACUAIOBVO_AVATAR_FRAME.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_AVATAR_FRAME.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         
 //        if YACUAIOBVO_DATA.YACUAIOBVO_UNREAD_COUNT > 0 {
 //            YACUAIOBVO_BADGE_PLATE.isHidden = false

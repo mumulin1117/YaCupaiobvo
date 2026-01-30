@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
+class SonicInsightDiscoveryDetailController: UIViewController {
 
     private let YACUAIOBVO_MAIN_CONTAINER = UIScrollView()
     private let YACUAIOBVO_HERO_IMAGE = UIImageView()
@@ -60,7 +60,7 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         
         YACUAIOBVO_HERO_IMAGE.contentMode = .scaleAspectFill
         YACUAIOBVO_HERO_IMAGE.clipsToBounds = true
-        YACUAIOBVO_HERO_IMAGE.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_temp_look")
+        YACUAIOBVO_HERO_IMAGE.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_temp_look")
         
         YACUAIOBVO_RETREAT_LINK.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         YACUAIOBVO_RETREAT_LINK.tintColor = .black
@@ -77,8 +77,8 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         YACUAIOBVO_NAME_BANNER.font = .systemFont(ofSize: 16, weight: .medium)
         YACUAIOBVO_NAME_BANNER.textColor = .darkGray
         NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_DISMISS_FLOW), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
-        YACUAIOBVO_FOLLOW_TRIGGER.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_FOLLOW_TRIGGER"), for: .normal)
-        YACUAIOBVO_FOLLOW_TRIGGER.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_FOLLOW_TRIGGERed"), for: .selected)
+        YACUAIOBVO_FOLLOW_TRIGGER.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_FOLLOW_TRIGGER"), for: .normal)
+        YACUAIOBVO_FOLLOW_TRIGGER.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_FOLLOW_TRIGGERed"), for: .selected)
         YACUAIOBVO_FOLLOW_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_TOGGLE_SUBSCRIPTION), for: .touchUpInside)
         
         YACUAIOBVO_CONTENT_SUMMARY.font = .systemFont(ofSize: 15)
@@ -93,15 +93,15 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         YACUAIOBVO_HEART_PULSE.setTitleColor(UIColor(red: 0.22, green: 0.25, blue: 0.32, alpha: 0.7000), for: .normal)
         
         YACUAIOBVO_HEART_PULSE.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 12)
-        YACUAIOBVO_HEART_PULSE.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOHeadrt-off"), for: .normal)
-        YACUAIOBVO_HEART_PULSE.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOHeadrt-offfill"), for: .selected)
+        YACUAIOBVO_HEART_PULSE.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOHeadrt-off"), for: .normal)
+        YACUAIOBVO_HEART_PULSE.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOHeadrt-offfill"), for: .selected)
         
         YACUAIOBVO_HEART_PULSE.addTarget(self, action: #selector(YACUAIOBVO_EXECUTE_ADORE), for: .touchUpInside)
         
         YACUAIOBVO_Comment_PULSE.setTitleColor(UIColor(red: 0.22, green: 0.25, blue: 0.32, alpha: 0.7000), for: .normal)
         YACUAIOBVO_Comment_PULSE.setTitle("3", for: .normal)
         YACUAIOBVO_Comment_PULSE.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 12)
-        YACUAIOBVO_Comment_PULSE.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_Comment_PULSE"), for: .normal)
+        YACUAIOBVO_Comment_PULSE.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_Comment_PULSE"), for: .normal)
        
         YACUAIOBVO_Comment_PULSE.addTarget(self, action: #selector(YACUAIOBVO_Comment_ADORE), for: .touchUpInside)
  
@@ -112,7 +112,7 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
             YACUAIOBVO_CONTENT:  YACUAIOBVO_DATA_REGISTRY,
             YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
         )
-        let YACUAIOBVO_VC = YACUAIOBVO_UserProfileExhibitionHub(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_CONTEXT)
+        let YACUAIOBVO_VC = VocalStreamInterfaceeExhibitionHub(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_CONTEXT)
 
         let YACUAIOBVO_PAYLOAD: [String: Any] = ["token": "XY778", "vol": 80]
 
@@ -215,16 +215,16 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         YACUAIOBVO_CONTENT_SUMMARY.text = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_discover_content"] as? String ?? "Curated sunglass looks for the community."
         
         if let YACUAIOBVO_AVATAR_STR = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_AVATAR_REF"] as? String {
-            YACUAIOBVO_AVATAR_PLATE.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_AVATAR_STR), for: .normal)
+            YACUAIOBVO_AVATAR_PLATE.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_AVATAR_STR), for: .normal)
         }
         
         
         if let YACUAIOBVO_them_STR = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_discover_pic"] as? String {
-            YACUAIOBVO_HERO_IMAGE.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_them_STR)
+            YACUAIOBVO_HERO_IMAGE.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_them_STR)
         }
         
         // 2. 获取当前用户已关注的 ID 集合
-        guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
+        guard let YACUAIOBVO_FOLLOW_IDS = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
             return
         }
         let YACUAIOBVO_MY_FOLLOWING_LIST = YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_ID"] as? String ?? "")
@@ -240,11 +240,11 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
         YACUAIOBVO_FOLLOW_TRIGGER.isSelected = YACUAIOBVO_IS_STALKED
         
         let YACUAIOBVO_MSG = YACUAIOBVO_IS_STALKED ? "Subscription Active" : "Subscription Removed"
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
         
         let useif = YACUAIOBVO_DATA_REGISTRY["YACUAIOBVO_ID"] as? String
         
-        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: useif ?? "")
+        SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: useif ?? "")
        
     }
 
@@ -273,7 +273,7 @@ class YACUAIOBVO_InsightDiscoveryDetailController: UIViewController {
     
     
     @objc private func YACUAIOBVO_Comment_ADORE() {
-        let commentcontroller = YACUAIOBVO_PulseCommentPanel()
+        let commentcontroller = SynthesizePulseCommentPanel()
         self.present(commentcontroller, animated: true)
     }
 

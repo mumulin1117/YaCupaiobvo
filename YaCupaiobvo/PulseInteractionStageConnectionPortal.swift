@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_SocialConnectionPortal.swift
+//  PulseInteractionStageConnectionPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -15,7 +15,7 @@ enum YACUAIOBVO_SOCIAL_SCOPE {
     case YACUAIOBVO_RESTRICTED_like
 }
 
-class YACUAIOBVO_SocialConnectionPortal: UIViewController {
+class PulseInteractionStageConnectionPortal: UIViewController {
     private let YACUAIOBVO_EMPTY_SHADOW = UIImageView()
     
     
@@ -55,7 +55,7 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         YACUAIOBVO_CONSTRUCT_HIERARCHY()
         YACUAIOBVO_TRIGGER_NETWORK_FETCH()
         
-        YACUAIOBVO_EMPTY_SHADOW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
+        YACUAIOBVO_EMPTY_SHADOW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder") // 请确保资源文件中有此图片
                
         YACUAIOBVO_EMPTY_SHADOW.contentMode = .scaleAspectFit
         YACUAIOBVO_EMPTY_SHADOW.isHidden = true
@@ -70,16 +70,16 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
         
         switch YACUAIOBVO_ACTIVE_SCOPE {
         case .YACUAIOBVO_FANS: 
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "8S0ssc+n0kAaw32sEMr5Nvie8/R+7RmM8xvEKsEKx+AxkHw7")
+            YACUAIOBVO_SCOPE_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "8S0ssc+n0kAaw32sEMr5Nvie8/R+7RmM8xvEKsEKx+AxkHw7")
         case .YACUAIOBVO_FOLLOWING:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WwDrArtVUxXMxHiP2BESNgFo5OjKftETahyP1pjrskuR3p+DnsGRxeY=")
+            YACUAIOBVO_SCOPE_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WwDrArtVUxXMxHiP2BESNgFo5OjKftETahyP1pjrskuR3p+DnsGRxeY=")
           
-            guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
+            guard let YACUAIOBVO_FOLLOW_IDS = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
                
                 return
             }
 
-            let YACUAIOBVO_MY_FOLLOWING_USERS = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
+            let YACUAIOBVO_MY_FOLLOWING_USERS = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
                 if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as?  String {
                     return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)
                 }
@@ -89,13 +89,13 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
          
             YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
         case .YACUAIOBVO_RESTRICTED_ZONE:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "79SX8JTO0lhkPJc1VEnZxBkA/l571ws2CK2/9gR9LZU33UrHZ586ZzM=")
+            YACUAIOBVO_SCOPE_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "79SX8JTO0lhkPJc1VEnZxBkA/l571ws2CK2/9gR9LZU33UrHZ586ZzM=")
         
-            guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET else {
+            guard let YACUAIOBVO_FOLLOW_IDS = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET else {
                 return
             }
 
-            let YACUAIOBVO_MY_FOLLOWING_USERS = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
+            let YACUAIOBVO_MY_FOLLOWING_USERS = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.filter { YACUAIOBVO_USER_DICT in
                 if let YACUAIOBVO_UID = YACUAIOBVO_USER_DICT["YACUAIOBVO_ID"] as?  String {
                     return YACUAIOBVO_FOLLOW_IDS.contains(YACUAIOBVO_UID)
                 }
@@ -105,10 +105,10 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
             YACUAIOBVO_ENTITY_COLLECTION = YACUAIOBVO_MY_FOLLOWING_USERS
             
         case .YACUAIOBVO_RESTRICTED_post:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "S/69oakHUeDPHKGq9Bv5PNZSUB8h/HWProjJ9em5muVzDlkkzhfA")
+            YACUAIOBVO_SCOPE_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "S/69oakHUeDPHKGq9Bv5PNZSUB8h/HWProjJ9em5muVzDlkkzhfA")
             YACUAIOBVO_ENTITY_COLLECTION = []
         case .YACUAIOBVO_RESTRICTED_like:
-            YACUAIOBVO_SCOPE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eE+7NOFtC1QTgzlNbNFktqwbB2TxaZwadOwCOJnq/ZQnG9SkO98T")
+            YACUAIOBVO_SCOPE_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eE+7NOFtC1QTgzlNbNFktqwbB2TxaZwadOwCOJnq/ZQnG9SkO98T")
             YACUAIOBVO_ENTITY_COLLECTION = []
         }
         
@@ -183,7 +183,7 @@ class YACUAIOBVO_SocialConnectionPortal: UIViewController {
     }
 }
 
-extension YACUAIOBVO_SocialConnectionPortal: UITableViewDelegate, UITableViewDataSource {
+extension PulseInteractionStageConnectionPortal: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return YACUAIOBVO_ENTITY_COLLECTION.count
     }
@@ -256,23 +256,23 @@ class YACUAIOBVO_SocialNodeCell: UITableViewCell {
 
     func YACUAIOBVO_CONFIG_NODE(_ YACUAIOBVO_DATA: Dictionary<String,Any>, YACUAIOBVO_SCOPE: YACUAIOBVO_SOCIAL_SCOPE) {
         YACUAIOBVO_NAME_DISPLAY.text = YACUAIOBVO_DATA["YACUAIOBVO_NICKNAME"] as? String
-        YACUAIOBVO_AVATAR_FRAME.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "") // Placeholder
+        YACUAIOBVO_AVATAR_FRAME.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "") // Placeholder
         
         switch YACUAIOBVO_SCOPE {
         case .YACUAIOBVO_FANS, .YACUAIOBVO_FOLLOWING:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "kb5aOkIqiqwc61fx9O2QXMNCP0fWYfCWh/iW9NtawSZC7DnFlEs8fQ=="), for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "kb5aOkIqiqwc61fx9O2QXMNCP0fWYfCWh/iW9NtawSZC7DnFlEs8fQ=="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_ZONE:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "S1Axw2T78YWcqOvwyAqfKNFFZ21/Al4W2Qaf4QSXSrMYFj5llrc="), for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "S1Axw2T78YWcqOvwyAqfKNFFZ21/Al4W2Qaf4QSXSrMYFj5llrc="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_post:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1xSOWnR5elYpLcNuu2q5pYcoaxTKsqKRsLP58c2GjBzQKYNTlc8="), for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1xSOWnR5elYpLcNuu2q5pYcoaxTKsqKRsLP58c2GjBzQKYNTlc8="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         case .YACUAIOBVO_RESTRICTED_like:
-            YACUAIOBVO_STATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "tSSVt3P9f8eGFap9UTftfB9EEGxQP3hSdIrq2xgSFkI7550LOa8="), for: .normal)
+            YACUAIOBVO_STATE_TRIGGER.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "tSSVt3P9f8eGFap9UTftfB9EEGxQP3hSdIrq2xgSFkI7550LOa8="), for: .normal)
             YACUAIOBVO_STATE_TRIGGER.backgroundColor = .systemGray3
             YACUAIOBVO_STATE_TRIGGER.setTitleColor(.white, for: .normal)
         }

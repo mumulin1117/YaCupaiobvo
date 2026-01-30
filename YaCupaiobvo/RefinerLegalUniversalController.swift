@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_LegalUniversalController.swift
+//  RefinerLegalUniversalController.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/20.
@@ -12,7 +12,7 @@ enum YACUAIOBVO_LegalType {
     case YACUAIOBVO_PRIVACY
 }
 
-class YACUAIOBVO_LegalUniversalController: UIViewController {
+class RefinerLegalUniversalController: UIViewController {
     var YACUAIOBVO_ACTIVE_MODE: YACUAIOBVO_LegalType = .YACUAIOBVO_TERMS
     private var YACUAIOBVO_PIPELINE_ACTIVE = true
     func YACUAIOBVO_INJECT_PAYLOAD(_ YACUAIOBVO_MAP: YACUAIOBVO_LegalType) {
@@ -44,7 +44,7 @@ class YACUAIOBVO_LegalUniversalController: UIViewController {
     private func YACUAIOBVO_ASSEMBLE_VIEW_HIERARCHY() {
         view.backgroundColor = .clear
         
-        YACUAIOBVO_BACKDROP_IMG.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_LEGAL_BG")
+        YACUAIOBVO_BACKDROP_IMG.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_LEGAL_BG")
         YACUAIOBVO_BACKDROP_IMG.contentMode = .scaleAspectFill
         YACUAIOBVO_BACKDROP_IMG.alpha = 0.6
         YACUAIOBVO_BACKDROP_IMG.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class YACUAIOBVO_LegalUniversalController: UIViewController {
         YACUAIOBVO_SHEET_CONTAINER.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_SHEET_CONTAINER)
         
-        YACUAIOBVO_HEADER_LBL.text = YACUAIOBVO_ACTIVE_MODE == .YACUAIOBVO_TERMS ? YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "KI5/TRlfGLHDCb3sa4w/2sDSM8aPfsMPlfYxvYWYnq0um8g2sxP/dcLh") : YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "SZGbkZ/9HjRqlafmRxDDunSp+ZJ01iKO492x7gpSZoseklocEFUkI2oK59tGdA==")
+        YACUAIOBVO_HEADER_LBL.text = YACUAIOBVO_ACTIVE_MODE == .YACUAIOBVO_TERMS ? GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "KI5/TRlfGLHDCb3sa4w/2sDSM8aPfsMPlfYxvYWYnq0um8g2sxP/dcLh") : GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "SZGbkZ/9HjRqlafmRxDDunSp+ZJ01iKO492x7gpSZoseklocEFUkI2oK59tGdA==")
         YACUAIOBVO_HEADER_LBL.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         YACUAIOBVO_HEADER_LBL.textAlignment = .center
         YACUAIOBVO_HEADER_LBL.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class YACUAIOBVO_LegalUniversalController: UIViewController {
         YACUAIOBVO_SHEET_CONTAINER.addSubview(YACUAIOBVO_BODY_SCROLLER)
         
         YACUAIOBVO_CONFIRM_TICK_BTN.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.53, alpha: 1.0)
-        YACUAIOBVO_CONFIRM_TICK_BTN.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MCL3CO6wP+6jrs0gGzYOX5Nme/KLCNaMfz89LLk2EM+opTDorigGvQ=="), for: .normal)
+        YACUAIOBVO_CONFIRM_TICK_BTN.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MCL3CO6wP+6jrs0gGzYOX5Nme/KLCNaMfz89LLk2EM+opTDorigGvQ=="), for: .normal)
         YACUAIOBVO_CONFIRM_TICK_BTN.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         YACUAIOBVO_CONFIRM_TICK_BTN.layer.cornerRadius = 25
         YACUAIOBVO_CONFIRM_TICK_BTN.addTarget(self, action: #selector(YACUAIOBVO_DISMISS_PORTAL), for: .touchUpInside)

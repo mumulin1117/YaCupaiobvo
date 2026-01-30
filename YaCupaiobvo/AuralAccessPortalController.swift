@@ -1,12 +1,12 @@
 //
-//  YACUAIOBVO_AccessPortalController.swift
+//  AuralAccessPortalController.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/20.
 
 import UIKit
 
-class YACUAIOBVO_AccessPortalController: UIViewController {
+class AuralAccessPortalController: UIViewController {
     
     private let YACUAIOBVO_MAIN_LOGO_BOX = UIImageView()
    
@@ -23,14 +23,14 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
     private func YACUAIOBVO_CONSTRUCT_LAYOUT() {
         view.backgroundColor = .white
         
-        YACUAIOBVO_MAIN_LOGO_BOX.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOLaunch")
+        YACUAIOBVO_MAIN_LOGO_BOX.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOLaunch")
         YACUAIOBVO_MAIN_LOGO_BOX.contentMode = .scaleAspectFill
         YACUAIOBVO_MAIN_LOGO_BOX.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_MAIN_LOGO_BOX)
        
         YACUAIOBVO_MAIL_GATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.53, alpha: 1.0)
         YACUAIOBVO_MAIL_GATE_TRIGGER.layer.cornerRadius = 28
-        YACUAIOBVO_MAIL_GATE_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "GUvu/sm+9aJ30pcwN0Arq5oxDV9vq1nHkeKUSZtRIkS99xRs+KGg8ewDZxTv"), for: .normal)
+        YACUAIOBVO_MAIL_GATE_TRIGGER.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "GUvu/sm+9aJ30pcwN0Arq5oxDV9vq1nHkeKUSZtRIkS99xRs+KGg8ewDZxTv"), for: .normal)
         YACUAIOBVO_MAIL_GATE_TRIGGER.setImage(UIImage(systemName: "envelope.fill"), for: .normal)
         YACUAIOBVO_MAIL_GATE_TRIGGER.tintColor = .white
         YACUAIOBVO_MAIL_GATE_TRIGGER.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -76,11 +76,11 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
     }
     
     private func YACUAIOBVO_SETUP_LEGAL_TEXT() {
-        let YACUAIOBVO_BASE_STR = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BFDSPpO0Q2FMQ1sxFM+P7qU3dP7AO0BgmMCzJTj8zZY6o/26h1QHGKbcWcivAedp/iwWazFri+sjPL+PdYHB1PPmtn6nTv/Eljuu9g==")
+        let YACUAIOBVO_BASE_STR = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BFDSPpO0Q2FMQ1sxFM+P7qU3dP7AO0BgmMCzJTj8zZY6o/26h1QHGKbcWcivAedp/iwWazFri+sjPL+PdYHB1PPmtn6nTv/Eljuu9g==")
         let YACUAIOBVO_ATTR_TEXT = NSMutableAttributedString(string: YACUAIOBVO_BASE_STR)
         
-        let YACUAIOBVO_RANGE_AGREE = (YACUAIOBVO_BASE_STR as NSString).range(of: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "07u8R368A9rREZVbpuBrnM8kQe2y5AfLa0iVq7a9VnpNWRwfwI2AyPe4zqv7Bw=="))
-        let YACUAIOBVO_RANGE_PRIVACY = (YACUAIOBVO_BASE_STR as NSString).range(of: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1hydKL/Me7tozZ4AgsCzzqJf0zhd1FPxbq+ojGm5H9F7UgRTlILKln2B62irGg=="))
+        let YACUAIOBVO_RANGE_AGREE = (YACUAIOBVO_BASE_STR as NSString).range(of: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "07u8R368A9rREZVbpuBrnM8kQe2y5AfLa0iVq7a9VnpNWRwfwI2AyPe4zqv7Bw=="))
+        let YACUAIOBVO_RANGE_PRIVACY = (YACUAIOBVO_BASE_STR as NSString).range(of: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "1hydKL/Me7tozZ4AgsCzzqJf0zhd1FPxbq+ojGm5H9F7UgRTlILKln2B62irGg=="))
         
         YACUAIOBVO_ATTR_TEXT.addAttribute(.link, value: "yacuaiobvo://agreement", range: YACUAIOBVO_RANGE_AGREE)
         YACUAIOBVO_ATTR_TEXT.addAttribute(.link, value: "yacuaiobvo://privacy", range: YACUAIOBVO_RANGE_PRIVACY)
@@ -99,22 +99,22 @@ class YACUAIOBVO_AccessPortalController: UIViewController {
     
     @objc private func YACUAIOBVO_EXECUTE_MAIL_ENTRY() {
         if !YACUAIOBVO_CONSENT_GRANTED {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "8e1C+1VAbaosHM6rHe0Ygpv7a9tJ7l74tTtKmYHvsAUaYQGcnSo7Luhy7gd/qqO+6spKxYPANFc5gmdMo2CLCIExQRk="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "8e1C+1VAbaosHM6rHe0Ygpv7a9tJ7l74tTtKmYHvsAUaYQGcnSo7Luhy7gd/qqO+6spKxYPANFc5gmdMo2CLCIExQRk="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
            
             return
         }
         
-        let YACUAIOBVO_LOGIN_FORM = YACUAIOBVO_EmailEntryPortal()
+        let YACUAIOBVO_LOGIN_FORM = CosmeticEmailEntryStage()
         YACUAIOBVO_LOGIN_FORM.modalPresentationStyle = .fullScreen
         self.present(YACUAIOBVO_LOGIN_FORM, animated: true)
     }
 }
 
-extension YACUAIOBVO_AccessPortalController: UITextViewDelegate {
+extension AuralAccessPortalController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        let tyepingdtr = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")
+        let tyepingdtr = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")
         
-        let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController()
+        let YACUAIOBVO_MODAL_LEGAL = RefinerLegalUniversalController()
         YACUAIOBVO_MODAL_LEGAL.YACUAIOBVO_INJECT_PAYLOAD(URL.absoluteString.contains(tyepingdtr) ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)// YACUAIOBVO_LegalUniversalController.init(YACUAIOBVO_ACTIVE_MODE: URL.absoluteString.contains(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Sk0Msgmv8+bUAYuM/pSwInhvxkKO8Zy2hqDCGHMxtwUOaX/LKYvRrWw=")) ? YACUAIOBVO_LegalType.YACUAIOBVO_TERMS : YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
        
         self.present(YACUAIOBVO_MODAL_LEGAL, animated: true)

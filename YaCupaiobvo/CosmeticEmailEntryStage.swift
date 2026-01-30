@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_EmailEntryPortal.swift
+//  CosmeticEmailEntryStage.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_EmailEntryPortal: UIViewController {
+class CosmeticEmailEntryStage: UIViewController {
 
     private let YACUAIOBVO_HERO_SHADE_VIEW = UIImageView()
     private let YACUAIOBVO_HERO_CoverView_VIEW = UIView()
@@ -21,13 +21,13 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
          
-            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
+            MemberKeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
         }
 
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
          
-            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
+            MemberKeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
         }
         
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -41,7 +41,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
     private func YACUAIOBVO_BUILD_INTERFACE() {
         view.backgroundColor = .white
     
-        YACUAIOBVO_HERO_SHADE_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_LOGIN_BG")
+        YACUAIOBVO_HERO_SHADE_VIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_LOGIN_BG")
         YACUAIOBVO_HERO_SHADE_VIEW.contentMode = .scaleAspectFill
         YACUAIOBVO_HERO_SHADE_VIEW.clipsToBounds = true
         YACUAIOBVO_HERO_SHADE_VIEW.translatesAutoresizingMaskIntoConstraints = false
@@ -52,14 +52,14 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         view.addSubview(YACUAIOBVO_HERO_CoverView_VIEW)
         
         
-        YACUAIOBVO_GREETING_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "FCVCfv3RFB/j0Af41g32JnuUfMg6u6hRmSLwyzt9pHp2at+uLVwwVA==")
+        YACUAIOBVO_GREETING_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "FCVCfv3RFB/j0Af41g32JnuUfMg6u6hRmSLwyzt9pHp2at+uLVwwVA==")
         YACUAIOBVO_GREETING_TITLE.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         YACUAIOBVO_GREETING_TITLE.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_GREETING_TITLE)
         
       
         
-        YACUAIOBVO_MAIL_FIELD.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "xs5AtyI8bYyqkQJi9aknYF6QTXLX088XXUYuIir/L9FnVn8yeto/RsxiTkYG")
+        YACUAIOBVO_MAIL_FIELD.placeholder = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "xs5AtyI8bYyqkQJi9aknYF6QTXLX088XXUYuIir/L9FnVn8yeto/RsxiTkYG")
         YACUAIOBVO_MAIL_FIELD.borderStyle = .roundedRect
         YACUAIOBVO_MAIL_FIELD.keyboardType = .emailAddress
         YACUAIOBVO_MAIL_FIELD.autocapitalizationType = .none
@@ -78,7 +78,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_SECRET_FIELD.rightView = YACUAIOBVO_VISIBILITY_TOGGLE
         YACUAIOBVO_SECRET_FIELD.rightViewMode = .always
         YACUAIOBVO_RECOVERY_LINK.numberOfLines = 2
-        YACUAIOBVO_RECOVERY_LINK.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "RnppLnT0/SV4EraehZWoGxlDzHLMqPSKaaX+I78xw83mEVhzw7BfHvCmFPWY/Khsq3zFo6YxjH/LOTkmoGbYW+UoixmVwOZ93sGkIbPHC+/qRgwN05YCaS/MdWlhoGOtwOQn2CPv")
+        YACUAIOBVO_RECOVERY_LINK.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "RnppLnT0/SV4EraehZWoGxlDzHLMqPSKaaX+I78xw83mEVhzw7BfHvCmFPWY/Khsq3zFo6YxjH/LOTkmoGbYW+UoixmVwOZ93sGkIbPHC+/qRgwN05YCaS/MdWlhoGOtwOQn2CPv")
         YACUAIOBVO_RECOVERY_LINK.textColor = .systemBlue
         
         YACUAIOBVO_RECOVERY_LINK.font = UIFont.systemFont(ofSize: 14)
@@ -86,7 +86,7 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         YACUAIOBVO_RECOVERY_LINK.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_HERO_CoverView_VIEW.addSubview(YACUAIOBVO_RECOVERY_LINK)
         
-        YACUAIOBVO_PROCEED_ACTION_BTN.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "pQ+OaPoUeXgJDITSmuHnIpes+uYM+Oo+DwuJWaEZHQ3Ure7Q8Q=="), for: .normal)
+        YACUAIOBVO_PROCEED_ACTION_BTN.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "pQ+OaPoUeXgJDITSmuHnIpes+uYM+Oo+DwuJWaEZHQ3Ure7Q8Q=="), for: .normal)
         YACUAIOBVO_PROCEED_ACTION_BTN.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.53, alpha: 1.0)
         YACUAIOBVO_PROCEED_ACTION_BTN.layer.cornerRadius = 28
         YACUAIOBVO_PROCEED_ACTION_BTN.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -143,26 +143,26 @@ class YACUAIOBVO_EmailEntryPortal: UIViewController {
         guard let YACUAIOBVO_M = YACUAIOBVO_MAIL_FIELD.text, !YACUAIOBVO_M.isEmpty,
               let YACUAIOBVO_P = YACUAIOBVO_SECRET_FIELD.text, !YACUAIOBVO_P.isEmpty else {
 //            YACUAIOBVO_PUSH_HINT("Incomplete Info", "Please fill in all fields.")
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "AG0IlRUvQlbensB4bn51BkVNKA5r9BvsGTbjei/mG6sW6QIDFvyd2LQ8q9Cphk5UcIvRvc6kdNNg52GMEn9FPedwv/1boDhebeM="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "AG0IlRUvQlbensB4bn51BkVNKA5r9BvsGTbjei/mG6sW6QIDFvyd2LQ8q9Cphk5UcIvRvc6kdNNg52GMEn9FPedwv/1boDhebeM="), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
        
-        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_PERFORM_LOGIN(YACUAIOBVO_MAIL: YACUAIOBVO_M)
+        SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_PERFORM_LOGIN(YACUAIOBVO_MAIL: YACUAIOBVO_M)
                 
                
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Authenticating...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Authenticating...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
                 
        
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Your fashion profile is being initialized...", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Your fashion profile is being initialized...", YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
 
             YACUAIOBVO_LAUNCH_MAIN_HUB()
         }
     }
     private func YACUAIOBVO_LAUNCH_MAIN_HUB() {
-        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = YACUAIOBVOMainTabController()
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = LinkPathOptimiserController()
        
     }
     

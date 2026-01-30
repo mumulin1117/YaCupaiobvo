@@ -28,15 +28,15 @@ struct YACUAIOBVO_VocalContext {
     let YACUAIOBVO_CONTENT: [String: Any]
     let YACUAIOBVO_TIMESTAMP: TimeInterval
 }
-class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class VocalStreamInterfaceeExhibitionHub: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @objc private func YACUAIOBVO_TOGGLE_SUBSCRIPTION(biu:UIButton) {
         biu.isSelected = !biu.isSelected
         let useif = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String
         
-        YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: useif ?? "")
+        SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_MOD_ADHERENCE(YACUAIOBVO_T_ID: useif ?? "")
         
         let YACUAIOBVO_MSG = biu.isSelected ? "Subscription Active" : "Subscription Removed"
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_MSG, YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -65,7 +65,7 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let YACUAIOBVOcell = collectionView.dequeueReusableCell(withReuseIdentifier: YACUAIOBVO_StyleDiscoveryCell.YACUAIOBVO_REUSE_ID, for: indexPath) as! YACUAIOBVO_StyleDiscoveryCell
+        let YACUAIOBVOcell = collectionView.dequeueReusableCell(withReuseIdentifier: GarnishTextureVaultDiscoveryCell.YACUAIOBVO_REUSE_ID, for: indexPath) as! GarnishTextureVaultDiscoveryCell
         YACUAIOBVOcell.YACUAIOBVO_REPORT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_APPLY_DARK_report_THEME), for: .touchUpInside)
         YACUAIOBVOcell.YACUAIOBVO_REFRESH_CONTENT(YACUAIOBVO_NAME: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_discover_title"] as? String  ?? "", YACUAIOBVO_VAL: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_NICKNAME"] as? String  ?? "" , YACUAIOBVO_IMG: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_discover_pic"] as? String ?? "", YACUAIOBVO_avator: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         return YACUAIOBVOcell
@@ -106,7 +106,7 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
         YACUAIOBVO_INDICATOR_DOT.delegate = self
         YACUAIOBVO_INDICATOR_DOT.dataSource = self
         YACUAIOBVO_INDICATOR_DOT.showsVerticalScrollIndicator = false
-        YACUAIOBVO_INDICATOR_DOT.register(YACUAIOBVO_StyleDiscoveryCell.self, forCellWithReuseIdentifier: YACUAIOBVO_StyleDiscoveryCell.YACUAIOBVO_REUSE_ID)
+        YACUAIOBVO_INDICATOR_DOT.register(GarnishTextureVaultDiscoveryCell.self, forCellWithReuseIdentifier: GarnishTextureVaultDiscoveryCell.YACUAIOBVO_REUSE_ID)
         YACUAIOBVO_INDICATOR_DOT.register(YACUAIOBVO_ProfileStructuralHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "YACUAIOBVO_ProfileStructuralHeader")
         
         YACUAIOBVO_INDICATOR_DOT.isScrollEnabled = true
@@ -120,10 +120,10 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
     }
     
   @objc  func actionsheetForPick()  {
-      let acteeet = YACUAIOBVO_SafetyActionSheet.init()
+      let acteeet = GallerySafetyActionSheet.init()
       acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String ?? ""
       acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
-          let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
+          let YACUAIOBVO_REPORTER = InventoryReportDetailFlow()
           self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
       }
       
@@ -212,22 +212,22 @@ class YACUAIOBVO_UserProfileExhibitionHub: UIViewController ,UICollectionViewDel
             YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
         )
         
-        let YACUAIOBVOvc = YACUAIOBVO_VocalStreamInterface(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_CONTEXT)
+        let YACUAIOBVOvc = GarnishTexturePanelInterface(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_CONTEXT)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
      }
     @objc func YACUAIOBVO_ACTION_MESSAGE() {
-        if  let YACUAIOBVO_ITEM = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.filter({ YACUAIOBVO_COMMUEntity in
+        if  let YACUAIOBVO_ITEM = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.filter({ YACUAIOBVO_COMMUEntity in
             YACUAIOBVO_COMMUEntity.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String == self.YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String
         }).first {
-            let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_ITEM)
+            let YACUAIOBVOvc = DistillPulseChatRoom(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_ITEM)
             YACUAIOBVOvc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
             return
       }
         let noingadte = Date().timeIntervalSince1970
-        let newset = YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: self.YACUAIOBVO_PROFILE_DATA, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [])
-        let YACUAIOBVOvc = YACUAIOBVO_PulseChatRoom(YACUAIOBVO_PROFILE_DATA: newset)
+        let newset = ElixirCOMMUEntity.init(YACUAIOBVO_userinfo: self.YACUAIOBVO_PROFILE_DATA, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [])
+        let YACUAIOBVOvc = DistillPulseChatRoom(YACUAIOBVO_PROFILE_DATA: newset)
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
         
@@ -274,7 +274,7 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         YACUAIOBVO_PORTRAIT_WELL.backgroundColor = .systemGray6
         
         YACUAIOBVO_ALIAS_LABEL.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        YACUAIOBVO_VIDEO_MODALITY.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_VIDEO_MODALITY"), for: .normal)
+        YACUAIOBVO_VIDEO_MODALITY.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_VIDEO_MODALITY"), for: .normal)
         YACUAIOBVO_VIDEO_MODALITY.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_VIDEO_MODALITY.layer.cornerRadius = 15
         YACUAIOBVO_VIDEO_MODALITY.tintColor = .white
@@ -285,10 +285,10 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
         YACUAIOBVO_BIO_LABEL.textColor = .gray
         YACUAIOBVO_BIO_LABEL.font = UIFont.systemFont(ofSize: 15)
         
-        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_FOLLOW"), for: .selected)
-        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_FOLLOWed"), for: .normal)
+        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_FOLLOW"), for: .selected)
+        YACUAIOBVO_ACTION_FOLLOW.setBackgroundImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_ACTION_FOLLOWed"), for: .normal)
         
-        YACUAIOBVO_ACTION_MESSAGE.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "badgeMeasgYACU"), for: .normal)
+        YACUAIOBVO_ACTION_MESSAGE.setBackgroundImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "badgeMeasgYACU"), for: .normal)
         
         [YACUAIOBVO_PORTRAIT_WELL, YACUAIOBVO_ALIAS_LABEL, YACUAIOBVO_VIDEO_MODALITY,
          YACUAIOBVO_BIO_LABEL, YACUAIOBVO_FOLLOW_COUNT_LABEL, YACUAIOBVO_FAN_COUNT_LABEL,
@@ -335,12 +335,12 @@ class YACUAIOBVO_ProfileStructuralHeader: UICollectionReusableView {
     
   
     func YACUAIOBVO_HYDRATE_DATA() {
-        YACUAIOBVO_PORTRAIT_WELL.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS:  self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_PORTRAIT_WELL.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS:  self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         YACUAIOBVO_ALIAS_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_NICKNAME"] as? String
         YACUAIOBVO_BIO_LABEL.text = self.YACUAIOBVO_PROFILE_DATA?["YACUAIOBVO_BIO_TEXT"] as? String  ?? "Say something to introduce yourself."
         
-        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ysRyxANsLXkWWgQ8t0j+dhomwbUPx2frE/dbqvd3BpvJstj1nbQ="))
-        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "uRK7Hr5Hmj/Nv4gOa8AVP1vmLRKJuXBwwxKxBw5i4Pvg5A4h"))
+        YACUAIOBVO_FOLLOW_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 3...7))", YACUAIOBVO_TAG: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ysRyxANsLXkWWgQ8t0j+dhomwbUPx2frE/dbqvd3BpvJstj1nbQ="))
+        YACUAIOBVO_FAN_COUNT_LABEL.attributedText = YACUAIOBVO_FORMAT_STAT("\(Int.random(in: 0...3))", YACUAIOBVO_TAG: GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "uRK7Hr5Hmj/Nv4gOa8AVP1vmLRKJuXBwwxKxBw5i4Pvg5A4h"))
     }
     
     private func YACUAIOBVO_FORMAT_STAT(_ YACUAIOBVO_VAL: String, YACUAIOBVO_TAG: String) -> NSAttributedString {

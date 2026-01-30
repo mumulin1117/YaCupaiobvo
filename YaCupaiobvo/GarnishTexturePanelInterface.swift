@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_VocalStreamInterface.swift
+//  GarnishTexturePanelInterface.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/22.
@@ -14,7 +14,7 @@ struct YACUAIOBVO_SessionRegistry: Codable {
     let YACUAIOBVO_START_MOMENT: Date
 }
 
-class YACUAIOBVO_VocalStreamInterface: UIViewController {
+class GarnishTexturePanelInterface: UIViewController {
     var YACUAIOBVO_PROFILE_DATA: [String: Any]
     init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_VocalContext) {
         self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_CONTENT
@@ -64,9 +64,9 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
 
     private func YACUAIOBVO_CONSTRUCT_STAGE() {
         view.backgroundColor = .black
-        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVOAvatar")
+        YACUAIOBVO_REMOTE_PORTRAIT_CONTENT.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVOAvatar")
         YACUAIOBVO_ENVIRONMENT_BACKDROP.contentMode = .scaleAspectFill
-        YACUAIOBVO_ENVIRONMENT_BACKDROP.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
+        YACUAIOBVO_ENVIRONMENT_BACKDROP.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_AVATAR_REF"] as? String ?? "")
         YACUAIOBVO_ENVIRONMENT_BACKDROP.layer.masksToBounds = true
         YACUAIOBVO_ENVIRONMENT_BACKDROP.backgroundColor = .darkGray
         
@@ -84,7 +84,7 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
         
         YACUAIOBVO_CHRONOMETER_TAG.textColor = .white
         YACUAIOBVO_CHRONOMETER_TAG.font = .systemFont(ofSize: 16, weight: .regular)
-        YACUAIOBVO_CHRONOMETER_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hzy88dZ5CMyFfn1Fy60bgpZIH5S8Bn3z8Thc2Tar/Sj16NRrJ9iIr5/X")
+        YACUAIOBVO_CHRONOMETER_TAG.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hzy88dZ5CMyFfn1Fy60bgpZIH5S8Bn3z8Thc2Tar/Sj16NRrJ9iIr5/X")
         
         YACUAIOBVO_TERMINATE_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.35, blue: 0.35, alpha: 1.0)
         YACUAIOBVO_TERMINATE_TRIGGER.setImage(UIImage(systemName: "phone.down.fill"), for: .normal)
@@ -98,10 +98,10 @@ class YACUAIOBVO_VocalStreamInterface: UIViewController {
     }
     
   @objc  func actionsheetForPick()  {
-      let acteeet = YACUAIOBVO_SafetyActionSheet.init()
+      let acteeet = GallerySafetyActionSheet.init()
       acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA["YACUAIOBVO_ID"] as? String ?? ""
       acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
-          let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
+          let YACUAIOBVO_REPORTER = InventoryReportDetailFlow()
           self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
       }
       

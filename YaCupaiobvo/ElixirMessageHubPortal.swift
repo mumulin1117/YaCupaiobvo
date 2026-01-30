@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_MessageHubPortal.swift
+//  ElixirMessageHubPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -15,7 +15,7 @@ struct YACUAIOBVO_ChatEntity {
 
 }
 
-struct YACUAIOBVO_COMMUEntity{
+struct ElixirCOMMUEntity{
     
     let YACUAIOBVO_userinfo:Dictionary<String,Any>
     let YACUAIOBVO_TIMESTAMP: TimeInterval
@@ -23,7 +23,7 @@ struct YACUAIOBVO_COMMUEntity{
     
 }
 
-class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ElixirMessageHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     private let YACUAIOBVO_TITLE_VIEW = UIImageView()
     private let YACUAIOBVO_LIST_BRIDGE = UITableView()
@@ -33,7 +33,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        YACUAIOBVO_EMPTY_SHADOW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder")
+        YACUAIOBVO_EMPTY_SHADOW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_empty_holder")
                
         YACUAIOBVO_EMPTY_SHADOW.contentMode = .scaleAspectFit
         YACUAIOBVO_EMPTY_SHADOW.isHidden = true
@@ -41,10 +41,10 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
         YACUAIOBVO_INIT_ENVIRONMENT()
         YACUAIOBVO_TRIGGER_NETWORK_SYNC()
         
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "yTfCsQokvZ6M2bnfHElrehEtIujDauOkDqHLmjNSxSs4PLypKV/eCQeY"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "yTfCsQokvZ6M2bnfHElrehEtIujDauOkDqHLmjNSxSs4PLypKV/eCQeY"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
 
            
         }
@@ -56,7 +56,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     private func YACUAIOBVO_INIT_ENVIRONMENT() {
         view.backgroundColor = .white
         NotificationCenter.default.addObserver(self, selector: #selector(YACUAIOBVO_TRIGGER_NETWORK_SYNC), name: NSNotification.Name("YACUAIOBVO_CONTENT_REFRESH"), object: nil)
-        YACUAIOBVO_TITLE_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_MSG_LOGO")
+        YACUAIOBVO_TITLE_VIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_MSG_LOGO")
         YACUAIOBVO_TITLE_VIEW.contentMode = .left
         YACUAIOBVO_TITLE_VIEW.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_TITLE_VIEW)
@@ -68,7 +68,7 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
         YACUAIOBVO_LIST_BRIDGE.dataSource = self
         YACUAIOBVO_LIST_BRIDGE.separatorStyle = .none
         YACUAIOBVO_LIST_BRIDGE.backgroundColor = .clear
-        YACUAIOBVO_LIST_BRIDGE.register(YACUAIOBVO_MessageParcelCell.self, forCellReuseIdentifier: "YACUAIOBVO_MSG_NODE")
+        YACUAIOBVO_LIST_BRIDGE.register(EssenceMessageParcelCell.self, forCellReuseIdentifier: "YACUAIOBVO_MSG_NODE")
         YACUAIOBVO_LIST_BRIDGE.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_LIST_BRIDGE)
         
@@ -107,18 +107,18 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
 
     @objc private func YACUAIOBVO_TRIGGER_NETWORK_SYNC() {
         self.YACUAIOBVO_LIST_BRIDGE.reloadData()
-        self.YACUAIOBVO_EMPTY_SHADOW.isHidden =  (YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count > 0)
-        self.YACUAIOBVO_EMPTY_title.isHidden =  (YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count > 0)
+        self.YACUAIOBVO_EMPTY_SHADOW.isHidden =  (SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count > 0)
+        self.YACUAIOBVO_EMPTY_title.isHidden =  (SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count > 0)
         self.YACUAIOBVO_REFRESH_CORE.endRefreshing()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count
+        return SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let YACUAIOBVO_CELL = tableView.dequeueReusableCell(withIdentifier: "YACUAIOBVO_MSG_NODE", for: indexPath) as! YACUAIOBVO_MessageParcelCell
-        let YACUAIOBVO_ITEM = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
+        let YACUAIOBVO_CELL = tableView.dequeueReusableCell(withIdentifier: "YACUAIOBVO_MSG_NODE", for: indexPath) as! EssenceMessageParcelCell
+        let YACUAIOBVO_ITEM = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
         YACUAIOBVO_CELL.YACUAIOBVO_BIND_DATA(YACUAIOBVO_ITEM)
         return YACUAIOBVO_CELL
     }
@@ -128,8 +128,8 @@ class YACUAIOBVO_MessageHubPortal: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let YACUAIOBVO_ITEM = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
-        let chatringVc =  YACUAIOBVO_PulseChatRoom.init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_ITEM)
+        let YACUAIOBVO_ITEM = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[indexPath.row]
+        let chatringVc =  DistillPulseChatRoom.init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_ITEM)
         chatringVc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(chatringVc, animated: true)
     }

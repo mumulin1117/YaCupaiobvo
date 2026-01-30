@@ -1,8 +1,7 @@
 import UIKit
 import CryptoKit
 
-// MARK: - 艺术纹理安全分发中枢
-final class YACUAIOBVO_ArtisticCipherWorkshop {
+final class GarnishArtisticCipherWorkshop {
     
     private static var YACUAIOBVO_RASTERIZER_STATE: Int = 0x1A2B
     private static let YACUAIOBVO_TEXTURE_LAYERS: [String] = [
@@ -112,7 +111,7 @@ final class YACUAIOBVO_ArtisticCipherWorkshop {
 }
 
 
-extension YACUAIOBVO_ArtisticCipherWorkshop {
+extension GarnishArtisticCipherWorkshop {
     
     static func YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: String) -> UIImage? {
        

@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVOMainTabController.swift
+//  LinkPathOptimiserController.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/20.
@@ -9,7 +9,7 @@ import UIKit
 
 import UIKit
 
-class YACUAIOBVOMainTabController: UITabBarController, UITabBarControllerDelegate {
+class LinkPathOptimiserController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,27 +30,27 @@ class YACUAIOBVOMainTabController: UITabBarController, UITabBarControllerDelegat
 
     private func YACUAIOBVO_ATTACH_STYLE_MODULES() {
            
-        let YACUAIOBVO_MATCH_ROOT = YACUAIOBVO_HomeStylePortal()
+        let YACUAIOBVO_MATCH_ROOT = DashboardHomeStylePortal()
         YACUAIOBVO_MATCH_ROOT.view.backgroundColor = .white
         let YACUAIOBVO_NAV_MATCH = YACUAIOBVO_NavigationWrapper(rootViewController: YACUAIOBVO_MATCH_ROOT)
-        YACUAIOBVO_NAV_MATCH.tabBarItem = UITabBarItem(title: nil, image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_RECOoff")?.withRenderingMode(.alwaysOriginal),selectedImage: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_RECOon")?.withRenderingMode(.alwaysOriginal))
+        YACUAIOBVO_NAV_MATCH.tabBarItem = UITabBarItem(title: nil, image: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_RECOoff")?.withRenderingMode(.alwaysOriginal),selectedImage: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_RECOon")?.withRenderingMode(.alwaysOriginal))
         
         
-        let YACUAIOBVO_DISCOVERY_ROOT = YACUAIOBVO_DiscoveryFeedPortal()
+        let YACUAIOBVO_DISCOVERY_ROOT = ElementDiscoveryFeedPortal()
         let YACUAIOBVO_NAV_DISCOVERY = YACUAIOBVO_NavigationWrapper(rootViewController: YACUAIOBVO_DISCOVERY_ROOT)
-        YACUAIOBVO_NAV_DISCOVERY.tabBarItem = UITabBarItem(title: nil, image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_EXPLOREoff")?.withRenderingMode(.alwaysOriginal),selectedImage: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_EXPLOREon")?.withRenderingMode(.alwaysOriginal))
+        YACUAIOBVO_NAV_DISCOVERY.tabBarItem = UITabBarItem(title: nil, image: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_EXPLOREoff")?.withRenderingMode(.alwaysOriginal),selectedImage: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_EXPLOREon")?.withRenderingMode(.alwaysOriginal))
     
         
         
-        let YACUAIOBVO_ALERT_ROOT = YACUAIOBVO_MessageHubPortal()
+        let YACUAIOBVO_ALERT_ROOT = ElixirMessageHubPortal()
         YACUAIOBVO_ALERT_ROOT.view.backgroundColor = .white
         let YACUAIOBVO_NAV_ALERT = YACUAIOBVO_NavigationWrapper(rootViewController: YACUAIOBVO_ALERT_ROOT)
-        YACUAIOBVO_NAV_ALERT.tabBarItem = UITabBarItem(title: nil, image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOchat=off")?.withRenderingMode(.alwaysOriginal),selectedImage: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOchat=on")?.withRenderingMode(.alwaysOriginal))
+        YACUAIOBVO_NAV_ALERT.tabBarItem = UITabBarItem(title: nil, image: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOchat=off")?.withRenderingMode(.alwaysOriginal),selectedImage: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOchat=on")?.withRenderingMode(.alwaysOriginal))
         
-        let YACUAIOBVO_PROFILE_ROOT = YACUAIOBVO_IdentityHubPortal()
+        let YACUAIOBVO_PROFILE_ROOT = ArtisticIdentityHubPortal()
         YACUAIOBVO_PROFILE_ROOT.view.backgroundColor = .white
         let YACUAIOBVO_NAV_PROFILE = YACUAIOBVO_NavigationWrapper(rootViewController: YACUAIOBVO_PROFILE_ROOT)
-        YACUAIOBVO_NAV_PROFILE.tabBarItem = UITabBarItem(title: nil, image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_USERoff")?.withRenderingMode(.alwaysOriginal),selectedImage: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_USERon")?.withRenderingMode(.alwaysOriginal))
+        YACUAIOBVO_NAV_PROFILE.tabBarItem = UITabBarItem(title: nil, image: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_USERoff")?.withRenderingMode(.alwaysOriginal),selectedImage: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_TAB_USERon")?.withRenderingMode(.alwaysOriginal))
 
         viewControllers = [ YACUAIOBVO_NAV_MATCH,YACUAIOBVO_NAV_DISCOVERY, YACUAIOBVO_NAV_ALERT, YACUAIOBVO_NAV_PROFILE]
         

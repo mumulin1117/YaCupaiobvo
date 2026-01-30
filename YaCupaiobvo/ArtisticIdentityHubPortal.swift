@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_IdentityHubPortal.swift
+//  ArtisticIdentityHubPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -7,25 +7,25 @@
 
 import UIKit
 
-struct YACUAIOBVO_UserMetric {
+struct Artistic_UserMetric {
     let YACUAIOBVO_DISPLAY_NAME: String
     let YACUAIOBVO_SIGNATURE_TEXT: String
     let YACUAIOBVO_FOLLOW_TOTAL: String
     let YACUAIOBVO_FANS_TOTAL: String
 }
 
-class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource, YACUAIOBVO_IdentityUpdateProtocol {
+class ArtisticIdentityHubPortal: UIViewController, UITableViewDelegate, UITableViewDataSource, YACUAIOBVO_IdentityUpdateProtocol {
     func YACUAIOBVO_DID_FINISH_MODIFICATION(YACUAIOBVO_NEW_NAME: String, YACUAIOBVO_NEW_BIO: String, YACUAIOBVO_NEW_IMAGE: UIImage?) {
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_BIO_TEXT.text = YACUAIOBVO_NEW_BIO
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_PORTRAIT_VIEW.image = YACUAIOBVO_NEW_IMAGE
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_NICKNAME_LABEL.text = YACUAIOBVO_NEW_NAME
     }
     
-    let YACUAIOBVO_HEAD_WRAPPER = YACUAIOBVO_ProfileHeaderModule()
+    let YACUAIOBVO_HEAD_WRAPPER = ArtisticProfileHeaderModule()
     private let YACUAIOBVO_SCROLLER = UITableView(frame: .zero, style: .grouped)
     private let YACUAIOBVO_TOP_SETTING_ICON = UIButton(type: .system)
 //    private var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_UserMetric?
-    private let YACUAIOBVO_OPTION_POOL = [YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eOZFi85Oyro88Biha8vHk3nTFcepO5eqPFXTQ153mV1TGssLKeE="), YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "9LFRJuJe+ppMM3Fiz9h5wLCixvsHu+cRtAhTLbr4EIDXKWdR6LpSng=="), YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "KBcSAP4qRirm8AwUDVkAFStUlprAs74XaP/Grr93M903uvY9UzSntg==")]
+    private let YACUAIOBVO_OPTION_POOL = [GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eOZFi85Oyro88Biha8vHk3nTFcepO5eqPFXTQ153mV1TGssLKeE="), GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "9LFRJuJe+ppMM3Fiz9h5wLCixvsHu+cRtAhTLbr4EIDXKWdR6LpSng=="), GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "KBcSAP4qRirm8AwUDVkAFStUlprAs74XaP/Grr93M903uvY9UzSntg==")]
 
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +84,7 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     }
 
     @objc private func YACUAIOBVO_OPEN_PREFERENCES() {
-        let YACUAIOBVOvc = YACUAIOBVO_SystemConfigurationPortal()
+        let YACUAIOBVOvc = PulsevaConfigurationPortal()
         YACUAIOBVOvc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
     }
@@ -99,14 +99,14 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_EDIT_ICON.addTarget(self, action: #selector(YACUAIOBVOsuperBneisu), for: .touchUpInside)
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_FOLLOW_TAG.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVOsuperTosharet(atpVire:))))
         YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_FANS_TAG.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVOsuperTosharet(atpVire:))))
-        if let YACUAIOBVO_INFO = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE {
+        if let YACUAIOBVO_INFO = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE {
             YACUAIOBVO_HEAD_WRAPPER.YACUAIOBVO_UPDATE_IDENTITY(YACUAIOBVO_INFO)
         }
        
         return YACUAIOBVO_HEAD_WRAPPER
     }
    @objc func YACUAIOBVOsuperTosharet(atpVire:UITapGestureRecognizer)  {
-       let YACUAIOBVOvc =  YACUAIOBVO_SocialConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: atpVire.view?.tag == 110 ? .YACUAIOBVO_FOLLOWING : .YACUAIOBVO_FANS)
+       let YACUAIOBVOvc =  PulseInteractionStageConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: atpVire.view?.tag == 110 ? .YACUAIOBVO_FOLLOWING : .YACUAIOBVO_FANS)
        YACUAIOBVOvc.hidesBottomBarWhenPushed = true
        self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
     }
@@ -126,19 +126,19 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let ananlsizxe = YACUAIOBVO_CurrencyTopUpPortal()
+            let ananlsizxe = OutfitCurrencyTopUpPortal()
             ananlsizxe.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(ananlsizxe, animated: true)
         }
         
         if indexPath.row == 1 {
-            let YACUAIOBVOvc =  YACUAIOBVO_SocialConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_post)
+            let YACUAIOBVOvc =  PulseInteractionStageConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_post)
             YACUAIOBVOvc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
         }
         
         if indexPath.row == 2 {
-            let YACUAIOBVOvc =  YACUAIOBVO_SocialConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_like)
+            let YACUAIOBVOvc =  PulseInteractionStageConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_like)
             YACUAIOBVOvc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
         }
@@ -147,14 +147,14 @@ class YACUAIOBVO_IdentityHubPortal: UIViewController, UITableViewDelegate, UITab
     }
     
    @objc func YACUAIOBVOsuperBneisu()  {
-       let YACUAIOBVOvc = YACUAIOBVO_IdentityEditorPortal()
+       let YACUAIOBVOvc = PeerIdentityEditorPortal()
        YACUAIOBVOvc.hidesBottomBarWhenPushed = true
        YACUAIOBVOvc.YACUAIOBVO_DELEGATE = self
        self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
     }
 }
 
-class YACUAIOBVO_ProfileHeaderModule: UIView {
+class ArtisticProfileHeaderModule: UIView {
     
      let YACUAIOBVO_PORTRAIT_VIEW = UIImageView()
      let YACUAIOBVO_NICKNAME_LABEL = UILabel()
@@ -181,7 +181,7 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         YACUAIOBVO_PORTRAIT_VIEW.layer.cornerRadius = 60
         YACUAIOBVO_PORTRAIT_VIEW.clipsToBounds = true
         YACUAIOBVO_PORTRAIT_VIEW.backgroundColor = .systemGray6
-        YACUAIOBVO_PORTRAIT_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_USER_AVATAR")
+        YACUAIOBVO_PORTRAIT_VIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_USER_AVATAR")
         YACUAIOBVO_PORTRAIT_VIEW.translatesAutoresizingMaskIntoConstraints = false
         addSubview(YACUAIOBVO_PORTRAIT_VIEW)
         
@@ -201,8 +201,8 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         
         YACUAIOBVO_FOLLOW_COUNT.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         YACUAIOBVO_FANS_COUNT.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        YACUAIOBVO_FOLLOW_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hMtDQYTYlWKpo+bT0xUvRnsCCgWm+qUWf8lGNUSP8itz3cOkzyE="); YACUAIOBVO_FOLLOW_TAG.textColor = .systemGray
-        YACUAIOBVO_FANS_TAG.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sKDeHoPnqykUaI2AbXQ5y5iiWeLHqae+IiX62Nvpigm9OiRl"); YACUAIOBVO_FANS_TAG.textColor = .systemGray
+        YACUAIOBVO_FOLLOW_TAG.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "hMtDQYTYlWKpo+bT0xUvRnsCCgWm+qUWf8lGNUSP8itz3cOkzyE="); YACUAIOBVO_FOLLOW_TAG.textColor = .systemGray
+        YACUAIOBVO_FANS_TAG.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sKDeHoPnqykUaI2AbXQ5y5iiWeLHqae+IiX62Nvpigm9OiRl"); YACUAIOBVO_FANS_TAG.textColor = .systemGray
         
         let YACUAIOBVO_FOLLOW_STACK = UIStackView(arrangedSubviews: [YACUAIOBVO_FOLLOW_COUNT, YACUAIOBVO_FOLLOW_TAG])
         YACUAIOBVO_FOLLOW_STACK.axis = .vertical; YACUAIOBVO_FOLLOW_STACK.alignment = .center
@@ -237,12 +237,12 @@ class YACUAIOBVO_ProfileHeaderModule: UIView {
         ])
     }
     
-    func YACUAIOBVO_UPDATE_IDENTITY(_ YACUAIOBVO_DATA: YACUAIOBVO_IdentityModel) {
+    func YACUAIOBVO_UPDATE_IDENTITY(_ YACUAIOBVO_DATA: PulseIdentityModel) {
         YACUAIOBVO_NICKNAME_LABEL.text = YACUAIOBVO_DATA.YACUAIOBVO_NICKNAME
         YACUAIOBVO_BIO_TEXT.text = YACUAIOBVO_DATA.YACUAIOBVO_BIO_TEXT
         YACUAIOBVO_FOLLOW_COUNT.text = "\(YACUAIOBVO_DATA.YACUAIOBVO_FOLLOWING_SET.count)"
         YACUAIOBVO_FANS_COUNT.text = "0"
-        YACUAIOBVO_PORTRAIT_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA.YACUAIOBVO_AVATAR_REF)
+        YACUAIOBVO_PORTRAIT_VIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_DATA.YACUAIOBVO_AVATAR_REF)
     }
 }
 

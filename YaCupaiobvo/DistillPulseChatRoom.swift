@@ -14,9 +14,9 @@ import UIKit
 //    let YACUAIOBVO_TIMESTAMP: Date
 //}
 
-class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    var YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_COMMUEntity
-    init(YACUAIOBVO_PROFILE_DATA: YACUAIOBVO_COMMUEntity) {
+class DistillPulseChatRoom: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    var YACUAIOBVO_PROFILE_DATA: ElixirCOMMUEntity
+    init(YACUAIOBVO_PROFILE_DATA: ElixirCOMMUEntity) {
         self.YACUAIOBVO_PROFILE_DATA = YACUAIOBVO_PROFILE_DATA
         super.init(nibName: nil, bundle: nil)
         let YACUAIOBVO_LAG = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_TIMESTAMP - Date().timeIntervalSince1970
@@ -52,10 +52,10 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     }
     
   @objc  func actionsheetForPick()  {
-      let acteeet = YACUAIOBVO_SafetyActionSheet.init()
+      let acteeet = GallerySafetyActionSheet.init()
       acteeet.YACUAIOBVO_TARGET_ID = YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String ?? ""
       acteeet.YACUAIOBVO_COMPLETION_SIGNAL = {
-          let YACUAIOBVO_REPORTER = YACUAIOBVO_ReportDetailFlow()
+          let YACUAIOBVO_REPORTER = InventoryReportDetailFlow()
           self.navigationController?.pushViewController(YACUAIOBVO_REPORTER, animated: true)
       }
       
@@ -85,7 +85,7 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
         YACUAIOBVO_CONTROL_DOCK.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         YACUAIOBVO_CONTROL_DOCK.layer.cornerRadius = 25
         
-        YACUAIOBVO_NARRATIVE_INPUT.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Uc4OJBPZKKVA9EkeOl/OJi1enqeFZvqpzvwX3ZTCi6n7q/dIKjHYyUikkkB3ff0W")
+        YACUAIOBVO_NARRATIVE_INPUT.placeholder = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Uc4OJBPZKKVA9EkeOl/OJi1enqeFZvqpzvwX3ZTCi6n7q/dIKjHYyUikkkB3ff0W")
         YACUAIOBVO_NARRATIVE_INPUT.delegate = self
         
 //        YACUAIOBVO_EMOJI_WELL.setImage(UIImage(systemName: "face.smiling"), for: .normal)
@@ -181,16 +181,16 @@ class YACUAIOBVO_PulseChatRoom: UIViewController, UITableViewDataSource, UITable
     
     
     func updateMesg()  {
-        for (i,item) in YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.enumerated() {
+        for (i,item) in SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.enumerated() {
             if (item.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String ==  self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String) && self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_chokint.count > 0{
-                YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[i] = self.YACUAIOBVO_PROFILE_DATA
+                SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES[i] = self.YACUAIOBVO_PROFILE_DATA
             }
         }
         
-        if YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.filter({ YACUAIOBVO_COMMUEntity in
+        if SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.filter({ YACUAIOBVO_COMMUEntity in
             YACUAIOBVO_COMMUEntity.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String == self.YACUAIOBVO_PROFILE_DATA.YACUAIOBVO_userinfo["YACUAIOBVO_ID"] as? String
          }).count == 0  {
-            YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.insert(self.YACUAIOBVO_PROFILE_DATA, at: 0)
+            SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES.insert(self.YACUAIOBVO_PROFILE_DATA, at: 0)
         }
     }
     

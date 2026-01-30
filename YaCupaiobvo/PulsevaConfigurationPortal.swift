@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_SystemConfigurationPortal.swift
+//  PulsevaConfigurationPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
+class PulsevaConfigurationPortal: UIViewController {
 
     private let YACUAIOBVO_TOP_HEADING = UILabel()
     private let YACUAIOBVO_RETREAT_TRIGGER = UIButton()
@@ -16,7 +16,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
     private let YACUAIOBVO_EXIT_SESSION_PILOT = UIButton()
     private let YACUAIOBVO_TERMINATE_ACCOUNT_PILOT = UIButton()
     
-    private let YACUAIOBVO_MENU_OPTIONS = [YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "k+HvfasnMaPvmdFVwfehyO0chH/okDLThPJMN2lJ8FjhrtK6BRfUstz3F+fHJZ9F"), YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "R86fZwMKkfav1QDdRV7THmeZnJootJ46SNKUwZgeAyUXZTXvVTNbGQnFWr8Ybg=="), YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Uxv5NEHCyEvvWsUTUIpQyTU5bawLZyw2vOEtfHLkeqkTNIW8lU+e09w=")]
+    private let YACUAIOBVO_MENU_OPTIONS = [GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "k+HvfasnMaPvmdFVwfehyO0chH/okDLThPJMN2lJ8FjhrtK6BRfUstz3F+fHJZ9F"), GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "R86fZwMKkfav1QDdRV7THmeZnJootJ46SNKUwZgeAyUXZTXvVTNbGQnFWr8Ybg=="), GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Uxv5NEHCyEvvWsUTUIpQyTU5bawLZyw2vOEtfHLkeqkTNIW8lU+e09w=")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_RETREAT_TRIGGER.tintColor = .black
         YACUAIOBVO_RETREAT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_PERFORM_RETREAT), for: .touchUpInside)
         
-        YACUAIOBVO_TOP_HEADING.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sM8TmyUm/CwTwrxM5LYZ+w0Q5oxEF4pmBldbwddrH9ThVpUyuB0S")
+        YACUAIOBVO_TOP_HEADING.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "sM8TmyUm/CwTwrxM5LYZ+w0Q5oxEF4pmBldbwddrH9ThVpUyuB0S")
         YACUAIOBVO_TOP_HEADING.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_PREFERENCE_LIST.delegate = self
@@ -40,13 +40,13 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_PREFERENCE_LIST.separatorStyle = .singleLine
         YACUAIOBVO_PREFERENCE_LIST.register(UITableViewCell.self, forCellReuseIdentifier: "YACUAIOBVO_PREF_NODE")
         YACUAIOBVO_EXIT_SESSION_PILOT.addTarget(self, action: #selector(YACUAIOBVO_EXIT_SESSION_logout), for: .touchUpInside)
-        YACUAIOBVO_EXIT_SESSION_PILOT.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WCqLKXQ8aNsI1UAbT+Z/vuoY7EL2hXNagMnl4hHKkbBJiX2e54G2"), for: .normal)
+        YACUAIOBVO_EXIT_SESSION_PILOT.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "WCqLKXQ8aNsI1UAbT+Z/vuoY7EL2hXNagMnl4hHKkbBJiX2e54G2"), for: .normal)
         YACUAIOBVO_EXIT_SESSION_PILOT.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         YACUAIOBVO_EXIT_SESSION_PILOT.setTitleColor(.gray, for: .normal)
         YACUAIOBVO_EXIT_SESSION_PILOT.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVO_EXIT_SESSION_PILOT.layer.cornerRadius = 28
         
-        YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "HeTOXjXxwcGwBQOvrnjvbmaw4AJysTzwkFW8KbS+belPjUiFD2maJFnAFgYlbw=="), for: .normal)
+        YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "HeTOXjXxwcGwBQOvrnjvbmaw4AJysTzwkFW8KbS+belPjUiFD2maJFnAFgYlbw=="), for: .normal)
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.setTitleColor(.white, for: .normal)
         YACUAIOBVO_TERMINATE_ACCOUNT_PILOT.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -55,10 +55,10 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
     }
 
    @objc func YACUAIOBVO_EXIT_SESSION_logout()  {
-       YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE = nil
-       YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES  = []
-       YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_TERMINATE_SESSION()
-       let YACUAIOBVO_LOGIN_FLOW = YACUAIOBVO_AccessPortalController()
+       SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE = nil
+       SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_DATA_REPOSITORIES  = []
+       SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_TERMINATE_SESSION()
+       let YACUAIOBVO_LOGIN_FLOW = AuralAccessPortalController()
                  
        let YACUAIOBVO_NAV_CONTAINER = UINavigationController(rootViewController: YACUAIOBVO_LOGIN_FLOW)
        ((UIApplication.shared.delegate) as? AppDelegate)?.window?.rootViewController = YACUAIOBVO_NAV_CONTAINER
@@ -103,7 +103,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
         YACUAIOBVO_MODAL.modalPresentationStyle = .overFullScreen
         YACUAIOBVO_MODAL.modalTransitionStyle = .crossDissolve
         YACUAIOBVO_MODAL.YACUAIOBVO_CONFIRM_BLOCK = { [weak self] in
-            YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_ERASE_ACCOUNT()
+            SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_ERASE_ACCOUNT()
             self?.YACUAIOBVO_EXIT_SESSION_logout()
         }
         present(YACUAIOBVO_MODAL, animated: true)
@@ -123,7 +123,7 @@ class YACUAIOBVO_SystemConfigurationPortal: UIViewController {
 //    }
 }
 
-extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableViewDataSource {
+extension PulsevaConfigurationPortal: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return YACUAIOBVO_MENU_OPTIONS.count
     }
@@ -140,7 +140,7 @@ extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-            let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController()
+            let YACUAIOBVO_MODAL_LEGAL = RefinerLegalUniversalController()
             YACUAIOBVO_MODAL_LEGAL.YACUAIOBVO_INJECT_PAYLOAD(YACUAIOBVO_LegalType.YACUAIOBVO_PRIVACY)
             
             
@@ -148,7 +148,7 @@ extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableView
         }
         if indexPath.row == 1 {
            
-            let YACUAIOBVO_MODAL_LEGAL = YACUAIOBVO_LegalUniversalController()
+            let YACUAIOBVO_MODAL_LEGAL = RefinerLegalUniversalController()
             YACUAIOBVO_MODAL_LEGAL.YACUAIOBVO_INJECT_PAYLOAD(YACUAIOBVO_LegalType.YACUAIOBVO_TERMS)
             
             
@@ -156,7 +156,7 @@ extension YACUAIOBVO_SystemConfigurationPortal: UITableViewDelegate, UITableView
         }
         
         if indexPath.row == 2 {
-            let YACUAIOBVOvc =  YACUAIOBVO_SocialConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_ZONE)
+            let YACUAIOBVOvc =  PulseInteractionStageConnectionPortal.init(YACUAIOBVO_ACTIVE_SCOPE: .YACUAIOBVO_RESTRICTED_ZONE)
             YACUAIOBVOvc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(YACUAIOBVOvc, animated: true)
         }
@@ -191,24 +191,24 @@ class YACUAIOBVO_TerminationSecurityNotice: UIViewController {
         YACUAIOBVO_ALERT_CORE.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(YACUAIOBVO_ALERT_CORE)
         
-        YACUAIOBVO_WARN_LABEL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "5zTtXJe6cALoQ2Fo+0XUmYJGJDY8ev5QJ0efEGvrD5yFmKhTtqjAqxTYBjf+bQ==")
+        YACUAIOBVO_WARN_LABEL.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "5zTtXJe6cALoQ2Fo+0XUmYJGJDY8ev5QJ0efEGvrD5yFmKhTtqjAqxTYBjf+bQ==")
         YACUAIOBVO_WARN_LABEL.textColor = UIColor(red: 1.0, green: 0.45, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_WARN_LABEL.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         YACUAIOBVO_WARN_LABEL.textAlignment = .center
         
-        YACUAIOBVO_DETAIL_LABEL.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "SzoR2obK4LhLm5h98CsBDmTktw2mbWqmVBtZitX0qI760mdDy1UYTLx6CmVLL/1jXdl62Q2NJnYgNXnKf1VuWjGu4I+XCAisR9cnTxf1RgViTS65dCqg2RxVosDlTl2SQncp+6kTvH8=")
+        YACUAIOBVO_DETAIL_LABEL.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "SzoR2obK4LhLm5h98CsBDmTktw2mbWqmVBtZitX0qI760mdDy1UYTLx6CmVLL/1jXdl62Q2NJnYgNXnKf1VuWjGu4I+XCAisR9cnTxf1RgViTS65dCqg2RxVosDlTl2SQncp+6kTvH8=")
         YACUAIOBVO_DETAIL_LABEL.numberOfLines = 0
         YACUAIOBVO_DETAIL_LABEL.textAlignment = .center
         YACUAIOBVO_DETAIL_LABEL.font = UIFont.systemFont(ofSize: 15)
         YACUAIOBVO_DETAIL_LABEL.textColor = .darkGray
         
-        YACUAIOBVO_NEGATE_ACTION.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "k78jJ0NR78mWlzgPVrKaXh89hOlS4QvBh3S65JdlZSDhEBr4AoQ="), for: .normal)
+        YACUAIOBVO_NEGATE_ACTION.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "k78jJ0NR78mWlzgPVrKaXh89hOlS4QvBh3S65JdlZSDhEBr4AoQ="), for: .normal)
         YACUAIOBVO_NEGATE_ACTION.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         YACUAIOBVO_NEGATE_ACTION.setTitleColor(.gray, for: .normal)
         YACUAIOBVO_NEGATE_ACTION.layer.cornerRadius = 20
         YACUAIOBVO_NEGATE_ACTION.addTarget(self, action: #selector(YACUAIOBVO_HIDE_POPUP), for: .touchUpInside)
         
-        YACUAIOBVO_AFFIRM_ACTION.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "CUVmKChHPq9ZglqTuzOJbqbf4uamXPOV5JreqAwoDnUUbFs="), for: .normal)
+        YACUAIOBVO_AFFIRM_ACTION.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "CUVmKChHPq9ZglqTuzOJbqbf4uamXPOV5JreqAwoDnUUbFs="), for: .normal)
         YACUAIOBVO_AFFIRM_ACTION.backgroundColor = UIColor(red: 1.0, green: 0.45, blue: 0.45, alpha: 1.0)
         YACUAIOBVO_AFFIRM_ACTION.setTitleColor(.white, for: .normal)
         YACUAIOBVO_AFFIRM_ACTION.layer.cornerRadius = 20

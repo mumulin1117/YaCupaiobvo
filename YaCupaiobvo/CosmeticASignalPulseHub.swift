@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_SignalPulseHub.swift
+//  CosmeticASignalPulseHub.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/22.
@@ -15,9 +15,9 @@ enum YACUAIOBVO_PULSE_TYPE {
 
 import UIKit
 
-class YACUAIOBVO_SignalPulseHub: UIView {
+class CosmeticASignalPulseHub: UIView {
 
-    static let YACUAIOBVO_SHARED = YACUAIOBVO_SignalPulseHub(frame: UIScreen.main.bounds)
+    static let YACUAIOBVO_SHARED = CosmeticASignalPulseHub(frame: UIScreen.main.bounds)
     
     private let YACUAIOBVO_CORE_PLATE = UIView()
     private let YACUAIOBVO_SYMBOL_SLOT = UIImageView()
@@ -178,7 +178,7 @@ class YACUAIOBVO_SignalPulseHub: UIView {
 }
 
 
-extension YACUAIOBVO_SignalPulseHub {
+extension CosmeticASignalPulseHub {
     private func YACUAIOBVO_VERIFY_HIERARCHY_INTEGRITY() -> Bool {
         return self.subviews.contains(YACUAIOBVO_CORE_PLATE) && YACUAIOBVO_SIGNAL_STRENGTH > -0.5
     }

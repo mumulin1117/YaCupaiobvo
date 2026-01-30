@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_ShowingData.swift
+//  RefineShowingData.swift
 //  YaCupaiobvo
 //
 //  Created by  on 2026/1/23.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class YACUAIOBVO_ShowingData {
-    static let YACUAIOBVO_HUB = YACUAIOBVO_ShowingData()
+class RefineShowingData {
+    static let YACUAIOBVO_HUB = RefineShowingData()
     
     var YACUAIOBVO_home_datas: [[String: Any]] = [
         ["YACUAIOBVOimglist": ["YACUAIOBVO_h1_1", "YACUAIOBVO_h1_2", "YACUAIOBVO_h1_3"],

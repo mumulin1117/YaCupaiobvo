@@ -1,12 +1,12 @@
 //
-//  YACUAIOBVO_StyleDiscoveryCell.swift
+//  GarnishTextureVaultDiscoveryCell.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
 //
 import UIKit
 
-class YACUAIOBVO_StyleDiscoveryCell: UICollectionViewCell {
+class GarnishTextureVaultDiscoveryCell: UICollectionViewCell {
     
     static let YACUAIOBVO_REUSE_ID = "YACUAIOBVO_VisualDiscoveryCell"
     
@@ -66,7 +66,7 @@ class YACUAIOBVO_StyleDiscoveryCell: UICollectionViewCell {
         
         
         
-        YACUAIOBVO_ARROW_IMG.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOHeadrt-off")
+        YACUAIOBVO_ARROW_IMG.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOHeadrt-off")
        
         YACUAIOBVO_ARROW_IMG.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(YACUAIOBVO_ARROW_IMG)
@@ -110,7 +110,7 @@ class YACUAIOBVO_StyleDiscoveryCell: UICollectionViewCell {
     func YACUAIOBVO_REFRESH_CONTENT(YACUAIOBVO_NAME: String, YACUAIOBVO_VAL: String, YACUAIOBVO_IMG: String,YACUAIOBVO_avator:String) {
         YACUAIOBVO_TITLE_LABEL.text = YACUAIOBVO_NAME
         YACUAIOBVO_LIKE_name_LABEL.text = YACUAIOBVO_VAL
-        YACUAIOBVO_ACTION_Avator_WRAPPER.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_avator)
-        YACUAIOBVO_MAIN_HERO_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG)
+        YACUAIOBVO_ACTION_Avator_WRAPPER.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_avator)
+        YACUAIOBVO_MAIN_HERO_VIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG)
     }
 }

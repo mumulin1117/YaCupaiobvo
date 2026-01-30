@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
         window = UIWindow.init(frame: UIScreen.main.bounds)
                 
-        if let _ = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE {
+        if let _ = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE {
             YACUAIOBVO_SET_MAIN_HUB()
         } else {
             YACUAIOBVO_SET_AUTH_PORTAL()
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func YACUAIOBVO_SET_AUTH_PORTAL() {
-        let YACUAIOBVO_LOGIN_FLOW = YACUAIOBVO_AccessPortalController()
+        let YACUAIOBVO_LOGIN_FLOW = AuralAccessPortalController()
                   
         let YACUAIOBVO_NAV_CONTAINER = UINavigationController(rootViewController: YACUAIOBVO_LOGIN_FLOW)
         window!.rootViewController = YACUAIOBVO_NAV_CONTAINER
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
        
     func YACUAIOBVO_SET_MAIN_HUB() {
-        let YACUAIOBVO_TAB_HUB = YACUAIOBVOMainTabController()
+        let YACUAIOBVO_TAB_HUB = LinkPathOptimiserController()
         window?.rootViewController = YACUAIOBVO_TAB_HUB
     }
 

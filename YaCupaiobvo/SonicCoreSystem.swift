@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct YACUAIOBVO_IdentityModel: Codable {
+struct PulseIdentityModel: Codable {
     var YACUAIOBVO_ID: String
     var YACUAIOBVO_NICKNAME: String
     var YACUAIOBVO_AVATAR_REF: String
@@ -22,17 +22,17 @@ struct YACUAIOBVO_IdentityModel: Codable {
 }
 
 
-class YACUAIOBVO_CoreSystem {
+class SonicCoreSystem {
     
     
-    static let YACUAIOBVO_HUB = YACUAIOBVO_CoreSystem()
+    static let YACUAIOBVO_HUB = SonicCoreSystem()
     
-     var YACUAIOBVO_DATA_REPOSITORIES: [YACUAIOBVO_COMMUEntity] = []
+     var YACUAIOBVO_DATA_REPOSITORIES: [ElixirCOMMUEntity] = []
     
     private let YACUAIOBVO_STORAGE = UserDefaults.standard
     private let YACUAIOBVO_KEY_SESSION = "YACUAIOBVO_USER_STORAGE_INDEX"
    
-    var YACUAIOBVO_CURRENT_PROFILE: YACUAIOBVO_IdentityModel?
+    var YACUAIOBVO_CURRENT_PROFILE: PulseIdentityModel?
     
     private init() {
         YACUAIOBVO_INTERNAL_LOAD()
@@ -42,12 +42,12 @@ class YACUAIOBVO_CoreSystem {
     func YACUAIOBVO_PERFORM_LOGIN(YACUAIOBVO_MAIL: String) {
         let YACUAIOBVO_IS_TEST = YACUAIOBVO_MAIL == "yabvo33@gmail.com"
         
-        let YACUAIOBVO_NEW_MODEL = YACUAIOBVO_IdentityModel(
+        let YACUAIOBVO_NEW_MODEL = PulseIdentityModel(
             YACUAIOBVO_ID: YACUAIOBVO_IS_TEST ? "YACUAIOBVO_TEST_888" : UUID().uuidString,
             YACUAIOBVO_NICKNAME: YACUAIOBVO_IS_TEST ? "Sophie Fashion" : "User_\(Int.random(in: 1000...9999))",
             YACUAIOBVO_AVATAR_REF: YACUAIOBVO_IS_TEST ? "YACUAIOBVO_p1" : "YACUAIOBVOAvatar",
             YACUAIOBVO_BIO_TEXT: YACUAIOBVO_IS_TEST ? "Professional stylist based in Paris. Love vintage looks." : "Hey there! Using Pulse.",
-            YACUAIOBVO_WALLET_BALANCE: YACUAIOBVO_IS_TEST ? 888 : 0,
+            YACUAIOBVO_WALLET_BALANCE: YACUAIOBVO_IS_TEST ? 20 : 0,
             YACUAIOBVO_FOLLOWING_SET: YACUAIOBVO_IS_TEST ? ["user_007", "user_006"] : [],
             
             YACUAIOBVO_FANS_SET: YACUAIOBVO_IS_TEST ? ["user_009"] : []
@@ -57,14 +57,14 @@ class YACUAIOBVO_CoreSystem {
         YACUAIOBVO_INTERNAL_SYNC()
         
         if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
-            let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
+            let demouserCh0 = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
              let noingadte = Date().timeIntervalSince1970
-            let demouserCh1 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
+            let demouserCh1 = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
             YACUAIOBVO_DATA_REPOSITORIES = [
                 
-                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
+                ElixirCOMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
                 
-                YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
+                ElixirCOMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
                 
             ]
         }
@@ -151,7 +151,7 @@ class YACUAIOBVO_CoreSystem {
     }
 
     
-    private func YACUAIOBVO_UPDATE_NODE(_ YACUAIOBVO_M: YACUAIOBVO_IdentityModel) {
+    private func YACUAIOBVO_UPDATE_NODE(_ YACUAIOBVO_M: PulseIdentityModel) {
         self.YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_M
         self.YACUAIOBVO_INTERNAL_SYNC()
         
@@ -166,18 +166,18 @@ class YACUAIOBVO_CoreSystem {
     private func YACUAIOBVO_INTERNAL_LOAD() {
        
         if let YACUAIOBVO_RAW = YACUAIOBVO_STORAGE.data(forKey: YACUAIOBVO_KEY_SESSION),
-           let YACUAIOBVO_DE = try? JSONDecoder().decode(YACUAIOBVO_IdentityModel.self, from: YACUAIOBVO_RAW) {
+           let YACUAIOBVO_DE = try? JSONDecoder().decode(PulseIdentityModel.self, from: YACUAIOBVO_RAW) {
             YACUAIOBVO_CURRENT_PROFILE = YACUAIOBVO_DE
             let noingadte = Date().timeIntervalSince1970
             if YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_ID == "YACUAIOBVO_TEST_888" {
-                let demouserCh0 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
+                let demouserCh0 = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.first ?? [:]
                 
-                let demouserCh1 = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
+                let demouserCh1 = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas.last ?? [:]
                 YACUAIOBVO_DATA_REPOSITORIES = [
                     
-                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
+                    ElixirCOMMUEntity.init(YACUAIOBVO_userinfo: demouserCh0, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Stand up for what you believe in", YACUAIOBVO_mestimedate: Date())]),
                     
-                    YACUAIOBVO_COMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
+                    ElixirCOMMUEntity.init(YACUAIOBVO_userinfo: demouserCh1, YACUAIOBVO_TIMESTAMP: noingadte, YACUAIOBVO_chokint: [YACUAIOBVO_ChatEntity(YACUAIOBVO_mesgisOTHER: false, YACUAIOBVO_mescontent: "Some people are a little different. I think that's cool.", YACUAIOBVO_mestimedate: Date())])
                     
                 ]
             }

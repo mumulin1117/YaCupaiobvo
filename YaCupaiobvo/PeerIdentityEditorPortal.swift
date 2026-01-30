@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_IdentityEditorPortal.swift
+//  PeerIdentityEditorPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/21.
@@ -11,17 +11,17 @@ protocol YACUAIOBVO_IdentityUpdateProtocol: AnyObject {
     func YACUAIOBVO_DID_FINISH_MODIFICATION(YACUAIOBVO_NEW_NAME: String, YACUAIOBVO_NEW_BIO: String, YACUAIOBVO_NEW_IMAGE: UIImage?)
 }
 
-class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PeerIdentityEditorPortal: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
           
-            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
+            MemberKeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
         }
 
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
  
-            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
+            MemberKeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
         }
         
    
@@ -67,28 +67,28 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         YACUAIOBVO_DISMISS_TRIGGER.tintColor = .black
         YACUAIOBVO_DISMISS_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_BACK_INVOKED), for: .touchUpInside)
         
-        YACUAIOBVO_PAGE_SUBJECT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Af8A/GMNOm8I1FrLahhy5/bx5bqzi0wpFgsQoHXghRdZ6GIRhNvh9GW+r+e3e0NvDbKDzJnjQg==")
+        YACUAIOBVO_PAGE_SUBJECT.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Af8A/GMNOm8I1FrLahhy5/bx5bqzi0wpFgsQoHXghRdZ6GIRhNvh9GW+r+e3e0NvDbKDzJnjQg==")
         YACUAIOBVO_PAGE_SUBJECT.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         
         YACUAIOBVO_AVATAR_PREVIEW.backgroundColor = UIColor(red: 1.0, green: 0.92, blue: 0.9, alpha: 1.0)
         YACUAIOBVO_AVATAR_PREVIEW.layer.cornerRadius = 60
         YACUAIOBVO_AVATAR_PREVIEW.clipsToBounds = true
         YACUAIOBVO_AVATAR_PREVIEW.contentMode = .scaleAspectFill
-        YACUAIOBVO_AVATAR_PREVIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVO_av_1")
+        YACUAIOBVO_AVATAR_PREVIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_AVATAR_REF ?? "YACUAIOBVO_av_1")
         YACUAIOBVO_AVATAR_PREVIEW.tintColor = UIColor(red: 1.0, green: 0.6, blue: 0.55, alpha: 1.0)
         
         YACUAIOBVO_AVATAR_PICKER_ENTRY.addTarget(self, action: #selector(YACUAIOBVO_MEDIA_HUB_OPEN), for: .touchUpInside)
         
-        YACUAIOBVO_NAME_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MxWNZs0ogEx+qaGhv3UaIIuBbhqxCSYjg9BgtwzzeMgBZd15V9NAsy8=")
+        YACUAIOBVO_NAME_FIELD_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MxWNZs0ogEx+qaGhv3UaIIuBbhqxCSYjg9BgtwzzeMgBZd15V9NAsy8=")
         YACUAIOBVO_NAME_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
-        YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Bp7m+o8MdxWwbBpPHHJQHJeQ88VZtJcy9gyK0WQYhY+67z7Yq8tH348fzA==")
+        YACUAIOBVO_NAME_INPUT_WRAPPER.placeholder = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "Bp7m+o8MdxWwbBpPHHJQHJeQ88VZtJcy9gyK0WQYhY+67z7Yq8tH348fzA==")
         
-        YACUAIOBVO_NAME_INPUT_WRAPPER.text = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_NICKNAME
+        YACUAIOBVO_NAME_INPUT_WRAPPER.text = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_NICKNAME
         YACUAIOBVO_NAME_INPUT_WRAPPER.borderStyle = .roundedRect
         YACUAIOBVO_NAME_INPUT_WRAPPER.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         
-        YACUAIOBVO_BIO_FIELD_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "w7tfpIkQ0zAFjOB/1xpzWaIy5giaBGqWuD9T/ehWERrYJBRal0AuIQ==")
+        YACUAIOBVO_BIO_FIELD_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "w7tfpIkQ0zAFjOB/1xpzWaIy5giaBGqWuD9T/ehWERrYJBRal0AuIQ==")
         YACUAIOBVO_BIO_FIELD_TITLE.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
         YACUAIOBVO_BIO_TEXT_STATION.layer.cornerRadius = 8
@@ -96,7 +96,7 @@ class YACUAIOBVO_IdentityEditorPortal: UIViewController, UIImagePickerController
         YACUAIOBVO_BIO_TEXT_STATION.layer.borderColor = UIColor.systemGray4.cgColor
         YACUAIOBVO_BIO_TEXT_STATION.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         YACUAIOBVO_BIO_TEXT_STATION.font = UIFont.systemFont(ofSize: 15)
-        YACUAIOBVO_BIO_TEXT_STATION.text = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BIO_TEXT
+        YACUAIOBVO_BIO_TEXT_STATION.text = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BIO_TEXT
         YACUAIOBVO_CONFIRM_ACTION_PILOT.setTitle("Start", for: .normal)
         YACUAIOBVO_CONFIRM_ACTION_PILOT.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
         YACUAIOBVO_CONFIRM_ACTION_PILOT.setTitleColor(.white, for: .normal)

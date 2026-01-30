@@ -1,28 +1,28 @@
 //
-//  YACUAIOBVO_HomeStylePortal.swift
+//  DashboardHomeStylePortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/20.
 //
 import UIKit
 
-class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControllerDelegate {
+class DashboardHomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControllerDelegate {
     func unlockTag(page:Int) {
 
-        YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas[page]["YACUAIOBVOIfNeedUnlock"] = false
+        RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas[page]["YACUAIOBVOIfNeedUnlock"] = false
         self.YACUAIOBVO_HORIZONTAL_COLLECTION.reloadItems(at: [IndexPath(row: page, section: 0)])
         let current = YACUAIOBVO_DISPLAY_POOL[page]
         let YACUAIOBVO_CONTEXT = YACUAIOBVO_VocalContext(
             YACUAIOBVO_CONTENT: current,
             YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
         )
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_CONTEXT)
+        let YACUAIOBVO_DET_VC = TextureCuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_CONTEXT)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }
     
     func tpPurchase() {
-        let paugecon  = YACUAIOBVO_CurrencyTopUpPortal()
+        let paugecon  = OutfitCurrencyTopUpPortal()
         paugecon.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(paugecon, animated: true)
     }
@@ -35,7 +35,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
     var YACUAIOBVO_CURRENT_CAT: YACUAIOBVO_FeedCategory = .YACUAIOBVO_LATEST
     private var YACUAIOBVO_DISPLAY_POOL: [[String: Any]] {
         
-        let YACUAIOBVO_ALL_DATA = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas
+        let YACUAIOBVO_ALL_DATA = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_home_datas
       
   
         switch YACUAIOBVO_CURRENT_CAT {
@@ -85,7 +85,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         YACUAIOBVO_CONTENT_STACK.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_MAIN_SCROLLER.addSubview(YACUAIOBVO_CONTENT_STACK)
         
-        YACUAIOBVO_AI_HERO_TRIGGER.setBackgroundImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_HERO_BANNER"), for: .normal)
+        YACUAIOBVO_AI_HERO_TRIGGER.setBackgroundImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_HERO_BANNER"), for: .normal)
         YACUAIOBVO_AI_HERO_TRIGGER.imageView?.contentMode = .scaleToFill
       
         YACUAIOBVO_AI_HERO_TRIGGER.translatesAutoresizingMaskIntoConstraints = false
@@ -105,12 +105,12 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
         YACUAIOBVO_HORIZONTAL_COLLECTION.delegate = self
         YACUAIOBVO_HORIZONTAL_COLLECTION.dataSource = self
         YACUAIOBVO_HORIZONTAL_COLLECTION.showsHorizontalScrollIndicator = false
-        YACUAIOBVO_HORIZONTAL_COLLECTION.register(YACUAIOBVO_SuggestionCell.self, forCellWithReuseIdentifier: "YACUAIOBVO_CELL")
+        YACUAIOBVO_HORIZONTAL_COLLECTION.register(AuralStreamardestionCell.self, forCellWithReuseIdentifier: "YACUAIOBVO_CELL")
     }
 
     private func YACUAIOBVO_CONFIGURE_TAB(_ YACUAIOBVO_BTN: UIButton, _ YACUAIOBVO_IMG_NAME: String, _ YACUAIOBVO_TAG: Int) {
-        YACUAIOBVO_BTN.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG_NAME), for: .normal)
-        YACUAIOBVO_BTN.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG_NAME + "_ACTIVE"), for: .selected)
+        YACUAIOBVO_BTN.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG_NAME), for: .normal)
+        YACUAIOBVO_BTN.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: YACUAIOBVO_IMG_NAME + "_ACTIVE"), for: .selected)
         YACUAIOBVO_BTN.tag = YACUAIOBVO_TAG
         YACUAIOBVO_BTN.addTarget(self, action: #selector(YACUAIOBVO_SWITCH_CATEGORY(YACUAIOBVO_SENDER:)), for: .touchUpInside)
         YACUAIOBVO_CAT_STACK_WRAPPER.addArrangedSubview(YACUAIOBVO_BTN)
@@ -144,7 +144,7 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
     }
 
     @objc private func YACUAIOBVO_LAUNCH_AI_ENGINE() {
-        let YACUAIOBVO_GEN_VC = YACUAIOBVOGlassVisionController()
+        let YACUAIOBVO_GEN_VC = VertexPointProcessornController()
         YACUAIOBVO_GEN_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_GEN_VC, animated: true)
     }
@@ -165,23 +165,23 @@ class YACUAIOBVO_HomeStylePortal: UIViewController, YACUAIOBVOBNotEnoughControll
             YACUAIOBVO_CURRENT_CAT = .YACUAIOBVO_LATEST
         }
        
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
             YACUAIOBVO_HORIZONTAL_COLLECTION.reloadData()
         }
         
     }
 }
 
-extension YACUAIOBVO_HomeStylePortal: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DashboardHomeStylePortal: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return YACUAIOBVO_DISPLAY_POOL.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let YACUAIOBVO_CELL = collectionView.dequeueReusableCell(withReuseIdentifier: "YACUAIOBVO_CELL", for: indexPath) as! YACUAIOBVO_SuggestionCell
+        let YACUAIOBVO_CELL = collectionView.dequeueReusableCell(withReuseIdentifier: "YACUAIOBVO_CELL", for: indexPath) as! AuralStreamardestionCell
         let current = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
         YACUAIOBVO_CELL.YACUAIOBVO_ACTION_HomeDataModel(YACUAIOBVOdic:current)
         return YACUAIOBVO_CELL
@@ -193,7 +193,7 @@ extension YACUAIOBVO_HomeStylePortal: UICollectionViewDelegate, UICollectionView
         let ifNeedCoin:Bool = current["YACUAIOBVOIfNeedUnlock"] as? Bool ?? false
         
         if ifNeedCoin  == true {
-            let YACUAIOBVOAlert = YACUAIOBVOBNotEnoughController(checkingType: .unknockPost, pagedot: indexPath.row)
+            let YACUAIOBVOAlert = GarnishAssetDispatcherEnoughController(checkingType: .unknockPost, pagedot: indexPath.row)
             YACUAIOBVOAlert.delegate = self
             YACUAIOBVOAlert.modalPresentationStyle = .overCurrentContext
             self.present(YACUAIOBVOAlert, animated: true)
@@ -204,7 +204,7 @@ extension YACUAIOBVO_HomeStylePortal: UICollectionViewDelegate, UICollectionView
             YACUAIOBVO_CONTENT: current,
             YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
         )
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_CuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_CONTEXT)
+        let YACUAIOBVO_DET_VC = TextureCuratedLookDetailHub(YACUAIOBVO_INCOMING_DATA: YACUAIOBVO_CONTEXT)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }

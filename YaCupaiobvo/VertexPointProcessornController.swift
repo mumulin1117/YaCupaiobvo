@@ -8,13 +8,13 @@
 import UIKit
 import PhotosUI
 
-class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughControllerDelegate {
+class VertexPointProcessornController: UIViewController, YACUAIOBVOBNotEnoughControllerDelegate {
     func unlockTag(page: Int) {
         
     }
     
     func tpPurchase() {
-        let paugecon  = YACUAIOBVO_CurrencyTopUpPortal()
+        let paugecon  = OutfitCurrencyTopUpPortal()
         paugecon.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(paugecon, animated: true)
     }
@@ -29,14 +29,14 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     
     private let YACUAIOBVOEtherealBackdrop: UIImageView = {
         let YACUAIOBVOView = UIImageView()
-        YACUAIOBVOView.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_wallet_bg")
+        YACUAIOBVOView.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_wallet_bg")
         YACUAIOBVOView.contentMode = .scaleAspectFill
         YACUAIOBVOView.clipsToBounds = true
         return YACUAIOBVOView
     }()
     
     private let YACUAIOBVOAestheticPanel: UIImageView = {
-        let YACUAIOBVOView = UIImageView(image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOAISuggstion"))
+        let YACUAIOBVOView = UIImageView(image: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOAISuggstion"))
        
         return YACUAIOBVOView
     }()
@@ -44,7 +44,7 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     private let YACUAIOBVOUploadChamber: UIButton = {
         let YACUAIOBVOBtn = UIButton()
       
-        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOCameraIcon"), for: .normal)
+        YACUAIOBVOBtn.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOCameraIcon"), for: .normal)
         return YACUAIOBVOBtn
     }()
     
@@ -52,8 +52,8 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     
     private let YACUAIOBVOGenerateTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill"), for: .normal)
-        YACUAIOBVOBtn.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ReX8HBnrFZm6sQNOkUSujsvQWWHqkkCFt+nntLueCjgNNTlXAulJdQwt6rUm"), for: .normal)
+        YACUAIOBVOBtn.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "bitcoinsign.circle.fill"), for: .normal)
+        YACUAIOBVOBtn.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ReX8HBnrFZm6sQNOkUSujsvQWWHqkkCFt+nntLueCjgNNTlXAulJdQwt6rUm"), for: .normal)
         YACUAIOBVOBtn.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVOBtn.backgroundColor = UIColor.systemPink
         YACUAIOBVOBtn.layer.cornerRadius = 25
@@ -138,15 +138,15 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     @objc private func YACUAIOBVOValidateTransaction() {
         
         guard let result = self.YACUAIOBVORecordimge else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MIZmtJtisSEftDLOV2FiMlsuySfLJrATjHna6ZwRnxB5ls/JxulhVPajUhd0j5+Zluh7+jhT9Ld5PtuKvVbKSecyOHFx"), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "MIZmtJtisSEftDLOV2FiMlsuySfLJrATjHna6ZwRnxB5ls/JxulhVPajUhd0j5+Zluh7+jhT9Ld5PtuKvVbKSecyOHFx"), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             
             return
         }
         
-        if YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_EXPEND_CREDITS(YACUAIOBVO_VAL: YACUAIOBVOTariff) {
+        if SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_EXPEND_CREDITS(YACUAIOBVO_VAL: YACUAIOBVOTariff) {
             YACUAIOBVOExecuteCrystalProcessing(result: result)
         } else {
-            let YACUAIOBVOAlert = YACUAIOBVOBNotEnoughController(checkingType: .tipsinfluence)
+            let YACUAIOBVOAlert = GarnishAssetDispatcherEnoughController(checkingType: .tipsinfluence)
             YACUAIOBVOAlert.modalPresentationStyle = .overCurrentContext
             YACUAIOBVOAlert.delegate = self
             self.present(YACUAIOBVOAlert, animated: true)
@@ -156,18 +156,18 @@ class YACUAIOBVOGlassVisionController: UIViewController, YACUAIOBVOBNotEnoughCon
     private func YACUAIOBVOExecuteCrystalProcessing(result:UIImage) {
         
        
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BTp5jcgbcCRR2uVp5VmrNqR61xpiTtq9hiGhsnwlrsy7v5RVlG+TwGTF"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "BTp5jcgbcCRR2uVp5VmrNqR61xpiTtq9hiGhsnwlrsy7v5RVlG+TwGTF"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
             
-            let YACUAIOBVOResult = YACUAIOBVOPairingOutcomeController(YACUAIOBVO_uiiage: result)
+            let YACUAIOBVOResult = VOPairingOutcomeController(YACUAIOBVO_uiiage: result)
             self.navigationController?.pushViewController(YACUAIOBVOResult, animated: true)
         }
     }
 }
 
-extension YACUAIOBVOGlassVisionController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension VertexPointProcessornController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let YACUAIOBVOImg = info[.originalImage] as? UIImage {
             YACUAIOBVOUploadChamber.setImage(YACUAIOBVOImg.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -202,6 +202,6 @@ extension UIViewController {
     
     
    @objc func YACUAIOBVO_APPLY_DARK_report_THEME() {
-        self.navigationController?.pushViewController(YACUAIOBVO_ReportDetailFlow(), animated: true)
+        self.navigationController?.pushViewController(InventoryReportDetailFlow(), animated: true)
     }
 }

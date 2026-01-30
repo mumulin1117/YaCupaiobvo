@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVOBNotEnoughController.swift
+//  GarnishAssetDispatcherEnoughController.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/22.
@@ -10,7 +10,7 @@ protocol YACUAIOBVOBNotEnoughControllerDelegate {
     func unlockTag(page:Int)
     func tpPurchase()
 }
-class YACUAIOBVOBNotEnoughController: UIViewController {
+class GarnishAssetDispatcherEnoughController: UIViewController {
     
     var delegate: YACUAIOBVOBNotEnoughControllerDelegate?
     
@@ -53,7 +53,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOExclamationNode: UIImageView = {
         let YACUAIOBVOImg = UIImageView()
-        YACUAIOBVOImg.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: checkingType == .tipsinfluence ? "YACUAIOBVOWarningIcon" : "YACUAIOBVOunlockIcon")
+        YACUAIOBVOImg.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: checkingType == .tipsinfluence ? "YACUAIOBVOWarningIcon" : "YACUAIOBVOunlockIcon")
         YACUAIOBVOImg.contentMode = .scaleAspectFit
         YACUAIOBVOImg.translatesAutoresizingMaskIntoConstraints = false
         return YACUAIOBVOImg
@@ -61,7 +61,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOMessageLabel: UILabel = {
         let YACUAIOBVOLab = UILabel()
-        YACUAIOBVOLab.text = checkingType == .tipsinfluence ? YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "QOeGRG83r3hmZIBE2Nef5wNkBaKPzygKRu/r5ANqEHHBK1Vqj5CElnxI3BdLEnv7Bgp35073M2PSDNYLe3FDKmdSJUaF/kmfZ2y15Lv2fdeHKh1f0i5eqWx2Aw==") : YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ozf0YI8j4ty5rpDk+nfjS/HXZcXNoYyJsBiXlENWm0boi9aWQn1ExrWtKsmaNg8bhyD7sqM7NpMeBJL7qcTUfk7gLYLYWVW1mQ5T3KRjANva47oaONHOHZZRBzArmWabLGrNhJ3gnMOZNYvqqQ==")
+        YACUAIOBVOLab.text = checkingType == .tipsinfluence ? GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "QOeGRG83r3hmZIBE2Nef5wNkBaKPzygKRu/r5ANqEHHBK1Vqj5CElnxI3BdLEnv7Bgp35073M2PSDNYLe3FDKmdSJUaF/kmfZ2y15Lv2fdeHKh1f0i5eqWx2Aw==") : GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "ozf0YI8j4ty5rpDk+nfjS/HXZcXNoYyJsBiXlENWm0boi9aWQn1ExrWtKsmaNg8bhyD7sqM7NpMeBJL7qcTUfk7gLYLYWVW1mQ5T3KRjANva47oaONHOHZZRBzArmWabLGrNhJ3gnMOZNYvqqQ==")
         YACUAIOBVOLab.textColor = .darkGray
         YACUAIOBVOLab.font = .systemFont(ofSize: 17, weight: .medium)
         YACUAIOBVOLab.textAlignment = .center
@@ -72,7 +72,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOAbortTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOAbortIcon" ), for: .normal)
+        YACUAIOBVOBtn.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOAbortIcon" ), for: .normal)
         YACUAIOBVOBtn.addTarget(self, action: #selector(YACUAIOBVOTerminateFlow), for: .touchUpInside)
         YACUAIOBVOBtn.translatesAutoresizingMaskIntoConstraints = false
         return YACUAIOBVOBtn
@@ -80,7 +80,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
     
     private lazy var YACUAIOBVOReplenishTrigger: UIButton = {
         let YACUAIOBVOBtn = UIButton()
-        YACUAIOBVOBtn.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: checkingType == .tipsinfluence ? "YACUAIOBVOReplenishicon" : "YACUAIOBVObuy"), for: .normal)
+        YACUAIOBVOBtn.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: checkingType == .tipsinfluence ? "YACUAIOBVOReplenishicon" : "YACUAIOBVObuy"), for: .normal)
         YACUAIOBVOBtn.addTarget(self, action: #selector(YACUAIOBVOInvokeStore), for: .touchUpInside)
         YACUAIOBVOBtn.translatesAutoresizingMaskIntoConstraints = false
         return YACUAIOBVOBtn
@@ -146,7 +146,7 @@ class YACUAIOBVOBNotEnoughController: UIViewController {
         self.dismiss(animated: true) {
             if self.checkingType == .unknockPost{
                //判断金币余额
-                if YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_EXPEND_CREDITS(YACUAIOBVO_VAL: 50) {
+                if SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_EXPEND_CREDITS(YACUAIOBVO_VAL: 50) {
                     
                     //解锁 详情页面
                     if self.delegate != nil {

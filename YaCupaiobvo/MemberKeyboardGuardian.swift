@@ -1,14 +1,14 @@
 //
-//  YACUAIOBVO_KeyboardGuardian.swift
+//  MemberKeyboardGuardian.swift
 //  YaCupaiobvo
 //
 //  Created by  on 2026/1/23.
 //
 import UIKit
 
-class YACUAIOBVO_KeyboardGuardian: NSObject {
+class MemberKeyboardGuardian: NSObject {
     
-    static let YACUAIOBVO_SHARED = YACUAIOBVO_KeyboardGuardian()
+    static let YACUAIOBVO_SHARED = MemberKeyboardGuardian()
     
     private var YACUAIOBVO_ACTIVE_FRAME: CGRect = .zero
     private weak var YACUAIOBVO_HOST_VIEW: UIView?

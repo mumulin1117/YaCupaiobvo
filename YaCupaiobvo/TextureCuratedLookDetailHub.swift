@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_CuratedLookDetailHub.swift
+//  TextureCuratedLookDetailHub.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
+class TextureCuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
 
     private let YACUAIOBVO_SCROLL_CONTAINER = UIScrollView()
     private let YACUAIOBVO_GALLERY_FLOW = UIScrollView()
@@ -67,8 +67,8 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
         YACUAIOBVO_TALLY_LABEL.font =  UIFont(name: "Roboto-Black Italic", size: 18)
         YACUAIOBVO_TALLY_LABEL.textColor = UIColor(red: 1, green: 0.56, blue: 0.51, alpha: 1)
         
-        YACUAIOBVO_HEART_ICON.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_emoji_cool"), for: .normal)
-        YACUAIOBVO_HEART_ICON.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_emoji"), for: .selected)
+        YACUAIOBVO_HEART_ICON.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_emoji_cool"), for: .normal)
+        YACUAIOBVO_HEART_ICON.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVO_emoji"), for: .selected)
         YACUAIOBVO_HEART_ICON.addTarget(self, action: #selector(YACUAIOBVO_HEART_ICONTragger), for: .touchUpInside)
 //        YACUAIOBVO_REACTION_WELL.isUserInteractionEnabled = true
 //        let YACUAIOBVO_TAP = UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVO_TRIGGER_REACTION))
@@ -176,7 +176,7 @@ class YACUAIOBVO_CuratedLookDetailHub: UIViewController, UIScrollViewDelegate {
             YACUAIOBVO_VIEW.backgroundColor = .systemGray6
             YACUAIOBVO_VIEW.contentMode = .scaleAspectFill
             YACUAIOBVO_VIEW.clipsToBounds = true
-            YACUAIOBVO_VIEW.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: imgstr)
+            YACUAIOBVO_VIEW.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: imgstr)
             
             YACUAIOBVO_VIEW.frame = CGRect(x: CGFloat(YACUAIOBVO_IDX) * view.frame.width, y: 0, width: view.frame.width, height: view.frame.width * 1.2)
             YACUAIOBVO_GALLERY_FLOW.addSubview(YACUAIOBVO_VIEW)

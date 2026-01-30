@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_VantagePostCenter.swift
+//  VocalStreamInterfacePostCenter.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/22.
@@ -8,17 +8,17 @@
 import UIKit
 import PhotosUI
 
-class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPickerViewControllerDelegate {
+class VocalStreamInterfacePostCenter: UIViewController, UITextViewDelegate, PHPickerViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
           
-            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
+            MemberKeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_ACTIVATE_MONITOR(for: self.view)
         }
 
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
            
-            YACUAIOBVO_KeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
+            MemberKeyboardGuardian.YACUAIOBVO_SHARED.YACUAIOBVO_DEACTIVATE_MONITOR()
         }
      
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -46,13 +46,13 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
     }
 
     private func YACUAIOBVO_SETUP_STAGE() {
-        let bafgoai = UIImageView(image: YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOpubgbg"))
+        let bafgoai = UIImageView(image: GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOpubgbg"))
         bafgoai.frame = UIScreen.main.bounds
         bafgoai.contentMode = .scaleToFill
         view.addSubview(bafgoai)
         
         
-        YACUAIOBVO_SCENE_TITLE.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "jUSAct3mF4xSwxsEH1T7WdLZZCxzDWy2kQckQoGG+Ahbzqw5VfM6IB7S")
+        YACUAIOBVO_SCENE_TITLE.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "jUSAct3mF4xSwxsEH1T7WdLZZCxzDWy2kQckQoGG+Ahbzqw5VfM6IB7S")
         YACUAIOBVO_SCENE_TITLE.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVO_SCENE_TITLE.textColor = .black
         
@@ -67,7 +67,7 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
         let YACUAIOBVO_TAP = UITapGestureRecognizer(target: self, action: #selector(YACUAIOBVO_INVOKE_GALLERY))
         YACUAIOBVO_FRAME_WELL.addGestureRecognizer(YACUAIOBVO_TAP)
         
-        YACUAIOBVO_FRAME_ICON.image = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOcameraLoogj")
+        YACUAIOBVO_FRAME_ICON.image = GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOcameraLoogj")
         YACUAIOBVO_FRAME_ICON.tintColor = UIColor(red: 1.0, green: 0.6, blue: 0.55, alpha: 1.0)
         YACUAIOBVO_FRAME_ICON.contentMode = .scaleAspectFit
         
@@ -83,12 +83,12 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
         YACUAIOBVO_NARRATIVE_INPUT.delegate = self
         YACUAIOBVO_NARRATIVE_INPUT.backgroundColor = .clear
         
-        YACUAIOBVO_GHOST_TEXT.text = YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "APsEhjQqTw3secoU72SqyrRwhISrGfBGL80eciLZYuAsI3txOEA0HiKTKb0VsnSbv5bK6O7Lb2ImW/Q4vBP4xA+P")
+        YACUAIOBVO_GHOST_TEXT.text = GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "APsEhjQqTw3secoU72SqyrRwhISrGfBGL80eciLZYuAsI3txOEA0HiKTKb0VsnSbv5bK6O7Lb2ImW/Q4vBP4xA+P")
         YACUAIOBVO_GHOST_TEXT.font = .systemFont(ofSize: 16)
         YACUAIOBVO_GHOST_TEXT.textColor = .lightGray
         
         YACUAIOBVO_LAUNCH_TRIGGER.backgroundColor = UIColor(red: 1.0, green: 0.58, blue: 0.52, alpha: 1.0)
-        YACUAIOBVO_LAUNCH_TRIGGER.setTitle(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "7sfnbYAQHeKwv5TnjtOxsuHrV9FNdcPXGBNTeCVTQfYCkNfT"), for: .normal)
+        YACUAIOBVO_LAUNCH_TRIGGER.setTitle(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "7sfnbYAQHeKwv5TnjtOxsuHrV9FNdcPXGBNTeCVTQfYCkNfT"), for: .normal)
         YACUAIOBVO_LAUNCH_TRIGGER.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         YACUAIOBVO_LAUNCH_TRIGGER.layer.cornerRadius = 28
         YACUAIOBVO_LAUNCH_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_FINALIZE_POST), for: .touchUpInside)
@@ -192,20 +192,20 @@ class YACUAIOBVO_VantagePostCenter: UIViewController, UITextViewDelegate, PHPick
 
     @objc private func YACUAIOBVO_FINALIZE_POST() {
         guard YACUAIOBVO_SELECTED_ASSET != nil else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eF16DBA4XB5sXbNHzrhGcSlep5z/JYzJ3T747eIYMlpJ7cDe6TNn+XnX4/1OB9xGPHLwqIhO"), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "eF16DBA4XB5sXbNHzrhGcSlep5z/JYzJ3T747eIYMlpJ7cDe6TNn+XnX4/1OB9xGPHLwqIhO"), YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
         
         guard  let contetnt = YACUAIOBVO_NARRATIVE_INPUT.text,contetnt.isEmpty == false,contetnt != "Write down what you want to say..."   else {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Please Write down what you want to say", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Please Write down what you want to say", YACUAIOBVO_STYLE: .YACUAIOBVO_ABORTED)
             return
         }
         
         YACUAIOBVO_LAUNCH_TRIGGER.isEnabled = false
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "NfgPYRIrU43exiomafNqd05VMdSHgollEehzigaXRklY9gBflv1EQfd048Z0"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "NfgPYRIrU43exiomafNqd05VMdSHgollEehzigaXRklY9gBflv1EQfd048Z0"), YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "GKQuwRRJwp5VwyVH2KR89HYipUuo45xmZvFacnttJDuuGfqj5l/LmiaP6eBGSDu9lQBuZxoJ0w=="), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE(GarnishArtisticCipherWorkshop.YACUAIOBVOSTRING(YACUAIOBVORCE: "GKQuwRRJwp5VwyVH2KR89HYipUuo45xmZvFacnttJDuuGfqj5l/LmiaP6eBGSDu9lQBuZxoJ0w=="), YACUAIOBVO_STYLE: .YACUAIOBVO_TRIUMPH)
             self.YACUAIOBVO_RETREAT_ACTION()
         }
     }

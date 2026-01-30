@@ -1,5 +1,5 @@
 //
-//  YACUAIOBVO_DiscoveryFeedPortal.swift
+//  ElementDiscoveryFeedPortal.swift
 //  YaCupaiobvo
 //
 //  Created by YaCupaiobvo on 2026/1/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class ElementDiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     enum YACUAIOBVO_DiscoverCategory: Int {
         case YACUAIOBVO_Discover = 0
         case YACUAIOBVO_Follow = 1
@@ -16,8 +16,8 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     
     var YACUAIOBVO_CURRENT_CAT: YACUAIOBVO_DiscoverCategory = .YACUAIOBVO_Discover
     private var YACUAIOBVO_DISPLAY_POOL: [[String: Any]] {
-        let YACUAIOBVO_BLOCK_LIST = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET ?? []
-        let YACUAIOBVO_ALL_DATA = YACUAIOBVO_ShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas
+        let YACUAIOBVO_BLOCK_LIST = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_BLOCK_SET ?? []
+        let YACUAIOBVO_ALL_DATA = RefineShowingData.YACUAIOBVO_HUB.YACUAIOBVO_user_datas
         let YACUAIOBVO_NO_BLOCKS = YACUAIOBVO_ALL_DATA.filter {
             !YACUAIOBVO_BLOCK_LIST.contains($0["YACUAIOBVO_ID"] as? String ?? "")
             
@@ -28,7 +28,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
             return Array(YACUAIOBVO_NO_BLOCKS)
         case .YACUAIOBVO_Follow:
      
-            guard let YACUAIOBVO_FOLLOW_IDS = YACUAIOBVO_CoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
+            guard let YACUAIOBVO_FOLLOW_IDS = SonicCoreSystem.YACUAIOBVO_HUB.YACUAIOBVO_CURRENT_PROFILE?.YACUAIOBVO_FOLLOWING_SET else {
                 return []
             }
 
@@ -53,7 +53,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cheia = YACUAIOBVO_DISPLAY_POOL[indexPath.row]
-        let YACUAIOBVOcell = collectionView.dequeueReusableCell(withReuseIdentifier: YACUAIOBVO_StyleDiscoveryCell.YACUAIOBVO_REUSE_ID, for: indexPath) as! YACUAIOBVO_StyleDiscoveryCell
+        let YACUAIOBVOcell = collectionView.dequeueReusableCell(withReuseIdentifier: GarnishTextureVaultDiscoveryCell.YACUAIOBVO_REUSE_ID, for: indexPath) as! GarnishTextureVaultDiscoveryCell
         
         YACUAIOBVOcell.YACUAIOBVO_REPORT_TRIGGER.addTarget(self, action: #selector(YACUAIOBVO_APPLY_DARK_report_THEME), for: .touchUpInside)
        
@@ -90,15 +90,15 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         YACUAIOBVO_INDICATOR_DOT.delegate = self
         YACUAIOBVO_INDICATOR_DOT.dataSource = self
         YACUAIOBVO_INDICATOR_DOT.showsVerticalScrollIndicator = false
-        YACUAIOBVO_INDICATOR_DOT.register(YACUAIOBVO_StyleDiscoveryCell.self, forCellWithReuseIdentifier: YACUAIOBVO_StyleDiscoveryCell.YACUAIOBVO_REUSE_ID)
+        YACUAIOBVO_INDICATOR_DOT.register(GarnishTextureVaultDiscoveryCell.self, forCellWithReuseIdentifier: GarnishTextureVaultDiscoveryCell.YACUAIOBVO_REUSE_ID)
         YACUAIOBVO_INDICATOR_DOT.isScrollEnabled = true
         YACUAIOBVO_INDICATOR_DOT.isUserInteractionEnabled = true
         YACUAIOBVO_SETUP_TOP_NAV()
         
-        YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
+        CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_ENGAGE_PULSE("Loading...", YACUAIOBVO_STYLE: .YACUAIOBVO_PENDING)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-            YACUAIOBVO_SignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
+            CosmeticASignalPulseHub.YACUAIOBVO_SHARED.YACUAIOBVO_DISMISS_PULSE()
 
            
         }
@@ -107,7 +107,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
     
     
     @objc func YACUAIOBVO_publihder(){
-        let YACUAIOBVO_DET_VC =  YACUAIOBVO_VantagePostCenter()
+        let YACUAIOBVO_DET_VC =  VocalStreamInterfacePostCenter()
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
     }
@@ -119,7 +119,7 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
             YACUAIOBVO_TIMESTAMP: Date().timeIntervalSince1970
         )
         
-        let YACUAIOBVO_DET_VC = YACUAIOBVO_InsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: YACUAIOBVO_CONTEXT)
+        let YACUAIOBVO_DET_VC = SonicInsightDiscoveryDetailController.init(YACUAIOBVO_INPUT: YACUAIOBVO_CONTEXT)
         YACUAIOBVO_DET_VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(YACUAIOBVO_DET_VC, animated: true)
         
@@ -144,17 +144,17 @@ class YACUAIOBVO_DiscoveryFeedPortal: UIViewController,UICollectionViewDelegate,
         view.addSubview(YACUAIOBVO_TOP_SEGMENT)
         
            
-        YACUAIOBVO_Publish_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "fleversenghow"), for: .normal)
+        YACUAIOBVO_Publish_LBL.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "fleversenghow"), for: .normal)
         YACUAIOBVO_Publish_LBL.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_Publish_LBL)
         
-        YACUAIOBVO_DISCOVER_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVODiscover"), for: .normal)
-        YACUAIOBVO_DISCOVER_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOdisc"), for: .selected)
+        YACUAIOBVO_DISCOVER_LBL.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVODiscover"), for: .normal)
+        YACUAIOBVO_DISCOVER_LBL.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOdisc"), for: .selected)
         YACUAIOBVO_DISCOVER_LBL.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_DISCOVER_LBL)
         
-        YACUAIOBVO_FOLLOW_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOFollowing"), for: .normal)
-        YACUAIOBVO_FOLLOW_LBL.setImage(YACUAIOBVO_ArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOfollo"), for: .selected)
+        YACUAIOBVO_FOLLOW_LBL.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOFollowing"), for: .normal)
+        YACUAIOBVO_FOLLOW_LBL.setImage(GarnishArtisticCipherWorkshop.YACUAIOBVO_FETCH_TEXTURE_IMAGE(YACUAIOBVO_ASSET_ALIAS: "YACUAIOBVOfollo"), for: .selected)
         YACUAIOBVO_FOLLOW_LBL.translatesAutoresizingMaskIntoConstraints = false
         YACUAIOBVO_TOP_SEGMENT.addSubview(YACUAIOBVO_FOLLOW_LBL)
         
